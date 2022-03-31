@@ -1,6 +1,6 @@
 Server:
   servlet:
-    context-path: /harrypotter
+    context-path: /poudlard
 spring:
   datasource:
     dbcp2:
@@ -8,11 +8,11 @@ spring:
       max-total: 10
     driver-class-name: com.mysql.cj.jdbc.Driver
     password: 
-    url: jdbc:mysql://localhost:3306/harrypotter?serverTimezone=UTC
+    url: jdbc:mysql://localhost:3306/poudlard?serverTimezone=UTC
     username: root
   jpa:
     hibernate:
-      ddl-auto: validate
+      ddl-auto: update
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQL5InnoDBDialect

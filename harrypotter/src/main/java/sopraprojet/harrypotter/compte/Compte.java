@@ -1,6 +1,7 @@
 package sopraprojet.harrypotter.compte;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
@@ -10,10 +11,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.Version;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Past;
+
+import sopraprojet.harrypotter.boutique.Produit;
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 @DiscriminatorColumn(name = "type_compte",columnDefinition = "ENUM('eleve','prof','admin')")
@@ -38,14 +44,19 @@ public abstract class Compte {
     protected String password;
 	
 	@Past
-	@NotEmpty(message = "Champ obligatoire")
     protected LocalDate naissance;
 	
     protected double solde;
     protected String img;
 	private String maison;
-//    protected List<Items> paniner;
-//    protected List<Items> iventaire;
+
+	@ManyToMany
+	@JoinTable(
+			name="panier",
+			joinColumns = @JoinColumn(name="acheteur"),
+			inverseJoinColumns = @JoinColumn(name="article"))
+	protected List<Produit> panier;
+
     
     @Version
 	private int version;
@@ -178,12 +189,16 @@ public abstract class Compte {
 		this.img = img;
 	}
 
-	@Override
-	public String toString() {
-		return "Compte [id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", login=" + login + ", password="
-				+ password + ", naissance=" + naissance + ", solde=" + solde + ", maison=" + maison + ", version="
-				+ version + "]";
+
+	public List<Produit> getPanier() {
+		return panier;
 	}
+
+
+	public void setPanier(List<Produit> panier) {
+		this.panier = panier;
+	}
+
 
 	
 

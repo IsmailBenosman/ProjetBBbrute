@@ -6,22 +6,17 @@ import javax.transaction.Transactional;
 
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Commit;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import sopraprojet.harrypotter.boutique.Boutique;
 import sopraprojet.harrypotter.boutique.Categorie;
 import sopraprojet.harrypotter.boutique.Produit;
-import sopraprojet.harrypotter.config.AppConfig;
 import sopraprojet.harrypotter.service.BoutiqueService;
 import sopraprojet.harrypotter.service.ProduitService;
 
-
-@ExtendWith(SpringExtension.class)
-@ContextConfiguration(classes = { AppConfig.class })
+@SpringBootTest
 class BoutiqueTest {
 
 	//oubliez pas d'enlever le @Disabled si vous voulez commit ___________________________________________________

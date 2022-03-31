@@ -29,6 +29,7 @@ public class Modules {
 
 	@OneToOne(mappedBy="module")
 	private Cours cours;
+	
 	@ManyToOne
 	@JoinColumn(name="eleve_fk")
 	private Eleve eleve;

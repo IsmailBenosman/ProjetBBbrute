@@ -39,17 +39,15 @@ public class Evenement {
 	
 	@Future
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	@NotEmpty(message="Champ obligatoire")
 	private LocalDate date;
 	
-	@NotEmpty(message="Champ obligatoire")
 	private LocalTime heure;
 	
 	@ManyToMany
   	@JoinTable(
 			name="participant_event",
-			joinColumns = @JoinColumn(name="participant"),
-			inverseJoinColumns = @JoinColumn(name="event")
+			joinColumns = @JoinColumn(name="event"),
+			inverseJoinColumns = @JoinColumn(name="participant")
 			)
 	private List<Eleve> participants;
 	

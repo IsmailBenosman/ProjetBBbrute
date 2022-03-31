@@ -1,9 +1,14 @@
 package sopraprojet.harrypotter.boutique;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Version;
@@ -11,8 +16,7 @@ import javax.persistence.Version;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import sopraprojet.harrypotter.Json.JsonViews;
-
-
+import sopraprojet.harrypotter.compte.Compte;
 
 @Entity
 @Table(name="produit")
@@ -37,7 +41,10 @@ public class Produit {
 	
 	@JsonView(JsonViews.Common.class)
 	private String img;
-
+	
+	@ManyToMany(mappedBy="panier")
+	private List<Compte> acheteur; 
+	
 	@Version
 	private int version;
 	
@@ -100,12 +107,21 @@ public class Produit {
 		this.img = img;
 	}
 
-	public int getVerion() {
+
+	public List<Compte> getAcheteur() {
+		return acheteur;
+	}
+
+	public void setAcheteur(List<Compte> acheteur) {
+		this.acheteur = acheteur;
+	}
+
+	public int getVersion() {
 		return version;
 	}
 
-	public void setVerion(int verion) {
-		this.version = verion;
+	public void setVersion(int version) {
+		this.version = version;
 	}
 	
 	

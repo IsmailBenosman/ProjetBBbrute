@@ -8,26 +8,22 @@ import javax.transaction.Transactional;
 
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Commit;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import sopraprojet.harrypotter.compte.Eleve;
-import sopraprojet.harrypotter.config.AppConfig;
 import sopraprojet.harrypotter.service.EleveService;
 
 
 
-@ExtendWith(SpringExtension.class)
-@ContextConfiguration(classes = { AppConfig.class })
+@SpringBootTest
 class AppTest {
 
 	@Autowired
 	EleveService eleveService;
 	
-	@Disabled
+	
 	@Test
 	@Transactional
 	@Commit

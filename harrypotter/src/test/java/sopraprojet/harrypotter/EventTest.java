@@ -11,22 +11,18 @@ import javax.transaction.Transactional;
 
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Commit;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import sopraprojet.harrypotter.compte.Eleve;
-import sopraprojet.harrypotter.config.AppConfig;
 import sopraprojet.harrypotter.event.Evenement;
 import sopraprojet.harrypotter.service.EleveService;
 import sopraprojet.harrypotter.service.EvenementService;
 
 
 
-@ExtendWith(SpringExtension.class)
-@ContextConfiguration(classes = { AppConfig.class })
+@SpringBootTest
 class EventTest {
 	
 
@@ -45,7 +41,7 @@ class EventTest {
 		evenementService.create(event);
 	}
 	
-// fonctionne mais ne fait pas la liaison entre les participant et les events dans la tablea event-participant.. 
+
 	@Test
 	@Transactional
 	@Commit
