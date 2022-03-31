@@ -1,4 +1,4 @@
-package config;
+package sopraprojet.harrypotter.config;
 
 import java.util.Properties;
 
@@ -21,7 +21,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @Configuration
 @PropertySource("classpath:infos.properties")
 @EnableTransactionManagement
-@ComponentScan({"boutique","compte","event","module","produit","service"})
+@ComponentScan({"sopraprojet.harrypotter.boutique","sopraprojet.harrypotter.compte","sopraprojet.harrypotter.event","sopraprojet.harrypotter.module","sopraprojet.harrypotter.produit","sopraprojet.harrypotter.service"})
 @EnableJpaRepositories({"repositories"})
 public class AppConfig {
 

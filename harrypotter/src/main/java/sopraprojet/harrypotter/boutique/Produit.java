@@ -1,4 +1,4 @@
-package boutique;
+package sopraprojet.harrypotter.boutique;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,7 +10,9 @@ import javax.persistence.Version;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
-import Json.JsonViews;
+import sopraprojet.harrypotter.Json.JsonViews;
+
+
 
 @Entity
 @Table(name="produit")
