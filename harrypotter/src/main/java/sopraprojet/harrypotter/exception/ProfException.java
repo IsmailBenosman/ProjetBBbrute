@@ -1,4 +1,4 @@
-package exception;
+package sopraprojet.harrypotter.exception;
 
 public class ProfException extends RuntimeException{
 
