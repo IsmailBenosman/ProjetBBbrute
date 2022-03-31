@@ -1,4 +1,4 @@
-package compte;
+package sopraprojet.harrypotter.compte;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -8,8 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import module.Cours;
-
+import sopraprojet.harrypotter.module.Cours;
 @Entity
 @DiscriminatorValue("prof")
 @Table(name="prof")

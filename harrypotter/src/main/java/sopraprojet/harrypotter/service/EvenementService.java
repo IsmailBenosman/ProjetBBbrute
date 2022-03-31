@@ -1,14 +1,13 @@
-package service;
+package sopraprojet.harrypotter.service;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import compte.Eleve;
-import event.Evenement;
-import exception.ModuleException;
-import repositories.EvenementRepository;
+import sopraprojet.harrypotter.event.Evenement;
+import sopraprojet.harrypotter.exception.ModuleException;
+import sopraprojet.harrypotter.repositories.EvenementRepository;
 
 
 @Service

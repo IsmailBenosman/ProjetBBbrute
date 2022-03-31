@@ -1,10 +1,9 @@
-package compte;
+package sopraprojet.harrypotter.compte;
 
 import java.time.LocalDate;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-import javax.persistence.Table;
 
 @Entity
 @DiscriminatorValue("admin")

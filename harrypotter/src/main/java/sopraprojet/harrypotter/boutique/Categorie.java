@@ -1,4 +1,4 @@
-package boutique;
+package sopraprojet.harrypotter.boutique;
 
 public enum Categorie {
 	

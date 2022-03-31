@@ -1,12 +1,10 @@
-package repositories;
-
-import java.util.Optional;
+package sopraprojet.harrypotter.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 
-import compte.Admin;
+import sopraprojet.harrypotter.compte.Admin;
+
+
 
 
 

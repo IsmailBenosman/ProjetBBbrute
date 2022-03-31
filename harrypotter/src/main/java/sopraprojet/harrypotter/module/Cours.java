@@ -1,4 +1,4 @@
-package module;
+package sopraprojet.harrypotter.module;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
@@ -10,7 +10,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import compte.Prof;
+import sopraprojet.harrypotter.compte.Prof;
+
+
 
 
 @Entity

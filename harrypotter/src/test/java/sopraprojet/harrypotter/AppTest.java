@@ -1,4 +1,4 @@
-package test;
+package sopraprojet.harrypotter;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
@@ -14,9 +14,11 @@ import org.springframework.test.annotation.Commit;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import compte.Eleve;
-import config.AppConfig;
-import service.EleveService;
+import sopraprojet.harrypotter.compte.Eleve;
+import sopraprojet.harrypotter.config.AppConfig;
+import sopraprojet.harrypotter.service.EleveService;
+
+
 
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes = { AppConfig.class })

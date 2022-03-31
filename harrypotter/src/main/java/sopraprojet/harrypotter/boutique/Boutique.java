@@ -1,4 +1,4 @@
-package boutique;
+package sopraprojet.harrypotter.boutique;
 
 
 import java.util.List;
@@ -17,7 +17,9 @@ import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
-import Json.JsonViews;
+import sopraprojet.harrypotter.Json.JsonViews;
+
+
 
 @Entity
 @Component

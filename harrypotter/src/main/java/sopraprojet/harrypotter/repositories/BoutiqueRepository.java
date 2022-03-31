@@ -1,10 +1,12 @@
-package repositories;
-
-import java.util.List;
+package sopraprojet.harrypotter.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import boutique.Boutique;
+import sopraprojet.harrypotter.boutique.Boutique;
+
+
+
+
 
 
 public interface BoutiqueRepository extends JpaRepository<Boutique, Integer>{

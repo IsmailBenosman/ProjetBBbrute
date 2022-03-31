@@ -1,14 +1,12 @@
-package service;
-
+package sopraprojet.harrypotter.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import boutique.Produit;
-import exception.ModuleException;
-import exception.ProduitException;
-import repositories.ProduitRepository;
+import sopraprojet.harrypotter.boutique.Produit;
+import sopraprojet.harrypotter.exception.ModuleException;
+import sopraprojet.harrypotter.repositories.ProduitRepository;
 
 
 @Service

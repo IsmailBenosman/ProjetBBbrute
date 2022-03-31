@@ -1,14 +1,14 @@
-package service;
+package sopraprojet.harrypotter.service;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import compte.Admin;
-import exception.AdminException;
-import exception.EleveException;
-import repositories.AdminRepository;
+import sopraprojet.harrypotter.compte.Admin;
+import sopraprojet.harrypotter.exception.AdminException;
+import sopraprojet.harrypotter.exception.EleveException;
+import sopraprojet.harrypotter.repositories.AdminRepository;
 
 @Service
 public class AdminService {
