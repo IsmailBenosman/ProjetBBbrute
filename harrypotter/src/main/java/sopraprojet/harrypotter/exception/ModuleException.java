@@ -1,4 +1,4 @@
-package exception;
+package sopraprojet.harrypotter.exception;
 
 public class ModuleException extends RuntimeException {
 
