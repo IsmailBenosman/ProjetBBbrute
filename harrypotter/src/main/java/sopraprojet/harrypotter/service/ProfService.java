@@ -1,15 +1,14 @@
-package service;
+package sopraprojet.harrypotter.service;
 
 import java.util.List;
-
-import javax.persistence.EntityManager;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import compte.Prof;
-import exception.ProfException;
-import repositories.ProfRepository;
+import sopraprojet.harrypotter.compte.Prof;
+import sopraprojet.harrypotter.exception.ProfException;
+import sopraprojet.harrypotter.repositories.ProfRepository;
+
 
 
 @Service

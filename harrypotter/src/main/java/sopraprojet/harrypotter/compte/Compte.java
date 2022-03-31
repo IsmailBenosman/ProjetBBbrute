@@ -1,4 +1,4 @@
-package compte;
+package sopraprojet.harrypotter.compte;
 
 import java.time.LocalDate;
 

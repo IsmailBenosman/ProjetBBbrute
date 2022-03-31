@@ -1,11 +1,13 @@
-package repositories;
+package sopraprojet.harrypotter.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import compte.Eleve;
-import module.Modules;
+import sopraprojet.harrypotter.compte.Eleve;
+import sopraprojet.harrypotter.module.Modules;
+
+
 
 public interface ModuleRepository extends JpaRepository<Modules,Integer>{
 	

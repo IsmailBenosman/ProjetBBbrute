@@ -1,9 +1,11 @@
-package repositories;
+package sopraprojet.harrypotter.repositories;
 
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import boutique.Produit;
+import sopraprojet.harrypotter.boutique.Produit;
+
+
 
 
 

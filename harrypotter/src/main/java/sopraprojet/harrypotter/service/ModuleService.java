@@ -1,13 +1,13 @@
-package service;
+package sopraprojet.harrypotter.service;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import exception.ModuleException;
-import module.Modules;
-import repositories.ModuleRepository;
+import sopraprojet.harrypotter.exception.ModuleException;
+import sopraprojet.harrypotter.module.Modules;
+import sopraprojet.harrypotter.repositories.ModuleRepository;
 
 @Service
 public class ModuleService {
