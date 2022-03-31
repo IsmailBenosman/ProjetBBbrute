@@ -1,4 +1,4 @@
-erver:
+Server:
   servlet:
     context-path: /harrypotter
 spring:
