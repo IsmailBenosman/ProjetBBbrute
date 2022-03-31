@@ -1,4 +1,4 @@
-package event;
+package sopraprojet.harrypotter.event;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -13,7 +13,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Version;
 import javax.validation.constraints.Future;
@@ -21,7 +20,9 @@ import javax.validation.constraints.NotEmpty;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-import compte.Eleve;
+import sopraprojet.harrypotter.compte.Eleve;
+
+
 
 @Entity
 @DiscriminatorValue("evenements")
