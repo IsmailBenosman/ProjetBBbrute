@@ -1,4 +1,4 @@
-package test;
+package sopraprojet.harrypotter;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
@@ -14,15 +14,16 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.annotation.Commit;
-import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import compte.Eleve;
-import config.AppConfig;
-import event.Evenement;
-import service.EleveService;
-import service.EvenementService;
+import sopraprojet.harrypotter.compte.Eleve;
+import sopraprojet.harrypotter.config.AppConfig;
+import sopraprojet.harrypotter.event.Evenement;
+import sopraprojet.harrypotter.service.EleveService;
+import sopraprojet.harrypotter.service.EvenementService;
+
+
 
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes = { AppConfig.class })

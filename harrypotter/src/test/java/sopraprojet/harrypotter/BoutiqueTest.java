@@ -1,4 +1,4 @@
-package test;
+package sopraprojet.harrypotter;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
@@ -9,16 +9,16 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.annotation.Commit;
-import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import boutique.Boutique;
-import boutique.Categorie;
-import boutique.Produit;
-import config.AppConfig;
-import service.BoutiqueService;
-import service.ProduitService;
+import sopraprojet.harrypotter.boutique.Boutique;
+import sopraprojet.harrypotter.boutique.Categorie;
+import sopraprojet.harrypotter.boutique.Produit;
+import sopraprojet.harrypotter.config.AppConfig;
+import sopraprojet.harrypotter.service.BoutiqueService;
+import sopraprojet.harrypotter.service.ProduitService;
+
 
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes = { AppConfig.class })
@@ -53,7 +53,7 @@ class BoutiqueTest {
 	@Commit
 	void CreationProduitTest() {
 		Boutique boutique = new Boutique(Categorie.Boissons, "Bar", "Sorry, je connais toujours pas trop Harry Potter");
-		Produit produit = new Produit(boutique, "Biere au beurre", 4.50 ,"Une bière un peu degueux");
+		Produit produit = new Produit(boutique, "Biere au beurre", 4.50 ,"Une biï¿½re un peu degueux");
 		boutiqueService.create(boutique);
 		produitService.create(produit);
 	}
