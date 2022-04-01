@@ -3,7 +3,11 @@ package sopraprojet.harrypotter.compte;
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Collection;
+<<<<<<< HEAD
 import java.util.Set;
+=======
+import java.util.List;
+>>>>>>> main
 
 import javax.persistence.CollectionTable;
 import javax.persistence.Column;
@@ -21,7 +25,6 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Version;
 import javax.validation.constraints.NotEmpty;
@@ -39,7 +42,7 @@ import sopraprojet.harrypotter.entity.Role;
 import sopraprojet.harrypotter.maison.Maison;
 
 @Entity
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "type_compte", columnDefinition = "ENUM('eleve','prof','admin')")
 @Table(name = "compte")
 public abstract class Compte implements UserDetails {
@@ -116,8 +119,8 @@ public abstract class Compte implements UserDetails {
 	@ManyToOne
 	private Maison maison;
 	
-	@OneToOne
-	private Panier panier;
+	@OneToMany(mappedBy="compte")
+	private List<Panier> panier;
 	
 	@Enumerated(EnumType.STRING)
 	@ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
@@ -236,6 +239,14 @@ public abstract class Compte implements UserDetails {
 
 	public void setImg(String img) {
 		this.img = img;
+	}
+
+	public List<Panier> getPanier() {
+		return panier;
+	}
+
+	public void setPanier(List<Panier> panier) {
+		this.panier = panier;
 	}
 
 	@Override
