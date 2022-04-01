@@ -9,7 +9,6 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -19,6 +18,7 @@ import sopraprojet.harrypotter.compte.Eleve;
 import sopraprojet.harrypotter.event.Evenement;
 import sopraprojet.harrypotter.service.EleveService;
 import sopraprojet.harrypotter.service.EvenementService;
+import sopraprojet.harrypotter.service.MaisonService;
 
 
 
@@ -31,6 +31,9 @@ class EventTest {
 	
 	@Autowired
 	EleveService eleveService;
+	
+	@Autowired
+	MaisonService maisonService;
 	
 
 	@Test
@@ -47,18 +50,18 @@ class EventTest {
 	@Commit
 //	@Rollback
 	void CreationEventEleveTest() {
-//		Evenement event = new Evenement("Bal de fin d'annee",LocalDate.parse("2023-07-28"), LocalTime.of(23, 0,0));
-//		Eleve e1 = new Eleve("Baccceli", "Pauline", "pau", "pau", LocalDate.parse("1997-03-18"), 0,"Serdaigle");
-//		Eleve e2 = new Eleve("Gozlan", "Olivier", "oli", "oli", LocalDate.parse("1992-03-18"), 0,"Griffondor");
-//		List<Eleve> participant = new ArrayList();
-//		participant.add(e1);
-//		participant.add(e2);
-//		event.setParticipants(participant);
-//		evenementService.create(event);
-//		eleveService.create(e1);
-//		eleveService.create(e2);
-//		System.out.println(event);
-//		System.out.println(participant);
+		Evenement event = new Evenement("Bal de fin d'annee",LocalDate.parse("2023-07-28"), LocalTime.of(23, 0,0));
+		Eleve e1 = new Eleve("Baccceli", "Pauline", "pau", "pau", LocalDate.parse("1997-03-18"), 0,maisonService.getById(1));
+		Eleve e2 = new Eleve("Gozlan", "Olivier", "oli", "oli", LocalDate.parse("1992-03-18"), 0,maisonService.getById(4));
+		List<Eleve> participant = new ArrayList();
+		participant.add(e1);
+		participant.add(e2);
+		event.setParticipants(participant);
+		evenementService.create(event);
+		eleveService.create(e1);
+		eleveService.create(e2);
+		System.out.println(event);
+		System.out.println(participant);
 		
 	}
 	

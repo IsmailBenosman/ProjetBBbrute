@@ -19,7 +19,7 @@ import sopraprojet.harrypotter.service.ProduitService;
 @SpringBootTest
 class BoutiqueTest {
 
-	//oubliez pas d'enlever le @Disabled si vous voulez commit ___________________________________________________
+	
 	
 	@Autowired
 	BoutiqueService boutiqueService;
