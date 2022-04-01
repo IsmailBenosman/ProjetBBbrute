@@ -6,8 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Version;
 import javax.validation.constraints.NotNull;
@@ -41,9 +41,8 @@ public class Produit {
 	@JsonView(JsonViews.Common.class)
 	private String img;
 	
-	@ManyToOne
-	private Panier panier;
-	
+	@OneToMany(mappedBy = "article")
+	private List<Panier> panier;
 
 	@Version
 	private int version;
@@ -107,11 +106,11 @@ public class Produit {
 		this.img = img;
 	}
 
-	public Panier getPanier() {
+	public List<Panier> getPanier() {
 		return panier;
 	}
 
-	public void setPanier(Panier panier) {
+	public void setPanier(List<Panier> panier) {
 		this.panier = panier;
 	}
 
@@ -123,8 +122,6 @@ public class Produit {
 		this.version = version;
 	}
 
-
-	
 	
 
 }
