@@ -13,6 +13,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Commit;
 
 import sopraprojet.harrypotter.compte.Eleve;
+import sopraprojet.harrypotter.compte.Prof;
 import sopraprojet.harrypotter.service.EleveService;
 
 
