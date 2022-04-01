@@ -29,10 +29,10 @@ class AppTest {
 	@Transactional
 	@Commit
 	void CreationEleveTest() {
-		Eleve e1 = new Eleve("Pierson", "Robin", "rob", "rob", LocalDate.parse("1997-03-18"), 0,"Serpentard");
-		Eleve e2 = new Eleve("Vong", "Michel", "michel", "michel", LocalDate.parse("1992-03-18"), 0,"Poufsouffle");
-		eleveService.create(e1);
-		eleveService.create(e2);
+//		Eleve e1 = new Eleve("Pierson", "Robin", "rob", "rob", LocalDate.parse("1997-03-18"), 0,"Serpentard");
+//		Eleve e2 = new Eleve("Vong", "Michel", "michel", "michel", LocalDate.parse("1992-03-18"), 0,"Poufsouffle");
+//		eleveService.create(e1);
+//		eleveService.create(e2);
 	}
 
 	@Test

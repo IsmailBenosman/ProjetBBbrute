@@ -31,7 +31,7 @@ public class InscriptionCours {
 	@JoinColumn(name="cours_fk")
 	private Cours cours;
 	
-	@ManyToMany(mappedBy="inscription")
+	@ManyToOne
 	@JoinColumn(name="eleve_fk")
 	private List<Eleve> eleve;
 
