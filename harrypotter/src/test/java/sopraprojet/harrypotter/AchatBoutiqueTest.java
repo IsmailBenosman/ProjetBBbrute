@@ -28,7 +28,6 @@ import sopraprojet.harrypotter.service.MaisonService;
 import sopraprojet.harrypotter.service.PanierService;
 import sopraprojet.harrypotter.service.ProduitService;
 
-
 @SpringBootTest
 class AchatBoutiqueTest {
 
@@ -38,44 +37,44 @@ class AchatBoutiqueTest {
 	MaisonService maisonService;
 	@Autowired
 	ProduitService produitService;
-	
+
 	@Autowired
 	BoutiqueService boutiqueService;
-	
+
 	@Autowired
 	PanierService panierService;
-	
+
 	@Autowired
 	PanierRepository panierRepo;
-	
+
 	@Disabled
 	@Test
 	@Transactional
 	@Commit
 	void AjoutArticlePanierTest() {
-		
-		
-		Eleve e1 = new Eleve("Test", "Test", "Test", "Test", LocalDate.parse("1997-03-18"), 0,maisonService.getById(1));
-		
-		Panier panier= new Panier();
-		Panier panier1= new Panier();
+
+		Eleve e1 = new Eleve("Test", "Test", "Test", "Test", LocalDate.parse("1997-03-18"), 0,
+				maisonService.getById(1));
+
+		Panier panier = new Panier();
+		Panier panier1 = new Panier();
 		Boutique boutique = new Boutique(Categorie.Animaux, "Animalerie", "Sorry");
-		
-		Produit produit = new Produit(boutique, "Hibou", 50.65 ,"Elle s'appelle Hedwige");
-		Produit produit1 = new Produit(boutique, "Rat", 10.25 ,"Il s'appelle Croutard");
-		Produit produit2 = new Produit(boutique, "Crapaud", 0 ,"Il s'appelle Trevor");
-		
+
+		Produit produit = new Produit(boutique, "Hibou", 50.65, "Elle s'appelle Hedwige");
+		Produit produit1 = new Produit(boutique, "Rat", 10.25, "Il s'appelle Croutard");
+		Produit produit2 = new Produit(boutique, "Crapaud", 0, "Il s'appelle Trevor");
+
 		panier.setArticles(produit2);
 		panier.setQuantite(3);
 		panier1.setArticles(produit1);
 		panier1.setQuantite(2);
 		panier1.setCompte(e1);
 		panier.setCompte(e1);
-		List<Panier> paniers =new ArrayList();
+		List<Panier> paniers = new ArrayList();
 		paniers.add(panier1);
 		paniers.add(panier);
 		e1.setPanier(paniers);
-		
+
 //		maisonService.create(m1);
 		eleveService.create(e1);
 		panierService.create(panier);
@@ -87,42 +86,40 @@ class AchatBoutiqueTest {
 		assertNotNull(panierService);
 		System.out.println(panier);
 
-	}	
-	
+	}
+
 	@Disabled
 	@Test
 	@Transactional
 	@Commit
 	void ModifPanierTest() {
-		
-		Panier panierNew= panierService.getById(1);
+		Panier panierNew = panierService.getById(1);
 		panierNew.setQuantite(7);
 		panierNew.setArticles(produitService.getById(3));
 		panierNew.setCompte(eleveService.getById(1));
 		panierService.save(panierNew);
-		
 	}
-	
+
 	@Disabled
 	@Test
 	@Transactional
 	void SupprimerArticlePanierTest() {
 		panierService.delete(panierService.getById(1));
 	}
-	
+
 	@Test
 	@Transactional
 	@Rollback
 	void FindPanierWithCompteTestBis() {
-		Eleve e=new Eleve();
-		//identifiant inconnu mais ils ont tous un panier meme s'il est vide donc retourne un test valide
+		Eleve e = new Eleve();
+		// identifiant inconnu mais ils ont tous un panier meme s'il est vide donc
+		// retourne un test valide
 		e.setId(9);
-				
-		List<Panier> panier= panierRepo.findByCompte(e);
-		//donne la taille du panier: 0= panier non existant encore
-		assertEquals(0,panier.size());
-		
-	}
+
+		List<Panier> panier = panierRepo.findByCompte(e);
+		// donne la taille du panier: 0= panier non existant encore
+		assertEquals(0, panier.size());
 
 	}
 
+}
