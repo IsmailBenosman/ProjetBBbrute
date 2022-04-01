@@ -1,5 +1,7 @@
 package sopraprojet.harrypotter;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -7,7 +9,6 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -21,6 +22,7 @@ import sopraprojet.harrypotter.compte.Eleve;
 import sopraprojet.harrypotter.maison.Maison;
 import sopraprojet.harrypotter.service.BoutiqueService;
 import sopraprojet.harrypotter.service.EleveService;
+import sopraprojet.harrypotter.service.MaisonService;
 import sopraprojet.harrypotter.service.PanierService;
 import sopraprojet.harrypotter.service.ProduitService;
 
@@ -32,7 +34,8 @@ class AchatBoutiqueTest {
 	// ne marche pas, je fais des modifs, le lancez pas
 	@Autowired
 	EleveService eleveService;
-	
+	@Autowired
+	MaisonService maisonService;
 	@Autowired
 	ProduitService produitService;
 	
@@ -42,12 +45,12 @@ class AchatBoutiqueTest {
 	@Autowired
 	PanierService panierService;
 	
-	@Disabled
+
 	@Test
 	@Transactional
 	@Commit
 //	@Rollback
-	void AjoutArticlePaneirTest() {
+	void AjoutArticlePanierTest() {
 		
 		Maison m1= new Maison("Serdaigle");
 		Eleve e1 = new Eleve("Test", "Test", "Test", "Test", LocalDate.parse("1997-03-18"), 0,m1);
@@ -68,16 +71,18 @@ class AchatBoutiqueTest {
 		panier.setArticles(produits);
 		panier.setCompte(e1);
 		
+		maisonService.create(m1);
 		eleveService.create(e1);
+		panierService.create(panier);
 		boutiqueService.create(boutique);
 		produitService.create(produit);
 		produitService.create(produit1);
 		produitService.create(produit2);
-		
+		assertNotNull(panierService);
 		System.out.println(produits);
 		System.out.println(panier);
 
-	}
+	}	
 
 	}
 
