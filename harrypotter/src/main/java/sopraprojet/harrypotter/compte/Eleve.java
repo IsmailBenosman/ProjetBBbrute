@@ -26,8 +26,8 @@ public class Eleve  extends Compte{
   	@ManyToMany(mappedBy="participants")
   	private List<Evenement> event;
 
-  	@OneToMany(mappedBy="inscription")
-  	private List<InscriptionCours> eleve;
+  	@OneToMany(mappedBy="eleve")
+  	private List<InscriptionCours> inscription;
   	
   	
 	public Eleve(Integer id, String nom, String prenom, String login, String password, LocalDate naissance, double solde,
@@ -60,11 +60,11 @@ public class Eleve  extends Compte{
 	}
 
 	public List<InscriptionCours> getEleve() {
-		return eleve;
+		return inscription;
 	}
 
-	public void setEleve(List<InscriptionCours> eleve) {
-		this.eleve = eleve;
+	public void setEleve(List<InscriptionCours> inscription) {
+		this.inscription = inscription;
 	}
 
 
