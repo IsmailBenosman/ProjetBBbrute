@@ -27,7 +27,6 @@ public class Cours {
 		
 		
 		@ManyToOne
-		@JoinColumn(name="professeur_fk")
 		private Prof professeur;
 		
 		@OneToOne

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import sopraprojet.harrypotter.boutique.Panier;
+import sopraprojet.harrypotter.event.Evenement;
 import sopraprojet.harrypotter.exception.PanierException;
 import sopraprojet.harrypotter.repositories.PanierRepository;
 
@@ -15,6 +16,9 @@ public class PanierService {
 	@Autowired
 	private PanierRepository panierRepository;
 	
+	public void create(Panier p) {
+		panierRepository.save(p);
+	}
 
 	public List<Panier> getAll() {
 		return panierRepository.findAll();

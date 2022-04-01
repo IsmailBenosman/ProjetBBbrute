@@ -3,12 +3,13 @@ package sopraprojet.harrypotter.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.stereotype.Service;
 
 import sopraprojet.harrypotter.exception.MaisonException;
 import sopraprojet.harrypotter.maison.Maison;
 import sopraprojet.harrypotter.repositories.MaisonRepository;
 
+@Service
 public class MaisonService {
 
 
