@@ -60,8 +60,9 @@ public abstract class Compte implements UserDetails {
 	@ManyToOne
 	private Maison maison;
 	
-	@OneToOne(mappedBy="compte")
+	@OneToOne
 	private Panier panier;
+	
 
 	@Version
 	private int version;

@@ -8,6 +8,8 @@ import javax.persistence.Table;
 
 import sopraprojet.harrypotter.maison.Maison;
 
+import sopraprojet.harrypotter.maison.Maison;
+
 @Entity
 @DiscriminatorValue("admin")
 @Table(name="admin")

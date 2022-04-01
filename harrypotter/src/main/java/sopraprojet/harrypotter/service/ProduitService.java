@@ -30,7 +30,7 @@ public class ProduitService {
 
 	public Produit getById(Integer id) {
 		return produitRepository.findById(id).orElseThrow(() -> {
-			throw new ModuleException("numero inconnu");
+			throw new ModuleException("Produit inconnu");
 		});
 	}
 	
