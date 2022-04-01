@@ -32,6 +32,7 @@ public class InscriptionCours {
 	private Cours cours;
 	
 	@ManyToOne
+	@JoinColumn(name="eleve_fk")
 	private Eleve eleve;
 
 	@Version
