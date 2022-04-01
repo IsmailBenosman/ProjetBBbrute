@@ -3,11 +3,8 @@ package sopraprojet.harrypotter.compte;
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Collection;
-<<<<<<< HEAD
-import java.util.Set;
-=======
 import java.util.List;
->>>>>>> main
+import java.util.Set;
 
 import javax.persistence.CollectionTable;
 import javax.persistence.Column;
@@ -46,51 +43,11 @@ import sopraprojet.harrypotter.maison.Maison;
 @DiscriminatorColumn(name = "type_compte", columnDefinition = "ENUM('eleve','prof','admin')")
 @Table(name = "compte")
 public abstract class Compte implements UserDetails {
-
-	public Compte(Integer id, @NotEmpty(message = "Champ obligatoire") String nom,
-			@NotEmpty(message = "Champ obligatoire") String prenom,
-			@NotEmpty(message = "Champ obligatoire") String login,
-			@NotEmpty(message = "Champ obligatoire") String password, @Past LocalDate naissance, double solde,
-			String img, Maison maison, Panier panier, Set<Role> roles) {
-		this.id = id;
-		this.nom = nom;
-		this.prenom = prenom;
-		this.login = login;
-		this.password = password;
-		this.naissance = naissance;
-		this.solde = solde;
-		this.img = img;
-		this.maison = maison;
-		this.panier = panier;
-		this.roles = roles;
-	}
-
-
-
-	public Panier getPanier() {
-		return panier;
-	}
-
-
-
-	public void setPanier(Panier panier) {
-		this.panier = panier;
-	}
-
-
-
-	public Set<Role> getRoles() {
-		return roles;
-	}
-
-
-
-	public void setRoles(Set<Role> roles) {
-		this.roles = roles;
-	}
-
-
-
+	
+	
+	@OneToMany(mappedBy="compte")
+	private List<Panier> panier;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id_compte")
@@ -119,19 +76,32 @@ public abstract class Compte implements UserDetails {
 	@ManyToOne
 	private Maison maison;
 	
-	@OneToMany(mappedBy="compte")
-	private List<Panier> panier;
-	
+	@Version
+	private int version;
+
+
 	@Enumerated(EnumType.STRING)
 	@ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
 	@CollectionTable(name = "utilisateur_roles", foreignKey = @ForeignKey(name = "utilisateur_roles_utilisateur_id_fk"))
 	@JsonView(JsonViews.Common.class)
 	private Set<Role> roles;
-
 	
-
-	@Version
-	private int version;
+	public Compte(Integer id, @NotEmpty(message = "Champ obligatoire") String nom,
+			@NotEmpty(message = "Champ obligatoire") String prenom,
+			@NotEmpty(message = "Champ obligatoire") String login,
+			@NotEmpty(message = "Champ obligatoire") String password, @Past LocalDate naissance, double solde,
+			String img, Maison maison, Set<Role> roles) {
+		this.id = id;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.login = login;
+		this.password = password;
+		this.naissance = naissance;
+		this.solde = solde;
+		this.img = img;
+		this.maison = maison;
+		this.roles = roles;
+	}
 
 	public Compte() {
 	}
@@ -247,6 +217,14 @@ public abstract class Compte implements UserDetails {
 
 	public void setPanier(List<Panier> panier) {
 		this.panier = panier;
+	}
+
+	public Set<Role> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(Set<Role> roles) {
+		this.roles = roles;
 	}
 
 	@Override

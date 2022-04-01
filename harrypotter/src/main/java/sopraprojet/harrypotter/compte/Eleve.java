@@ -39,8 +39,8 @@ public class Eleve  extends Compte{
 			@NotEmpty(message = "Champ obligatoire") String prenom,
 			@NotEmpty(message = "Champ obligatoire") String login,
 			@NotEmpty(message = "Champ obligatoire") String password, @Past LocalDate naissance, double solde,
-			String img, Maison maison, Panier panier, Set<Role> roles) {
-		super(id, nom, prenom, login, password, naissance, solde, img, maison, panier, roles);
+			String img, Maison maison,Set<Role> roles) {
+		super(id, nom, prenom, login, password, naissance, solde, img, maison,roles);
 		// TODO Auto-generated constructor stub
 	}
 
