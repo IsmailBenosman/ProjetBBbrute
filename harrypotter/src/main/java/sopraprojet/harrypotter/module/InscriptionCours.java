@@ -19,7 +19,7 @@ import sopraprojet.harrypotter.compte.Eleve;
 import sopraprojet.harrypotter.compte.Prof;
 
 @Entity
-@Table(name = "Inscription cours")
+@Table(name = "Inscription_cours")
 public class InscriptionCours {
 
 	@Id
@@ -32,6 +32,7 @@ public class InscriptionCours {
 	private Cours cours;
 	
 	@ManyToOne
+	@JoinColumn(name="eleve_fk")
 	private Eleve eleve;
 
 	@Version
