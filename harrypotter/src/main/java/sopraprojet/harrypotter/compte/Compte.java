@@ -12,6 +12,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Version;
 import javax.validation.constraints.NotEmpty;
@@ -20,6 +22,9 @@ import javax.validation.constraints.Past;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+
+import sopraprojet.harrypotter.boutique.Panier;
+import sopraprojet.harrypotter.maison.Maison;
 
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
@@ -51,7 +56,12 @@ public abstract class Compte implements UserDetails {
 
 	protected double solde;
 	protected String img;
-	private String maison;
+	
+	@ManyToOne
+	private Maison maison;
+	
+	@OneToOne(mappedBy="compte")
+	private Panier panier;
 
 	@Version
 	private int version;
