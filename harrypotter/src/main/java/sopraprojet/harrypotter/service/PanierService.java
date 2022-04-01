@@ -39,8 +39,4 @@ public class PanierService {
 	public void delete(Integer id) {
 		panierRepository.deleteById(id);
 	}
-
-	public Panier getByIdWithCompte(Integer id) {
-		return panierRepository.findByIdWithCompte(id).orElseThrow(PanierException::new);
-	}
 }

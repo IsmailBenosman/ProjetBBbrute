@@ -31,7 +31,7 @@ public class Maison {
 	private String nom;
 	private int score;
 
-	@OneToMany(mappedBy="comptes")
+	@OneToMany(mappedBy="maison")
 	private List<Compte> comptes;
 
 	public Integer getId() {
