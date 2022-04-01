@@ -24,7 +24,7 @@ public class Panier {
 	@Column(name = "quantite", nullable = false)
 	private int quantite;
 
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name = "compte_id")
 	private Compte compte;
 
@@ -36,6 +36,14 @@ public class Panier {
 	private int version;
 
 	public Panier() {
+	}
+
+	public Produit getArticle() {
+		return article;
+	}
+
+	public void setArticle(Produit article) {
+		this.article = article;
 	}
 
 	public int getQuantite() {

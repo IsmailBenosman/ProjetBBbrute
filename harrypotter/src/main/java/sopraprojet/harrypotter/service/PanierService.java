@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import sopraprojet.harrypotter.boutique.Panier;
-import sopraprojet.harrypotter.event.Evenement;
+import sopraprojet.harrypotter.compte.Compte;
 import sopraprojet.harrypotter.exception.PanierException;
 import sopraprojet.harrypotter.repositories.PanierRepository;
 
@@ -42,5 +42,10 @@ public class PanierService {
 
 	public void delete(Integer id) {
 		panierRepository.deleteById(id);
+	}
+
+	
+	public void findPanierWithCompte(Compte c) {
+		panierRepository.findByCompte(c);
 	}
 }
