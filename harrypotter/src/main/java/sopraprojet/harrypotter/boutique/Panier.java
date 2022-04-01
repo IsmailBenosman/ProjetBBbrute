@@ -85,5 +85,10 @@ public class Panier {
 	public void setVersion(int version) {
 		this.version = version;
 	}
+	
+	public void sousTotal(double sousTotal) {
+		
+		
+	}
 
 }

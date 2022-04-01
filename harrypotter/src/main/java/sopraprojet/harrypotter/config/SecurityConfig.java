@@ -8,34 +8,32 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+
+import sopraprojet.harrypotter.service.CustomUserDetailsService;
 
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		// @formatter:off
+
 		http.antMatcher("/api/**")
 				.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 				.and()
 				.csrf().disable()
 				.authorizeHttpRequests()
-					.antMatchers(HttpMethod.POST, "/api/home").permitAll()
-					
-					.antMatchers(HttpMethod.GET,"/api/admin").hasRole("ROLE_ADMIN")
-					.antMatchers(HttpMethod.GET,"/api/prof").hasRole("ROLE_PROF")
-					.antMatchers(HttpMethod.GET,"/api/eleve").hasRole("ROLE_ELEVE ")
+					.antMatchers("/api/index").permitAll()
+					.antMatchers(HttpMethod.GET , "/api/home/admin").hasRole("ADMIN")
+					.antMatchers(HttpMethod.GET , "/api/home/eleve").hasRole("ELEVE")
+					.antMatchers(HttpMethod.GET , "/api/home/prof").hasRole("PROF")
 					.anyRequest().denyAll()
 					.and()
 					.httpBasic();
-		// @formatter:on
-
 	}
 
 	@Autowired
-	private UserDetailsService userDetailsService;
+	private CustomUserDetailsService userDetailsService;
 
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {

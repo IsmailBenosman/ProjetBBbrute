@@ -258,7 +258,7 @@ public abstract class Compte implements UserDetails {
 		} else if (getClass().getSimpleName().equals("Prof")) {
 			authority = new SimpleGrantedAuthority("ROLE_PROF");
 		} else if (getClass().getSimpleName().equals("Admin")) {
-			authority = new SimpleGrantedAuthority("ROLE_Admin");
+			authority = new SimpleGrantedAuthority("ROLE_ADMIN");
 		}
 		return Arrays.asList(authority);
 	}
@@ -292,5 +292,6 @@ public abstract class Compte implements UserDetails {
 		// TODO Auto-generated method stub
 		return true;
 	}
+	
 
 }
