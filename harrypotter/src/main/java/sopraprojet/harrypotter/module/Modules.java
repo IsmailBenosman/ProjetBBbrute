@@ -45,12 +45,14 @@ public class Modules {
 	}
 	
 	
-	public Modules(int note, String commentaire, Cours cours) {
+	public Modules(Cours cours, int note, String commentaire,Eleve eleve) {
 		super();
+		this.cours = cours;
 		this.note = note;
 		this.commentaire = commentaire;
-		this.cours = cours;
+		this.eleve = eleve;
 	}
+	
 	public Cours getCours() {
 		return cours;
 	}

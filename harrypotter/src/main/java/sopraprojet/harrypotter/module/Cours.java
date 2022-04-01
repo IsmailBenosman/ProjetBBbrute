@@ -35,14 +35,17 @@ public class Cours {
 
 		public Cours() {}
 
-		public Cours(Integer id, String intitule, Prof professeur, Modules module) {
+		public Cours(Integer id, String intitule, Prof professeur) {
 			super();
 			this.id = id;
 			this.intitule = intitule;
 			this.professeur = professeur;
-			this.module = module;
 		}
 
+		public Cours(String intitule, Prof professeur) {
+			this.intitule = intitule;
+			this.professeur = professeur;
+		}
 
 		public Cours(String intitule) {
 			super();
