@@ -70,7 +70,7 @@ public abstract class Compte implements UserDetails {
 	}
 
 	public Compte(Integer id, String nom, String prenom, String login, String password, LocalDate naissance,
-			double solde, String maison) {
+			double solde, Maison maison) {
 		this.id = id;
 		this.nom = nom;
 		this.prenom = prenom;
@@ -82,7 +82,7 @@ public abstract class Compte implements UserDetails {
 	}
 
 	public Compte(String nom, String prenom, String login, String password, LocalDate naissance, double solde,
-			String maison) {
+			Maison maison) {
 		this.nom = nom;
 		this.prenom = prenom;
 		this.login = login;
@@ -148,11 +148,11 @@ public abstract class Compte implements UserDetails {
 		this.solde = solde;
 	}
 
-	public String getMaison() {
+	public Maison getMaison() {
 		return maison;
 	}
 
-	public void setMaison(String maison) {
+	public void setMaison(Maison maison) {
 		this.maison = maison;
 	}
 
