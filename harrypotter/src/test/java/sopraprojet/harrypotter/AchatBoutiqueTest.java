@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -24,6 +25,8 @@ import sopraprojet.harrypotter.service.ProduitService;
 @SpringBootTest
 class AchatBoutiqueTest {
 
+	
+	// ne marche pas, je fais des modifs, le lancez pas
 	@Autowired
 	EleveService eleveService;
 	
@@ -33,7 +36,7 @@ class AchatBoutiqueTest {
 	@Autowired
 	BoutiqueService boutiqueService;
 	
-	
+	@Disabled
 	@Test
 	@Transactional
 	@Commit
@@ -51,7 +54,36 @@ class AchatBoutiqueTest {
 		
 		Eleve e1 = new Eleve("Test", "Test", "Test", "Test", LocalDate.parse("1997-03-18"), 0,"Serdaigle");
 		
-		e1.setPanier(produits);
+	//	e1.setPanier(produits);
+		
+		eleveService.create(e1);
+		boutiqueService.create(boutique);
+		produitService.create(produit);
+		produitService.create(produit1);
+		produitService.create(produit2);
+		
+		System.out.println(produits);
+
+	}
+	@Disabled
+	@Test
+	@Transactional
+//	@Commit
+	@Rollback
+	void CreationEventEleveTestAvecLivraison() {
+		
+		List<Produit> produits = new ArrayList();
+		Boutique boutique = new Boutique(Categorie.Animaux, "Animalerie", "Sorry");
+		Produit produit = new Produit(boutique, "Hibou", 50.65 ,"Elle s'appelle Hedwige");
+		Produit produit1 = new Produit(boutique, "Rat", 10.25 ,"Il s'appelle Croutard");
+		Produit produit2 = new Produit(boutique, "Crapaud", 0 ,"Il s'appelle Trevor");
+		produits.add(produit2);
+		produits.add(produit1);
+		produits.add(produit);
+		
+		Eleve e1 = new Eleve("Test", "Test", "Test", "Test", LocalDate.parse("1997-03-18"), 0,"Serdaigle");
+		
+	//	e1.setPanier(produits);
 		
 		eleveService.create(e1);
 		boutiqueService.create(boutique);

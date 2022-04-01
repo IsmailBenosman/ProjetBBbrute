@@ -9,6 +9,9 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Version;
@@ -44,7 +47,11 @@ public class Boutique {
 	
 	@OneToMany(mappedBy="boutique")
 	private List<Produit> produits;
-
+	
+	@ManyToMany@JoinTable(name="mode_livraison", joinColumns=@JoinColumn(name="mode"),inverseJoinColumns=@JoinColumn(name="boutique"))
+	private List<Livraison> modeLivraison;
+	
+	
 	@Version
 	private int version;
 	
@@ -61,46 +68,87 @@ public class Boutique {
 	}
 
 
+
 	public Categorie getCategorie() {
 		return categorie;
 	}
+
+
 
 	public void setCategorie(Categorie categorie) {
 		this.categorie = categorie;
 	}
 
+
+
 	public Integer getId() {
 		return id;
 	}
+
+
+
 	public void setId(Integer id) {
 		this.id = id;
 	}
+
+
+
 	public String getNom() {
 		return nom;
 	}
+
+
+
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
+
+
+
 	public String getAdresse() {
 		return adresse;
 	}
+
+
+
 	public void setAdresse(String adresse) {
 		this.adresse = adresse;
 	}
-	public List<Produit> getProduit() {
+
+
+
+	public List<Produit> getProduits() {
 		return produits;
 	}
-	public void setProduit(List<Produit> produits) {
+
+
+
+	public void setProduits(List<Produit> produits) {
 		this.produits = produits;
 	}
+
+
+
+	public List<Livraison> getModeLivraison() {
+		return modeLivraison;
+	}
+
+
+
+	public void setModeLivraison(List<Livraison> modeLivraison) {
+		this.modeLivraison = modeLivraison;
+	}
+
+
 
 	public int getVersion() {
 		return version;
 	}
 
+
+
 	public void setVersion(int version) {
 		this.version = version;
 	}
 
-	
 }
