@@ -96,33 +96,33 @@ class AuthoTests {
 		utilisateurRepo.save(u);
 	}
 	
-	@Test
-	@Transactional
-	@Commit
-	void createAdmin() {
-		Admin u = new Admin(1,"Abid","Jordan","admin",passwordEncoder.encode("admin"), LocalDate.parse("1997-03-18"), 1000.0,"magie", maison, panier,
-				new HashSet<Role>(Arrays.asList(Role.ROLE_ADMIN, Role.ROLE_ELEVE, Role.ROLE_PROF)));
-		adminRepo.save(u);
-	}
-
-
-	@Test
-	@Transactional
-	@Commit
-	void createProf() {
-		Prof u = new Prof(2,"Ye","Trex","trex",passwordEncoder.encode("trex"), LocalDate.parse("1997-03-18"), 1000.0,"magie",maison , panier,
-				new HashSet<Role>(Arrays.asList(Role.ROLE_PROF)));
-		profRepo.save(u);
-	}
-
-	@Test
-	@Transactional
-	@Commit
-	void createEleve() {
-		Eleve u = new Eleve(3,"rob","rob","rob",passwordEncoder.encode("rob"), LocalDate.parse("1997-03-18"), 1000.0,"magie", maison, panier,
-				new HashSet<Role>(Arrays.asList(Role.ROLE_ELEVE)));
-		eleveRepo.save(u);
-	}
+//	@Test
+//	@Transactional
+//	@Commit
+//	void createAdmin() {
+//		Admin u = new Admin(1,"Abid","Jordan","admin",passwordEncoder.encode("admin"), LocalDate.parse("1997-03-18"), 1000.0,"magie", maison, panier,
+//				new HashSet<Role>(Arrays.asList(Role.ROLE_ADMIN, Role.ROLE_ELEVE, Role.ROLE_PROF)));
+//		adminRepo.save(u);
+//	}
+//
+//
+//	@Test
+//	@Transactional
+//	@Commit
+//	void createProf() {
+//		Prof u = new Prof(2,"Ye","Trex","trex",passwordEncoder.encode("trex"), LocalDate.parse("1997-03-18"), 1000.0,"magie",maison , panier,
+//				new HashSet<Role>(Arrays.asList(Role.ROLE_PROF)));
+//		profRepo.save(u);
+//	}
+//
+//	@Test
+//	@Transactional
+//	@Commit
+//	void createEleve() {
+//		Eleve u = new Eleve(3,"rob","rob","rob",passwordEncoder.encode("rob"), LocalDate.parse("1997-03-18"), 1000.0,"magie", maison, panier,
+//				new HashSet<Role>(Arrays.asList(Role.ROLE_ELEVE)));
+//		eleveRepo.save(u);
+//	}
 
 
 

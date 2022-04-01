@@ -28,6 +28,10 @@ public class Panier {
 	@JoinColumn(name = "compte_id")
 	private Compte compte;
 
+	
+	//si achat est true,  ce produit est acheté, sinon c'est qu'il est en attente dans le panier
+	private boolean achat = false; 
+
 	@ManyToOne
 	@JoinColumn(name = "article_id")
 	private Produit article;
@@ -85,10 +89,16 @@ public class Panier {
 	public void setVersion(int version) {
 		this.version = version;
 	}
-	
-	public void sousTotal(double sousTotal) {
-		
-		
+
+	public boolean isAchat() {
+		return achat;
 	}
+
+	public void setAchat(boolean achat) {
+		this.achat = achat;
+	}
+
+	
+
 
 }
