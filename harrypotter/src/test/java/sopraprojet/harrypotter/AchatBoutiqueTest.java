@@ -29,8 +29,6 @@ import sopraprojet.harrypotter.service.ProduitService;
 @SpringBootTest
 class AchatBoutiqueTest {
 
-	
-	// ne marche pas, je fais des modifs, le lancez pas
 	@Autowired
 	EleveService eleveService;
 	@Autowired
