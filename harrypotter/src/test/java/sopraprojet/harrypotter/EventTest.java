@@ -32,7 +32,7 @@ class EventTest {
 	@Autowired
 	EleveService eleveService;
 	
-	@Disabled
+
 	@Test
 	@Transactional
 	@Commit

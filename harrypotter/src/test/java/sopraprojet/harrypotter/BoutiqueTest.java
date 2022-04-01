@@ -42,7 +42,7 @@ class BoutiqueTest {
 	void boutiqueservicetest() {
 		assertNotNull(boutiqueService);
 	}
-	@Disabled
+
 	@Test
 	@Transactional
 	@Commit
