@@ -42,7 +42,6 @@ public class Produit {
 	private String img;
 	
 	@ManyToOne
-	@JoinColumn(name = "produit_id")
 	private Panier panier;
 	
 

@@ -18,11 +18,10 @@ import sopraprojet.harrypotter.compte.Compte;
 
 @Entity
 @Table(name = "commande")
-@SequenceGenerator(name = "seqCommande", sequenceName = "seq_Commande", initialValue = 100, allocationSize = 1)
 public class Panier {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqCommande")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	protected Integer id;
 
 	@Column(name = "quantite", nullable = false)
@@ -32,7 +31,7 @@ public class Panier {
 	@JoinColumn(name = "compte_id")
 	private Compte compte;
 
-	@OneToMany(mappedBy="article")
+	@OneToMany(mappedBy="panier")
 	private List<Produit> article;
 
 	@Version

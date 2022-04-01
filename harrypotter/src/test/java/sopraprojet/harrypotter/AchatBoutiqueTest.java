@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.annotation.Rollback;
+import org.springframework.test.annotation.Commit;
 
 import sopraprojet.harrypotter.boutique.Boutique;
 import sopraprojet.harrypotter.boutique.Categorie;
@@ -45,8 +45,8 @@ class AchatBoutiqueTest {
 	@Disabled
 	@Test
 	@Transactional
-//	@Commit
-	@Rollback
+	@Commit
+//	@Rollback
 	void AjoutArticlePaneirTest() {
 		
 		Maison m1= new Maison("Serdaigle");

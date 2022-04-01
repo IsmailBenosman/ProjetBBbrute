@@ -8,6 +8,5 @@ import sopraprojet.harrypotter.boutique.Panier;
 
 public interface PanierRepository extends JpaRepository<Panier, Integer>{
 
-	Optional<Panier> findByIdWithCompte(Integer id);
 
 }
