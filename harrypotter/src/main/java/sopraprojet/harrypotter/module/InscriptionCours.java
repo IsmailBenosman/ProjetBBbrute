@@ -32,19 +32,18 @@ public class InscriptionCours {
 	private Cours cours;
 	
 	@ManyToOne
-	@JoinColumn(name="eleve_fk")
-	private List<Eleve> eleve;
+	private Eleve eleve;
 
 	@Version
 	private int version;
 	
-	public InscriptionCours(Integer id, Cours cours, List<Eleve> eleve) {
+	public InscriptionCours(Integer id, Cours cours, Eleve eleve) {
 		this.id = id;
 		this.cours = cours;
 		this.eleve = eleve;
 	}
 
-	public InscriptionCours(Cours cours, List<Eleve> eleve) {
+	public InscriptionCours(Cours cours, Eleve eleve) {
 		this.cours = cours;
 		this.eleve = eleve;
 	}
@@ -65,11 +64,11 @@ public class InscriptionCours {
 		this.cours = cours;
 	}
 
-	public List<Eleve> getEleve() {
+	public Eleve getEleve() {
 		return eleve;
 	}
 
-	public void setEleve(List<Eleve> eleve) {
+	public void setEleve(Eleve eleve) {
 		this.eleve = eleve;
 	}
 	
