@@ -3,6 +3,8 @@ package sopraprojet.harrypotter.maison;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -22,12 +24,17 @@ public class Maison {
 		this.score = score;
 	}
 
+	public Maison(String nom) {
+	this.nom = nom;
+
+	}
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String nom;
 	private int score;
 
-	@OneToMany(mappedBy="comptes")
+	@OneToMany(mappedBy="maison")
 	private List<Compte> comptes;
 
 	public Integer getId() {

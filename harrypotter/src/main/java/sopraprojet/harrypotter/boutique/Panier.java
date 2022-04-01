@@ -5,26 +5,77 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import javax.validation.constraints.Min;
+import javax.persistence.Version;
 
 import sopraprojet.harrypotter.compte.Compte;
 
 @Entity
-@Table(name="commande")
-@SequenceGenerator(name = "seqCommande", sequenceName = "seq_Commande", initialValue = 100, allocationSize = 1)
+@Table(name = "panier")
 public class Panier {
-	
+
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqCommande")
-	protected Long id;
-	
-    @Column(name = "Amount", nullable = false)
-    @Min(value = 1)
-    private double qte;
-	
-    @OneToOne
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	protected Integer id;
+
+	@Column(name = "quantite", nullable = false)
+	private int quantite;
+
+	@OneToOne
+	@JoinColumn(name = "compte_id")
 	private Compte compte;
-}	
+
+	@ManyToOne
+	@JoinColumn(name = "article_id")
+	private Produit article;
+
+	@Version
+	private int version;
+
+	public Panier() {
+	}
+
+	public int getQuantite() {
+		return quantite;
+	}
+
+	public void setQuantite(int quantite) {
+		this.quantite = quantite;
+	}
+
+	public Produit getArticles() {
+		return article;
+	}
+
+	public void setArticles(Produit article) {
+		this.article = article;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public Compte getCompte() {
+		return compte;
+	}
+
+	public void setCompte(Compte compte) {
+		this.compte = compte;
+	}
+
+	public int getVersion() {
+		return version;
+	}
+
+	public void setVersion(int version) {
+		this.version = version;
+	}
+
+}

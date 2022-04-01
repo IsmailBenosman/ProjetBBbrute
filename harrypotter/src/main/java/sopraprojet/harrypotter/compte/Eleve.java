@@ -10,10 +10,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import sopraprojet.harrypotter.event.Evenement;
+import sopraprojet.harrypotter.maison.Maison;
+import sopraprojet.harrypotter.module.InscriptionCours;
 import sopraprojet.harrypotter.module.Modules;
-
-
-
 
 @Entity
 @DiscriminatorValue("eleve")
@@ -27,13 +26,20 @@ public class Eleve  extends Compte{
   	@ManyToMany(mappedBy="participants")
   	private List<Evenement> event;
 
+  	@OneToMany(mappedBy="eleve")
+  	private List<InscriptionCours> inscription;
+  	
+  	public Eleve() {
+		// TODO Auto-generated constructor stub
+	}
+  	
 	public Eleve(Integer id, String nom, String prenom, String login, String password, LocalDate naissance, double solde,
-			String maison) {
+			Maison maison) {
 		super(id, nom, prenom, login, password, naissance, solde, maison);
 	}
 
 	public Eleve(String nom, String prenom, String login, String password, LocalDate naissance, double solde,
-			String maison) {
+			Maison maison) {
 		super(nom, prenom, login, password, naissance, solde, maison);
 	}
 	
@@ -55,6 +61,16 @@ public class Eleve  extends Compte{
 	public void setEvent(List<Evenement> event) {
 		this.event = event;
 	}
+
+	public List<InscriptionCours> getEleve() {
+		return inscription;
+	}
+
+	public void setEleve(List<InscriptionCours> inscription) {
+		this.inscription = inscription;
+	}
+
+
 	
 
 }

@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Version;
@@ -60,8 +61,9 @@ public abstract class Compte implements UserDetails {
 	@ManyToOne
 	private Maison maison;
 	
-	@OneToOne(mappedBy="compte")
+	@OneToOne
 	private Panier panier;
+	
 
 	@Version
 	private int version;

@@ -3,23 +3,18 @@ package sopraprojet.harrypotter.boutique;
 import java.util.List;
 
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Version;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
 import sopraprojet.harrypotter.Json.JsonViews;
-import sopraprojet.harrypotter.compte.Compte;
 
 @Entity
 @Table(name="produit")
@@ -33,6 +28,7 @@ public class Produit {
 	@ManyToOne
 	private Boutique boutique;
 	
+	@NotNull(message = "champ obligatoire")
 	@JsonView(JsonViews.Common.class)
 	public String libelle; 	
 	
@@ -45,6 +41,8 @@ public class Produit {
 	@JsonView(JsonViews.Common.class)
 	private String img;
 	
+	@OneToMany(mappedBy = "article")
+	private List<Panier> panier;
 
 	@Version
 	private int version;
@@ -108,6 +106,13 @@ public class Produit {
 		this.img = img;
 	}
 
+	public List<Panier> getPanier() {
+		return panier;
+	}
+
+	public void setPanier(List<Panier> panier) {
+		this.panier = panier;
+	}
 
 	public int getVersion() {
 		return version;
@@ -117,7 +122,6 @@ public class Produit {
 		this.version = version;
 	}
 
-	
 	
 
 }

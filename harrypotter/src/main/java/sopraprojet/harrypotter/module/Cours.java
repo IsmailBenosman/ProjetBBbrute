@@ -27,7 +27,6 @@ public class Cours {
 		
 		
 		@ManyToOne
-		@JoinColumn(name="professeur_fk")
 		private Prof professeur;
 		
 		@OneToOne
@@ -95,12 +94,6 @@ public class Cours {
 		public String toString() {
 			return "Cours [id=" + id + ", intitule=" + intitule + ", professeur=" + professeur + ", module=" + module
 					+ "]";
-		}
-
-
-	
-		
-
-		
+		}		
 		
 }

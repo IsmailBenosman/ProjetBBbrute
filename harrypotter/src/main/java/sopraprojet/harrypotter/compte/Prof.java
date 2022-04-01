@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import sopraprojet.harrypotter.maison.Maison;
 import sopraprojet.harrypotter.module.Cours;
 @Entity
 @DiscriminatorValue("prof")
@@ -21,7 +22,7 @@ public class Prof  extends Compte{
 	
 	}
 	public Prof(String nom, String prenom, String login, String password, LocalDate naissance, double solde,
-			String maison) {
+			Maison maison) {
 		super(nom, prenom, login, password, naissance, solde,maison);
 	}
 
