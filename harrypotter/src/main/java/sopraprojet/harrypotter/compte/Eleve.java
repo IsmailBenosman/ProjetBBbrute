@@ -29,6 +29,9 @@ public class Eleve  extends Compte{
   	@OneToMany(mappedBy="eleve")
   	private List<InscriptionCours> inscription;
   	
+  	public Eleve() {
+		// TODO Auto-generated constructor stub
+	}
   	
 	public Eleve(Integer id, String nom, String prenom, String login, String password, LocalDate naissance, double solde,
 			Maison maison) {

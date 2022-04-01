@@ -94,12 +94,6 @@ public class Cours {
 		public String toString() {
 			return "Cours [id=" + id + ", intitule=" + intitule + ", professeur=" + professeur + ", module=" + module
 					+ "]";
-		}
-
-
-	
-		
-
-		
+		}		
 		
 }
