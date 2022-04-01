@@ -35,14 +35,14 @@ class ModuleTest {
 	@Transactional
 	@Commit
 	void ModuleTest() {
-		Eleve e1 = new Eleve("Pierson", "Robin", "rob", "rob", LocalDate.parse("1997-03-18"), 0,"Serpentard");
-		Prof p1 = new Prof("Pinel","Matthieu", "matt","matt", LocalDate.parse("1998-02-23"),10000,"Griffondor");
-		Cours co = new Cours("Histoire de la magie", p1);
-		Modules m = new Modules(co, 14, "Sur la bonne voie",e1);
-		eleveService.create(e1);
-		profService.create(p1);
-		coursService.create(co);
-		moduleService.create(m);
+//		Eleve e1 = new Eleve("Pierson", "Robin", "rob", "rob", LocalDate.parse("1997-03-18"), 0,"Serpentard");
+//		Prof p1 = new Prof("Pinel","Matthieu", "matt","matt", LocalDate.parse("1998-02-23"),10000,"Griffondor");
+//		Cours co = new Cours("Histoire de la magie", p1);
+//		Modules m = new Modules(co, 14, "Sur la bonne voie",e1);
+//		eleveService.create(e1);
+//		profService.create(p1);
+//		coursService.create(co);
+//		moduleService.create(m);
 	}
 
 }

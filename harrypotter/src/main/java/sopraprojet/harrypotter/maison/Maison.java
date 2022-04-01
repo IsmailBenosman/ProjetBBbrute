@@ -22,6 +22,10 @@ public class Maison {
 		this.score = score;
 	}
 
+	public Maison(String nom) {
+	this.nom = nom;
+
+	}
 	@Id
 	private Integer id;
 	private String nom;

@@ -14,9 +14,6 @@ import sopraprojet.harrypotter.maison.Maison;
 import sopraprojet.harrypotter.module.InscriptionCours;
 import sopraprojet.harrypotter.module.Modules;
 
-
-
-
 @Entity
 @DiscriminatorValue("eleve")
 @Table(name = "eleve")
@@ -29,8 +26,9 @@ public class Eleve  extends Compte{
   	@ManyToMany(mappedBy="participants")
   	private List<Evenement> event;
 
-  	@ManyToMany(mappedBy="presence")
-  	private List<InscriptionCours> inscription;
+  	@OneToMany(mappedBy="inscription")
+  	private List<InscriptionCours> eleve;
+  	
   	
 	public Eleve(Integer id, String nom, String prenom, String login, String password, LocalDate naissance, double solde,
 			Maison maison) {
@@ -61,13 +59,15 @@ public class Eleve  extends Compte{
 		this.event = event;
 	}
 
-	public List<InscriptionCours> getInscription() {
-		return inscription;
+	public List<InscriptionCours> getEleve() {
+		return eleve;
 	}
 
-	public void setInscription(List<InscriptionCours> inscription) {
-		this.inscription = inscription;
+	public void setEleve(List<InscriptionCours> eleve) {
+		this.eleve = eleve;
 	}
+
+
 	
 
 }

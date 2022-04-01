@@ -7,42 +7,55 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Version;
-import javax.validation.constraints.Min;
 
 import sopraprojet.harrypotter.compte.Compte;
 
 @Entity
-@Table(name="commande")
+@Table(name = "commande")
 @SequenceGenerator(name = "seqCommande", sequenceName = "seq_Commande", initialValue = 100, allocationSize = 1)
 public class Panier {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqCommande")
 	protected Integer id;
-	
-    @Column(name = "montant", nullable = false)
-    @Min(value = 1)
-    private double montant;
-	
-    @OneToOne(mappedBy="panier")
+
+	@Column(name = "quantite", nullable = false)
+	private int quantite;
+
+	@OneToOne
+	@JoinColumn(name = "compte_id")
 	private Compte compte;
-    
-    @OneToMany(mappedBy="")
-    private List<Produit> articles;
-	
+
+	@OneToMany(mappedBy="article")
+	private List<Produit> article;
+
 	@Version
 	private int version;
 
-	public Panier(Integer id, @Min(1) double montant, Compte compte) {
-		super();
-		this.id = id;
-		this.montant = montant;
-		this.compte = compte;
+	public Panier() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public int getQuantite() {
+		return quantite;
+	}
+
+	public void setQuantite(int quantite) {
+		this.quantite = quantite;
+	}
+
+	public List<Produit> getArticles() {
+		return article;
+	}
+
+	public void setArticles(List<Produit> article) {
+		this.article = article;
 	}
 
 	public Integer getId() {
@@ -51,14 +64,6 @@ public class Panier {
 
 	public void setId(Integer id) {
 		this.id = id;
-	}
-
-	public double getMontant() {
-		return montant;
-	}
-
-	public void setMontant(double montant) {
-		this.montant = montant;
 	}
 
 	public Compte getCompte() {
@@ -77,7 +82,4 @@ public class Panier {
 		this.version = version;
 	}
 
-    
-
-    
-}	
+}
