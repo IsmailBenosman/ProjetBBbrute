@@ -12,5 +12,12 @@ public class JsonViews {
 	public static class EleveWithMaison extends Common{
 
 	}
+	
+	public static class Produit extends Common{
+
+	}
+	
+	
+	
 
 }

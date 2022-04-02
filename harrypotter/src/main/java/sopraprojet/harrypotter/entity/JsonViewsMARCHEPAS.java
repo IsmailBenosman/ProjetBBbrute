@@ -1,6 +1,7 @@
 package sopraprojet.harrypotter.entity;
 
-public class JsonViews {
+public class JsonViewsMARCHEPAS {
+	
 	public static class Common{
 		
 	}

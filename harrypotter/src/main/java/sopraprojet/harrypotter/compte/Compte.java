@@ -31,14 +31,23 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonView;
 
+import sopraprojet.harrypotter.Json.JsonViews;
 import sopraprojet.harrypotter.boutique.Panier;
-import sopraprojet.harrypotter.entity.JsonViews;
 import sopraprojet.harrypotter.entity.Role;
 import sopraprojet.harrypotter.maison.Maison;
 
 @Entity
+@JsonTypeInfo(use=JsonTypeInfo.Id.NAME,include = JsonTypeInfo.As.PROPERTY,property = "type")
+@JsonSubTypes({
+	@Type(value=Eleve.class,name="eleve"),
+	@Type(value=Admin.class,name="admin"),
+	@Type(value=Prof.class,name="prof")
+})
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "type_compte", columnDefinition = "ENUM('eleve','prof','admin')")
 @Table(name = "compte")
@@ -51,25 +60,32 @@ public abstract class Compte implements UserDetails {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id_compte")
+	@JsonView(JsonViews.Common.class)
 	protected Integer id;
 
 	@NotEmpty(message = "Champ obligatoire")
+	@JsonView(JsonViews.Common.class)
 	protected String nom;
 
 	@NotEmpty(message = "Champ obligatoire")
+	@JsonView(JsonViews.Common.class)
 	protected String prenom;
 
 	@NotEmpty(message = "Champ obligatoire")
+	@JsonView(JsonViews.Common.class)
 	@Column(name = "login", nullable = false, length = 200)
 	protected String login;
 
+	@JsonView(JsonViews.Common.class)
 	@NotEmpty(message = "Champ obligatoire")
 	@Column(name = "password", nullable = false, length = 200)
 	protected String password;
 
 	@Past
+	@JsonView(JsonViews.Common.class)
 	protected LocalDate naissance;
 
+	@JsonView(JsonViews.Common.class)
 	protected double solde;
 	protected String img;
 	
@@ -83,7 +99,7 @@ public abstract class Compte implements UserDetails {
 	@Enumerated(EnumType.STRING)
 	@ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
 	@CollectionTable(name = "utilisateur_roles", foreignKey = @ForeignKey(name = "utilisateur_roles_utilisateur_id_fk"))
-	@JsonView(JsonViews.Common.class)
+	//@JsonView(JsonViews.Common.class)
 	private Set<Role> roles;
 	
 	public Compte(Integer id, @NotEmpty(message = "Champ obligatoire") String nom,

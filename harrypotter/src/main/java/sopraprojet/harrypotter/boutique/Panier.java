@@ -11,6 +11,9 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Version;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+import sopraprojet.harrypotter.Json.JsonViews;
 import sopraprojet.harrypotter.compte.Compte;
 
 @Entity
@@ -19,36 +22,35 @@ public class Panier {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@JsonView(JsonViews.Common.class)
 	protected Integer id;
 
+	@JsonView(JsonViews.Common.class)
 	@Column(name = "quantite", nullable = false)
 	private int quantite;
 
+	@JsonView(JsonViews.Common.class)
 	@ManyToOne
 	@JoinColumn(name = "compte_id")
 	private Compte compte;
 
-	
+	@JsonView(JsonViews.Common.class)
 	//si achat est true,  ce produit est acheté, sinon c'est qu'il est en attente dans le panier
 	private boolean achat = false; 
 
 	@ManyToOne
 	@JoinColumn(name = "article_id")
-	private Produit article;
+	@JsonView(JsonViews.Common.class)
+	private Produit articles;
 
+	@JsonView(JsonViews.Common.class)
 	@Version
 	private int version;
 
 	public Panier() {
 	}
 
-	public Produit getArticle() {
-		return article;
-	}
-
-	public void setArticle(Produit article) {
-		this.article = article;
-	}
+	
 
 	public int getQuantite() {
 		return quantite;
@@ -59,11 +61,11 @@ public class Panier {
 	}
 
 	public Produit getArticles() {
-		return article;
+		return articles;
 	}
 
 	public void setArticles(Produit article) {
-		this.article = article;
+		this.articles = article;
 	}
 
 	public Integer getId() {
