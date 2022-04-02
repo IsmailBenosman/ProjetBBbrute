@@ -18,18 +18,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 
-		http.antMatcher("/api/**")
+		http.antMatcher("/api/*")
 				.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 				.and()
 				.csrf().disable()
 				.authorizeHttpRequests()
-					.antMatchers("/api/index").permitAll()
-					.antMatchers(HttpMethod.GET , "/api/home/admin").hasRole("ADMIN")
+					.antMatchers("/api/*").permitAll();
+					//.antMatchers(HttpMethod.POST, "/api/*").permitAll();
+					/*.antMatchers(HttpMethod.GET , "/api/home/admin").hasRole("ADMIN")
 					.antMatchers(HttpMethod.GET , "/api/home/eleve").hasRole("ELEVE")
 					.antMatchers(HttpMethod.GET , "/api/home/prof").hasRole("PROF")
-					.anyRequest().denyAll()
+					//.anyRequest().denyAll()
 					.and()
-					.httpBasic();
+					.httpBasic();*/
 	}
 
 	@Autowired
@@ -37,7 +38,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+		
 		auth.userDetailsService(userDetailsService);
+		
 	}
 
 	@Bean

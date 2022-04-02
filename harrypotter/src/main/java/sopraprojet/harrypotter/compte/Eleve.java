@@ -99,6 +99,16 @@ public class Eleve  extends Compte{
 	}
 
 
+
+
+
+	@Override
+	public String toString() {
+		return "Eleve [id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", login=" + login + ", password=" + password
+				+ ", naissance=" + naissance + ", solde=" + solde + ", img=" + img + "]";
+	}
+
+
 	
 
 }

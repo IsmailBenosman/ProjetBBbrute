@@ -31,6 +31,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.fasterxml.jackson.annotation.JsonView;
 
+import sopraprojet.harrypotter.Json.JsonViews;
+
 @Entity
 @Table(name = "utilisateur", uniqueConstraints = {
 		@UniqueConstraint(name = "utilisateur_login_uk", columnNames = ("login")) })

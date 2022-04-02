@@ -48,10 +48,10 @@ public class PanierService {
 	public void findPanierWithCompte(Compte c) {
 		panierRepository.findByCompte(c);
 	}
-	public void findPanierWithCompteHistorique(Compte c) {
-		panierRepository.findByCompteAndAchatTrue(c);
+	public List<Panier> findPanierWithCompteHistorique(Compte c) {
+		return panierRepository.findByCompteAndAchatTrue(c);
 	}
-	public List<Panier> findPanierWithCompteDansLePanier (Compte c) {
-		return panierRepository.findByComptePanierAndAchatFalse(c);
+	public List<Panier> findPanierWithCompteDanssLePanier (Compte c) {
+		return panierRepository.findByCompteAndAchatFalse(c);
 	}
 }
