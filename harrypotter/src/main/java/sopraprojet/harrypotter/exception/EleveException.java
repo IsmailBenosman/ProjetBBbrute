@@ -9,7 +9,7 @@ public class EleveException extends RuntimeException {
 	// exception avec un msg si on a envie
 
 	public EleveException(String message) {
-		super(message);
+		super();
 	}
 	
 	

@@ -44,10 +44,7 @@ public class PanierService {
 		panierRepository.deleteById(id);
 	}
 
-	
-	public void findPanierWithCompte(Compte c) {
-		panierRepository.findByCompte(c);
-	}
+
 	public List<Panier> findPanierWithCompteWithHistorique(Compte c) {
 		return panierRepository.findByCompteAndAchatTrue(c);
 	}

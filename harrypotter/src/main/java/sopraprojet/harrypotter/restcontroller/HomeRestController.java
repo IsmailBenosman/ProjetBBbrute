@@ -17,7 +17,7 @@ public class HomeRestController {
 	}
 
 	@GetMapping("/admin")
-	public String admin() {
+	public String homeAdmin() {
 		return ("<h1>Hello admin</h1>");
 	}
 
