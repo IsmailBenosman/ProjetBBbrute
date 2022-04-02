@@ -1,11 +1,10 @@
 package sopraprojet.harrypotter.repositories;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-import sopraprojet.harrypotter.repositories.LivraisonRepository;
-
 import sopraprojet.harrypotter.boutique.Livraison;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.List;
 
 public interface LivraisonRepository extends JpaRepository<Livraison, Integer>{
-
-		
+    Livraison getById(Integer id);
 }
