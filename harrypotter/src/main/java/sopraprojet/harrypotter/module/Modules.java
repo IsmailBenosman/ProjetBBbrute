@@ -11,6 +11,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+import sopraprojet.harrypotter.Json.JsonViews;
 import sopraprojet.harrypotter.compte.Eleve;
 
 
@@ -19,17 +22,23 @@ import sopraprojet.harrypotter.compte.Eleve;
 @DiscriminatorValue("module")
 @Table(name = "module")
 public class Modules {
-
+	
+	@JsonView(JsonViews.Common.class)
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	
+	@JsonView(JsonViews.Common.class)
 	private int note;
+	
+	@JsonView(JsonViews.Common.class)
 	private String commentaire;
 
-
+	@JsonView(JsonViews.ModuleWithCours.class)
 	@OneToOne(mappedBy="module")
 	private Cours cours;
 	
+	@JsonView(JsonViews.ModuleWithEleve.class)
 	@ManyToOne
 	@JoinColumn(name="eleve_fk")
 	private Eleve eleve;

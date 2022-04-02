@@ -49,7 +49,7 @@ public class PanierRestController {
 	@GetMapping("/historique/{id}")
 	public List<Panier> getAllHistorique(@PathVariable("id") Integer id) {
 		Compte c = eleveService.getById(id);
-		return  panierService.findPanierWithCompteHistorique(c);
+		return  panierService.findPanierWithCompteWithHistorique(c);
 	}
 	
 	
