@@ -82,8 +82,11 @@ public abstract class Compte implements UserDetails {
 
 	@JsonView(JsonViews.Common.class)
 	protected double solde;
+	
+	@JsonView(JsonViews.Common.class)
 	protected String img;
-
+	
+	@JsonView(JsonViews.CompteWithMaison.class)
 	@ManyToOne
 	private Maison maison;
 

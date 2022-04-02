@@ -30,7 +30,7 @@ import sopraprojet.harrypotter.Json.JsonViews;
 public class Boutique {
 
 	
-	@JsonView(JsonViews.Common.class)
+	@JsonView(JsonViews.BoutiqueWithCategorie.class)
 	@Enumerated(EnumType.STRING)
 	private Categorie categorie;	
 
