@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -61,19 +60,28 @@ public class PanierRestController {
 		return panierService.save(panier);
 	}
 
+	@JsonView(JsonViews.Produit.class)
+	@GetMapping("/achat/alidation")
+	private Compte soldeCheck(@PathVariable Integer id, @Valid @RequestBody Panier panier) {
+		Compte c = compteService.getById(id);
+		List<Panier> articlesPanier = panierService.findPanierWithCompteDanssLePanier(c);
+		for (Panier p : articlesPanier) {
+			if (c.getSolde() - (p.getArticles().getPrix() * p.getQuantite()) >= c.getSolde()) {
+				return validationPanier(id, panier);
+			} else {
+				throw new PanierException("Erreur: Solde insuffisant");
+			}
+		}
+		return compteService.save(c);
+	}
 
 	private Compte validationPanier(@PathVariable Integer id, @Valid @RequestBody Panier panier) {
 		Compte c = compteService.getById(id);
 		List<Panier> articlesPanier = panierService.findPanierWithCompteDanssLePanier(c);
 		for (Panier p : articlesPanier) {
-			if (c.getSolde() - (p.getArticles().getPrix() * p.getQuantite()) >= c.getSolde()) {
-				p.setAchat(true);
-				double newSolde = c.getSolde() - (p.getArticles().getPrix() * p.getQuantite());
-				c.setSolde(newSolde);
-				panierService.save(p);
-			} else {
-				throw new PanierException("Erreur: Solde insuffisant");
-			}
+			double newSolde = c.getSolde() - (p.getArticles().getPrix() * p.getQuantite());
+			c.setSolde(newSolde);
+			panierService.save(p);
 		}
 		return compteService.save(c);
 	}
