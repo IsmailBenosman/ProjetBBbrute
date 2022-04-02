@@ -6,11 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import sopraprojet.harrypotter.compte.Compte;
-import sopraprojet.harrypotter.compte.Eleve;
-import sopraprojet.harrypotter.exception.EleveException;
+import sopraprojet.harrypotter.exception.CompteException;
 import sopraprojet.harrypotter.repositories.CompteRepository;
-import sopraprojet.harrypotter.repositories.EleveRepository;
-import sopraprojet.harrypotter.repositories.ModuleRepository;
 
 @Service
 public class CompteService {
@@ -19,55 +16,58 @@ public class CompteService {
 	private CompteRepository compteRepository;
 	
 
-	public void create(Compte e) {
-		if (e.getId() != null) {
+	public void create(Compte c) {
+		if (c.getId() != null) {
 			// probl�me
-			throw new EleveException("l'id ne doit pas etre d�fini");
+			throw new CompteException("");
 		}
-		if (e.getLogin().isEmpty()) {
-			throw new EleveException("Login manquant");
+		if (c.getLogin().isEmpty()) {
+			throw new CompteException("Login manquant");
 		}
-		if (e.getPassword().isEmpty()) {
-			throw new EleveException("Mot de passe manquant");
+		if (c.getPassword().isEmpty()) {
+			throw new CompteException("Mot de passe manquant");
 		}
-		compteRepository.save(e);
+		compteRepository.save(c);
 	}
 
-	public void update(Compte e) {
-		if (e.getId() == null) {
-			throw new EleveException("l'id doit pas etre d�fini");
+	public void update(Compte c) {
+		if (c.getId() == null) {
+			throw new CompteException("");
 		}
-		if (e.getLogin().isEmpty()) {
-			throw new EleveException("Login manquant");
+		if (c.getLogin().isEmpty()) {
+			throw new CompteException("Login manquant");
 		}
-		if (e.getPassword().isEmpty()) {
-			throw new EleveException("Mot de passe manquant");
+		if (c.getPassword().isEmpty()) {
+			throw new CompteException("Mot de passe manquant");
 		}
-		compteRepository.save(e);
+		compteRepository.save(c);
 	}
 
 	public List<Compte> getAll() {
 		return compteRepository.findAll();
 	}
 
-	
-
-	public void delete(Compte e) {
-		compteRepository.delete(e);
-	}	
-	
-	
-	public Compte save(Compte e) {
-		if (e.getId() != null) {
-			Compte cEnBase = getById(e.getId());
-			e.setVersion(cEnBase.getVersion());
-		}
-		return compteRepository.save(e);
+	public Compte getById(Integer id) {
+		return compteRepository.findById(id).orElseThrow(() -> {
+			throw new CompteException("numero inconnu");
+		});
 	}
 
-	private Compte getById(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+
+	public void delete(Compte c) {
+
+		compteRepository.delete(c);
+	}
+	public void delete(Integer id) {
+		compteRepository.deleteById(id);
+	}
+	
+	public Compte save(Compte comptc) {
+		if (comptc.getId() != null) {
+			Compte compteEnBase = getById(comptc.getId());
+			comptc.setVersion(compteEnBase.getVersion());
+		}
+		return compteRepository.save(comptc);
 	}
 
 }

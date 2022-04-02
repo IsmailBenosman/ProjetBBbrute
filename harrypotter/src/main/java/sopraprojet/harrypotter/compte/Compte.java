@@ -68,7 +68,7 @@ public abstract class Compte implements UserDetails {
 
 	@NotEmpty(message = "Champ obligatoire")
 	@JsonView(JsonViews.Common.class)
-	@Column(name = "login", nullable = false, length = 200)
+	@Column(name = "login", nullable = false, length = 200, unique = true)
 	protected String login;
 
 	@JsonView(JsonViews.Common.class)

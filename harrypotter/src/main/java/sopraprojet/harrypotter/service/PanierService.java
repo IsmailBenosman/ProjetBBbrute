@@ -54,4 +54,7 @@ public class PanierService {
 	public List<Panier> findPanierWithCompteDanssLePanier (Compte c) {
 		return panierRepository.findByCompteAndAchatFalse(c);
 	}
+	
+	
+	
 }
