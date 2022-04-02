@@ -40,7 +40,6 @@ public class EvenementService {
 
 	public void delete(Integer id) {
 
-
 	}
 
 	public Evenement save(Evenement evenement) {

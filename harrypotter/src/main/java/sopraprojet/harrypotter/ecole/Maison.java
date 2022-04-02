@@ -9,6 +9,9 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+import sopraprojet.harrypotter.Json.JsonViews;
 import sopraprojet.harrypotter.compte.Compte;
 
 @Entity
@@ -33,7 +36,8 @@ public class Maison {
 	private Integer id;
 	private String nom;
 	private int score;
-
+	
+	@JsonView(JsonViews.MaisonWithCompte.class)
 	@OneToMany(mappedBy="maison")
 	private List<Compte> comptes;
 

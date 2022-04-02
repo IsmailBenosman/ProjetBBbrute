@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import sopraprojet.harrypotter.boutique.Panier;
+import sopraprojet.harrypotter.compte.Compte;
 import sopraprojet.harrypotter.ecole.Maison;
 import sopraprojet.harrypotter.exception.MaisonException;
 import sopraprojet.harrypotter.repositories.MaisonRepository;
@@ -17,21 +19,20 @@ public class MaisonService {
 	private MaisonRepository maisonRepository;
 	
 
-	public void create(Maison e) {
-		if (e.getId() != null) {
-			// probl�me
-			throw new MaisonException("l'id ne doit pas etre d�fini");
+	public void create(Maison m) {
+		if (m.getId() != null) {
+			throw new MaisonException("");
 		}
 		
-		maisonRepository.save(e);
+		maisonRepository.save(m);
 	}
 
-	public void update(Maison e) {
-		if (e.getId() == null) {
+	public void update(Maison m) {
+		if (m.getId() == null) {
 			throw new MaisonException("l'id doit pas etre d�fini");
 		}
 	
-		maisonRepository.save(e);
+		maisonRepository.save(m);
 	}
 
 	public List<Maison> getAll() {
@@ -45,16 +46,25 @@ public class MaisonService {
 	}
 
 
-	public void delete(Maison e) {
+	public void delete(Maison m) {
 	
-		maisonRepository.delete(e);
+		delete(m.getId());
 	}
 	
-	
-	public Maison save(Maison e) {
+	public void delete(Integer id) {
 		
-		return maisonRepository.save(e);
+		maisonRepository.deleteById(id);
 	}
-
+	
+	
+	public Maison save(Maison m) {
+		
+		return maisonRepository.save(m);
+	}
+	
+	public Maison getByIdWithCompte (Integer id)
+	{
+		return maisonRepository.findByIdWithCompte(id);
+	}
 }
 
