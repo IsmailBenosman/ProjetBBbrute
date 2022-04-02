@@ -19,6 +19,7 @@ import sopraprojet.harrypotter.service.MaisonService;
 
 
 @SpringBootTest
+
 class AppTest {
 
 	@Autowired
@@ -28,7 +29,7 @@ class AppTest {
 	MaisonService maisonService;
 	
 	@Test
-	@Transactional
+	
 	@Commit
 	void CreationEleveTest() {
 		
