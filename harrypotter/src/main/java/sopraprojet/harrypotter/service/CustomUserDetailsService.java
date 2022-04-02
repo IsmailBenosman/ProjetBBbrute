@@ -19,14 +19,12 @@ public class CustomUserDetailsService implements UserDetailsService {
 	@Autowired
 	private CompteRepository compteRepository;
 
-	
 	@Override
 	public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
 		UserDetails u = compteRepository.findByLogin(login).orElseThrow(() -> {
-			System.out.println("Eroro");
+			System.out.println("Verification du compte");
 			throw new UsernameNotFoundException("utilisateur inconnu");
 		});
-		System.out.println("connect"+u);
 		return u;
 	}
 
