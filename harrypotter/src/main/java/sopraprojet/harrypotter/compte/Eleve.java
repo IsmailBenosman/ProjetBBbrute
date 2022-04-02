@@ -13,10 +13,10 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Past;
 
 import sopraprojet.harrypotter.boutique.Panier;
-import sopraprojet.harrypotter.event.Evenement;
-import sopraprojet.harrypotter.maison.Maison;
-import sopraprojet.harrypotter.module.InscriptionCours;
-import sopraprojet.harrypotter.module.Modules;
+import sopraprojet.harrypotter.ecole.Evenement;
+import sopraprojet.harrypotter.ecole.InscriptionCours;
+import sopraprojet.harrypotter.ecole.Maison;
+import sopraprojet.harrypotter.ecole.Modules;
 
 @Entity
 @DiscriminatorValue("eleve")

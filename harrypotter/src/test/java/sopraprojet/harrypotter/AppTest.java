@@ -12,7 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Commit;
 
 import sopraprojet.harrypotter.compte.Eleve;
-import sopraprojet.harrypotter.maison.Maison;
+import sopraprojet.harrypotter.ecole.Maison;
 import sopraprojet.harrypotter.service.EleveService;
 import sopraprojet.harrypotter.service.MaisonService;
 

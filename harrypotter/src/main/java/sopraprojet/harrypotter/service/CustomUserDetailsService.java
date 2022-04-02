@@ -9,7 +9,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import sopraprojet.harrypotter.compte.Eleve;
-import sopraprojet.harrypotter.maison.Maison;
+import sopraprojet.harrypotter.ecole.Maison;
 import sopraprojet.harrypotter.repositories.CompteRepository;
 import sopraprojet.harrypotter.repositories.EleveRepository;
 

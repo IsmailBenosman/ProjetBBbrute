@@ -10,9 +10,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Past;
 
 import sopraprojet.harrypotter.boutique.Panier;
-import sopraprojet.harrypotter.maison.Maison;
-
-import sopraprojet.harrypotter.maison.Maison;
+import sopraprojet.harrypotter.ecole.Maison;
 
 @Entity
 @DiscriminatorValue("admin")

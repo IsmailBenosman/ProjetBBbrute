@@ -1,4 +1,4 @@
-package sopraprojet.harrypotter.event;
+package sopraprojet.harrypotter.ecole;
 
 import java.time.LocalDate;
 import java.time.LocalTime;

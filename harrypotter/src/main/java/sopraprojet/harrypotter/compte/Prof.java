@@ -11,8 +11,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Past;
 import sopraprojet.harrypotter.boutique.Panier;
-import sopraprojet.harrypotter.maison.Maison;
-import sopraprojet.harrypotter.module.Cours;
+import sopraprojet.harrypotter.ecole.Cours;
+import sopraprojet.harrypotter.ecole.Maison;
 
 @Entity
 @DiscriminatorValue("prof")

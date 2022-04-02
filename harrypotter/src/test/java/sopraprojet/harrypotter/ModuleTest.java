@@ -14,10 +14,10 @@ import org.springframework.test.annotation.Commit;
 
 import sopraprojet.harrypotter.compte.Eleve;
 import sopraprojet.harrypotter.compte.Prof;
-import sopraprojet.harrypotter.maison.Maison;
-import sopraprojet.harrypotter.module.Cours;
-import sopraprojet.harrypotter.module.InscriptionCours;
-import sopraprojet.harrypotter.module.Modules;
+import sopraprojet.harrypotter.ecole.Cours;
+import sopraprojet.harrypotter.ecole.InscriptionCours;
+import sopraprojet.harrypotter.ecole.Maison;
+import sopraprojet.harrypotter.ecole.Modules;
 import sopraprojet.harrypotter.service.CoursService;
 import sopraprojet.harrypotter.service.EleveService;
 import sopraprojet.harrypotter.service.InscriptionCoursService;

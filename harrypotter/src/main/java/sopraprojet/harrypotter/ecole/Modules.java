@@ -1,4 +1,4 @@
-package sopraprojet.harrypotter.module;
+package sopraprojet.harrypotter.ecole;
 
 
 import javax.persistence.DiscriminatorValue;
