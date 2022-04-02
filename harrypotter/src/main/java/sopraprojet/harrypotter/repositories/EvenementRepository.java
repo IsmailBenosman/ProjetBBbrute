@@ -3,7 +3,7 @@ package sopraprojet.harrypotter.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import sopraprojet.harrypotter.event.Evenement;
+import sopraprojet.harrypotter.ecole.Evenement;
 
 
 

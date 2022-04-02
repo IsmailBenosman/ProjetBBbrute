@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import sopraprojet.harrypotter.ecole.Modules;
 import sopraprojet.harrypotter.exception.ModuleException;
-import sopraprojet.harrypotter.module.Modules;
 import sopraprojet.harrypotter.repositories.ModuleRepository;
 
 @Service

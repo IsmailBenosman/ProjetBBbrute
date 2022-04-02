@@ -5,7 +5,7 @@ package sopraprojet.harrypotter.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import sopraprojet.harrypotter.module.Cours;
+import sopraprojet.harrypotter.ecole.Cours;
 
 
 

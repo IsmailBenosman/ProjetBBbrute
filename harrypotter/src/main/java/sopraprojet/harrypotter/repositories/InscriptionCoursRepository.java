@@ -7,8 +7,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import sopraprojet.harrypotter.module.Cours;
-import sopraprojet.harrypotter.module.InscriptionCours;
+import sopraprojet.harrypotter.ecole.Cours;
+import sopraprojet.harrypotter.ecole.InscriptionCours;
 
 public interface InscriptionCoursRepository extends JpaRepository<InscriptionCours, Integer>{
 

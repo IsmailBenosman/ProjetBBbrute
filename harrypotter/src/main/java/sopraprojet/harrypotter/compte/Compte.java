@@ -38,7 +38,7 @@ import com.fasterxml.jackson.annotation.JsonView;
 
 import sopraprojet.harrypotter.Json.JsonViews;
 import sopraprojet.harrypotter.boutique.Panier;
-import sopraprojet.harrypotter.maison.Maison;
+import sopraprojet.harrypotter.ecole.Maison;
 
 @Entity
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")

@@ -5,10 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import sopraprojet.harrypotter.ecole.Cours;
+import sopraprojet.harrypotter.ecole.InscriptionCours;
 import sopraprojet.harrypotter.exception.InscriptionCoursException;
 import sopraprojet.harrypotter.exception.ModuleException;
-import sopraprojet.harrypotter.module.Cours;
-import sopraprojet.harrypotter.module.InscriptionCours;
 import sopraprojet.harrypotter.repositories.InscriptionCoursRepository;
 
 @Service

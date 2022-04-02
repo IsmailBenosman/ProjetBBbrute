@@ -15,7 +15,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Commit;
 
 import sopraprojet.harrypotter.compte.Eleve;
-import sopraprojet.harrypotter.event.Evenement;
+import sopraprojet.harrypotter.ecole.Evenement;
 import sopraprojet.harrypotter.service.EleveService;
 import sopraprojet.harrypotter.service.EvenementService;
 import sopraprojet.harrypotter.service.MaisonService;

@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import sopraprojet.harrypotter.compte.Eleve;
-import sopraprojet.harrypotter.module.Modules;
+import sopraprojet.harrypotter.ecole.Modules;
 
 
 

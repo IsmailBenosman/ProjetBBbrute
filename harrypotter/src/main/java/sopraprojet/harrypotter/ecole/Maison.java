@@ -1,4 +1,4 @@
-package sopraprojet.harrypotter.maison;
+package sopraprojet.harrypotter.ecole;
 
 import java.util.List;
 
