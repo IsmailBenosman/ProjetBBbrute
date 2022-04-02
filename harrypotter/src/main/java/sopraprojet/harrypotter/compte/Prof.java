@@ -12,7 +12,6 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Past;
 
 import sopraprojet.harrypotter.boutique.Panier;
-import sopraprojet.harrypotter.entity.Role;
 import sopraprojet.harrypotter.maison.Maison;
 import sopraprojet.harrypotter.module.Cours;
 

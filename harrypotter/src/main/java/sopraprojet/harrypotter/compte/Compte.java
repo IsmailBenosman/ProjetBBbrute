@@ -41,21 +41,17 @@ import sopraprojet.harrypotter.boutique.Panier;
 import sopraprojet.harrypotter.maison.Maison;
 
 @Entity
-@JsonTypeInfo(use=JsonTypeInfo.Id.NAME,include = JsonTypeInfo.As.PROPERTY,property = "type")
-@JsonSubTypes({
-	@Type(value=Eleve.class,name="eleve"),
-	@Type(value=Admin.class,name="admin"),
-	@Type(value=Prof.class,name="prof")
-})
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
+@JsonSubTypes({ @Type(value = Eleve.class, name = "eleve"), @Type(value = Admin.class, name = "admin"),
+		@Type(value = Prof.class, name = "prof") })
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "type_compte", columnDefinition = "ENUM('eleve','prof','admin')")
 @Table(name = "compte")
 public abstract class Compte implements UserDetails {
-	
-	
-	@OneToMany(mappedBy="compte")
+
+	@OneToMany(mappedBy = "compte")
 	private List<Panier> panier;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_compte")
@@ -87,18 +83,15 @@ public abstract class Compte implements UserDetails {
 	@JsonView(JsonViews.Common.class)
 	protected double solde;
 	protected String img;
-	
+
 	@ManyToOne
 	private Maison maison;
-	
+
 	@Version
 	private int version;
 
-
 	public Compte() {
 	}
-	
-	
 
 	public Compte(Integer id, String nom, String prenom, String login, String password, LocalDate naissance,
 			double solde, Maison maison) {
@@ -254,6 +247,5 @@ public abstract class Compte implements UserDetails {
 		// TODO Auto-generated method stub
 		return true;
 	}
-	
 
 }
