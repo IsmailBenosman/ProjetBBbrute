@@ -13,7 +13,6 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Past;
 
 import sopraprojet.harrypotter.boutique.Panier;
-import sopraprojet.harrypotter.entity.Role;
 import sopraprojet.harrypotter.event.Evenement;
 import sopraprojet.harrypotter.maison.Maison;
 import sopraprojet.harrypotter.module.InscriptionCours;
@@ -22,64 +21,42 @@ import sopraprojet.harrypotter.module.Modules;
 @Entity
 @DiscriminatorValue("eleve")
 @Table(name = "eleve")
-public class Eleve  extends Compte{
-	
-
-  	public Eleve(Integer id, String nom, String prenom, String login, String password, LocalDate naissance,
-			double solde, Maison maison) {
-		super(id, nom, prenom, login, password, naissance, solde, maison);
-		// TODO Auto-generated constructor stub
-	}
-
-
-
-
-
-	public Eleve(Integer id, @NotEmpty(message = "Champ obligatoire") String nom,
-			@NotEmpty(message = "Champ obligatoire") String prenom,
-			@NotEmpty(message = "Champ obligatoire") String login,
-			@NotEmpty(message = "Champ obligatoire") String password, @Past LocalDate naissance, double solde,
-			String img, Maison maison,Set<Role> roles) {
-		super(id, nom, prenom, login, password, naissance, solde, img, maison,roles);
-		// TODO Auto-generated constructor stub
-	}
-
-
-
-
-
-	public Eleve(String nom, String prenom, String login, String password, LocalDate naissance, double solde,
-			Maison maison) {
-		super(nom, prenom, login, password, naissance, solde, maison);
-		// TODO Auto-generated constructor stub
-	}
+public class Eleve extends Compte {
 
 	@OneToMany(mappedBy = "eleve")
 	private List<Modules> mesCours;
 
-  	@ManyToMany(mappedBy="participants")
-  	private List<Evenement> event;
+	@ManyToMany(mappedBy = "participants")
+	private List<Evenement> event;
 
-  	@OneToMany(mappedBy="eleve")
-  	private List<InscriptionCours> inscription;
-  	
-  	public Eleve() {
-		// TODO Auto-generated constructor stub
+	@OneToMany(mappedBy = "eleve")
+	private List<InscriptionCours> inscription;
+
+	public Eleve() {
+
 	}
-  	
-  	
-  	
 
-	
+	public Eleve(Integer id, String nom, String prenom, String login, String password, LocalDate naissance,
+			double solde, Maison maison) {
+		super(id, nom, prenom, login, password, naissance, solde, maison);
+
+	}
+
+	public Eleve(String nom, String prenom, String login, String password, LocalDate naissance, double solde,
+			Maison maison) {
+		super(nom, prenom, login, password, naissance, solde, maison);
+	}
+
 	public List<Modules> getMesCours() {
 		return mesCours;
 	}
+
 	public void setMesCours(List<Modules> mesCours) {
 		this.mesCours = mesCours;
 	}
 
 	public String getIdentite() {
-		return nom+ " "+prenom;
+		return nom + " " + prenom;
 	}
 
 	public List<Evenement> getEvent() {
@@ -98,27 +75,10 @@ public class Eleve  extends Compte{
 		this.inscription = inscription;
 	}
 
-
-
-
-
 	@Override
 	public String toString() {
 		return "Eleve [id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", login=" + login + ", password=" + password
 				+ ", naissance=" + naissance + ", solde=" + solde + ", img=" + img + "]";
 	}
 
-
-	
-
 }
-	
-	
-	
-	
-	
-	
-	
-
-
-

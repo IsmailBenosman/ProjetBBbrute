@@ -38,7 +38,6 @@ import com.fasterxml.jackson.annotation.JsonView;
 
 import sopraprojet.harrypotter.Json.JsonViews;
 import sopraprojet.harrypotter.boutique.Panier;
-import sopraprojet.harrypotter.entity.Role;
 import sopraprojet.harrypotter.maison.Maison;
 
 @Entity
@@ -58,7 +57,7 @@ public abstract class Compte implements UserDetails {
 	private List<Panier> panier;
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_compte")
 	@JsonView(JsonViews.Common.class)
 	protected Integer id;
@@ -95,29 +94,6 @@ public abstract class Compte implements UserDetails {
 	@Version
 	private int version;
 
-
-	@Enumerated(EnumType.STRING)
-	@ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
-	@CollectionTable(name = "utilisateur_roles", foreignKey = @ForeignKey(name = "utilisateur_roles_utilisateur_id_fk"))
-	//@JsonView(JsonViews.Common.class)
-	private Set<Role> roles;
-	
-	public Compte(Integer id, @NotEmpty(message = "Champ obligatoire") String nom,
-			@NotEmpty(message = "Champ obligatoire") String prenom,
-			@NotEmpty(message = "Champ obligatoire") String login,
-			@NotEmpty(message = "Champ obligatoire") String password, @Past LocalDate naissance, double solde,
-			String img, Maison maison, Set<Role> roles) {
-		this.id = id;
-		this.nom = nom;
-		this.prenom = prenom;
-		this.login = login;
-		this.password = password;
-		this.naissance = naissance;
-		this.solde = solde;
-		this.img = img;
-		this.maison = maison;
-		this.roles = roles;
-	}
 
 	public Compte() {
 	}
@@ -233,14 +209,6 @@ public abstract class Compte implements UserDetails {
 
 	public void setPanier(List<Panier> panier) {
 		this.panier = panier;
-	}
-
-	public Set<Role> getRoles() {
-		return roles;
-	}
-
-	public void setRoles(Set<Role> roles) {
-		this.roles = roles;
 	}
 
 	@Override
