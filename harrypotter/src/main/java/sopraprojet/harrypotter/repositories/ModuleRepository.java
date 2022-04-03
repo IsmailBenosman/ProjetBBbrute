@@ -16,6 +16,6 @@ public interface ModuleRepository extends JpaRepository<Modules,Integer>{
 	@Query("delete from Modules modules where modules.eleve=:eleve")
 	void deleteByEleve(@Param("eleve") Eleve eleve);
 
-	List<Module> findByEleve(Eleve e);
+	List<Modules> findByEleve(Eleve e);
 	
 }
