@@ -5,10 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import sopraprojet.harrypotter.compte.Eleve;
 import sopraprojet.harrypotter.ecole.Cours;
 import sopraprojet.harrypotter.ecole.InscriptionCours;
 import sopraprojet.harrypotter.exception.InscriptionCoursException;
-import sopraprojet.harrypotter.exception.ModuleException;
 import sopraprojet.harrypotter.repositories.InscriptionCoursRepository;
 
 @Service
@@ -20,7 +20,14 @@ public class InscriptionCoursService {
 	public void create(InscriptionCours e) {
 		inscriptioncoursRepository.save(e);
 	}
-
+	public InscriptionCours save(InscriptionCours inscription) {
+		if (inscription.getId() != null) {
+			InscriptionCours reservationEnBase = getById(inscription.getId());
+			inscription.setVersion(reservationEnBase.getVersion());
+		}
+		return inscriptioncoursRepository.save(inscription);
+	}
+	
 	public void update(InscriptionCours e) {
 		inscriptioncoursRepository.save(e);
 	}
@@ -35,11 +42,22 @@ public class InscriptionCoursService {
 		});
 	}
 	
-	public void delete(InscriptionCours e) {
-		inscriptioncoursRepository.delete(e);
+	public void delete(InscriptionCours inscription) {
+		inscriptioncoursRepository.delete(inscription);
 	}
 	
-	public List<InscriptionCours> findEleveByCours(Cours crs) {
-		return inscriptioncoursRepository.findEleveByCours(crs);
+	public void deleteById(Integer id) {
+		delete(getById(id));
 	}
+	
+	public List<InscriptionCours> findByCours(Cours crs) {
+		return inscriptioncoursRepository.findByCours(crs);
+	}
+	
+	
+	
+	public List<InscriptionCours> findByEleve(Eleve eleve) {
+		return inscriptioncoursRepository.findByEleve(eleve);
+	}
+	
 }

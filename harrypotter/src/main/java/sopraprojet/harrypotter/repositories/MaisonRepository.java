@@ -6,7 +6,7 @@ import sopraprojet.harrypotter.ecole.Maison;
 
 public interface MaisonRepository extends JpaRepository<Maison, Integer>{
 
-	Maison findByIdWithCompte(Integer id);
+
 	
 
 

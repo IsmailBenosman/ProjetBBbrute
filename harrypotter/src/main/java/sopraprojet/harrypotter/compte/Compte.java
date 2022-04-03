@@ -53,7 +53,7 @@ public abstract class Compte implements UserDetails {
 	private List<Panier> panier;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id_compte")
 	@JsonView(JsonViews.Common.class)
 	protected Integer id;

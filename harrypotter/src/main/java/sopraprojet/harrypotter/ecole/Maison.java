@@ -37,7 +37,7 @@ public class Maison {
 	private String nom;
 	private int score;
 	
-	@JsonView(JsonViews.MaisonWithCompte.class)
+	@JsonView(JsonViews.Common.class)
 	@OneToMany(mappedBy="maison")
 	private List<Compte> comptes;
 
