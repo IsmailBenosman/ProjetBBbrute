@@ -61,10 +61,6 @@ public class MaisonService {
 		
 		return maisonRepository.save(m);
 	}
-	
-	public Maison getByIdWithCompte (Integer id)
-	{
-		return maisonRepository.findByIdWithCompte(id);
-	}
+
 }
 

@@ -116,7 +116,7 @@ class AchatBoutiqueTest {
 		// retourne un test valide
 		e.setId(9);
 
-		List<Panier> panier = panierRepo.findByCompte(e);
+		List<Panier> panier = panierRepo.findByCompteAndAchatFalse(e);
 		// donne la taille du panier: 0= panier non existant encore
 		assertEquals(0, panier.size());
 

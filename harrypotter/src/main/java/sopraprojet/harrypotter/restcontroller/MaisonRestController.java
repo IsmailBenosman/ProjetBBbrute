@@ -27,16 +27,16 @@ public class MaisonRestController {
 	@Autowired
 	private MaisonService maisonService;
 	
-	@JsonView(JsonViews.MaisonWithCompte.class)
+	@JsonView(JsonViews.Common.class)
 	@GetMapping("")
 	public List<Maison> getAll() {
 		return maisonService.getAll();
 	}
 	
-	@JsonView(JsonViews.MaisonWithCompte.class)
+	@JsonView(JsonViews.Common.class)
 	@GetMapping("/{id}")
 	public Maison getById(@PathVariable Integer id) {
-		return maisonService.getByIdWithCompte(id);
+		return maisonService.getById(id);
 	}
 	
 	private Maison save(Maison activite, BindingResult br) {
@@ -47,7 +47,7 @@ public class MaisonRestController {
 	}
 	
 	@PutMapping("/{id}")
-	@JsonView(JsonViews.MaisonWithCompte.class)
+	@JsonView(JsonViews.Common.class)
 	public Maison update(@PathVariable Integer id, @Valid @RequestBody Maison maison, BindingResult br) {
 		maison.setId(id);
 		return save(maison, br);

@@ -1,9 +1,6 @@
 package sopraprojet.harrypotter;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 import javax.transaction.Transactional;
 
@@ -51,9 +48,9 @@ class ModuleTest {
 		Maison m2 = new Maison("Serpentard");
 		Maison m3 = new Maison("Serdaigle");
 		Maison m4 = new Maison("Poufsouffle");
-		Eleve e1 = new Eleve("Pierson", "Robin", "rob", "rob", LocalDate.parse("1997-03-18"), 0,m2);
-		Eleve e2 = new Eleve("Vong", "Michel", "michel", "michel", LocalDate.parse("1992-03-18"), 0,m4);
-		Prof p1 = new Prof("Pinel","Matthieu", "matt","matt", LocalDate.parse("1998-02-23"),10000,m1);
+		Eleve e1 = new Eleve("Pierson", "Robin", "testing", "rob", LocalDate.parse("1997-03-18"), 0,m2);
+		Eleve e2 = new Eleve("Vong", "Michel", "michelTest", "michel", LocalDate.parse("1992-03-18"), 0,m4);
+		Prof p1 = new Prof("Pinel","Matthieu", "mattTest","matt", LocalDate.parse("1998-02-23"),10000,m1);
 		Cours co = new Cours("Histoire de la magie", p1);
 		Modules m = new Modules(co, 14, "Sur la bonne voie",e1);
 		InscriptionCours i1 = new InscriptionCours(co, e1);
@@ -68,7 +65,9 @@ class ModuleTest {
 		coursService.create(co);
 		inscriptioncoursService.create(i1);
 		inscriptioncoursService.create(i2);
-		System.out.println(inscriptioncoursService.findEleveByCours(co));
+		System.out.println("_____________________________________________________");
+		System.out.println(inscriptioncoursService.findByCours(co));
+		System.out.println("_____________________________________________________");
 		moduleService.create(m);
 	}
 

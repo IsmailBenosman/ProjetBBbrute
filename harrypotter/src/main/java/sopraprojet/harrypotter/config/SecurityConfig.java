@@ -29,9 +29,26 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
+//		
+//		http.antMatcher("/api/**")
+//		.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+//		.and()
+//		.csrf().disable();
 
+		//_______________________ ou _____________________
+		
+		http.antMatcher("/api/**")
+		.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+		.and()
+		.csrf().ignoringAntMatchers("/api/**")
+		.and()
+		.authorizeHttpRequests();
+
+		//_______________________  +  _____________________
+		
+		// cette partie seule permet l'authentifiation, mais ne permet pas encore de faire le CRUD. Si on veut
+		// tester le crud, il faut la partie du haut (premiere partie ou la 2e) sans celle du bas
 		http.authorizeHttpRequests()
-
 				.antMatchers("/admin").hasRole("ADMIN")
 				.antMatchers("/prof").hasAnyRole("PROF","ADMIN")
 				.antMatchers("/eleve").hasAnyRole("ELEVE", "ADMIN")
