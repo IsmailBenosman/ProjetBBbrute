@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import sopraprojet.harrypotter.compte.Eleve;
+import sopraprojet.harrypotter.ecole.Maison;
 import sopraprojet.harrypotter.exception.EleveException;
 import sopraprojet.harrypotter.repositories.EleveRepository;
 import sopraprojet.harrypotter.repositories.ModuleRepository;
@@ -71,6 +72,10 @@ public class EleveService {
 			eleve.setVersion(eleveEnBase.getVersion());
 		}
 		return eleveRepository.save(eleve);
+	}
+
+	public List<Eleve> getAllByMaison(Maison m) {
+		return eleveRepository.findByMaison(m);
 	}
 
 }

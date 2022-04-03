@@ -16,8 +16,11 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import sopraprojet.harrypotter.Json.JsonViews;
+import sopraprojet.harrypotter.compte.Eleve;
 import sopraprojet.harrypotter.ecole.Maison;
+import sopraprojet.harrypotter.ecole.Modules;
 import sopraprojet.harrypotter.exception.MaisonException;
+import sopraprojet.harrypotter.service.EleveService;
 import sopraprojet.harrypotter.service.MaisonService;
 
 @RestController
@@ -26,34 +29,52 @@ public class MaisonRestController {
 
 	@Autowired
 	private MaisonService maisonService;
-	
-	@JsonView(JsonViews.Common.class)
+
+	@Autowired
+	private EleveService eleveService;
+
+	@JsonView(JsonViews.Maison.class)
 	@GetMapping("")
-	public List<Maison> getAll() {
+	public List<Maison> getAllMaisonWithScoreTotal() {
+		
+		
+		List<Maison> maisons = maisonService.getAll();
+		List<Eleve> eleves = eleveService.getAll();
+
+		for (Maison h : maisons) {
+			int scoreMaison = 0;
+			for (Eleve e : eleves) {
+				List<Modules> modules = e.getMesCours();
+				int totalNotes = 0;
+				for (Modules mod : modules) {
+					totalNotes += mod.getNote();
+				}
+				scoreMaison += totalNotes;
+			}
+			h.setScore(scoreMaison);
+			maisonService.save(h);
+		}
 		return maisonService.getAll();
 	}
-	
-	@JsonView(JsonViews.Common.class)
+
+	@JsonView(JsonViews.MaisonWithCompte.class)
 	@GetMapping("/{id}")
 	public Maison getById(@PathVariable Integer id) {
 		return maisonService.getById(id);
 	}
-	
+
 	private Maison save(Maison activite, BindingResult br) {
 		if (br.hasErrors()) {
 			throw new MaisonException();
 		}
 		return maisonService.save(activite);
 	}
-	
+
 	@PutMapping("/{id}")
-	@JsonView(JsonViews.Common.class)
+	@JsonView(JsonViews.Maison.class)
 	public Maison update(@PathVariable Integer id, @Valid @RequestBody Maison maison, BindingResult br) {
 		maison.setId(id);
 		return save(maison, br);
 	}
 
-	
-	
-	
 }

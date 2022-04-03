@@ -2,6 +2,7 @@ package sopraprojet.harrypotter.ecole;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,6 +19,19 @@ import sopraprojet.harrypotter.compte.Compte;
 @Table(name = "maison")
 public class Maison {
 
+	@JsonView(JsonViews.Maison.class)
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
+	@JsonView(JsonViews.Maison.class)
+	private String nom;
+	@JsonView(JsonViews.Maison.class)
+	private int score;
+	
+	@JsonView(JsonViews.MaisonWithCompte.class)
+	@OneToMany(mappedBy="maison",cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<Compte> comptes;
+
 	public Maison() {
 	}
 
@@ -31,16 +45,7 @@ public class Maison {
 	this.nom = nom;
 
 	}
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
-	private String nom;
-	private int score;
 	
-	@JsonView(JsonViews.Common.class)
-	@OneToMany(mappedBy="maison")
-	private List<Compte> comptes;
-
 	public Integer getId() {
 		return id;
 	}
