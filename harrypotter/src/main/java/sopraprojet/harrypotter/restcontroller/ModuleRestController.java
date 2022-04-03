@@ -20,52 +20,55 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import sopraprojet.harrypotter.Json.JsonViews;
-import sopraprojet.harrypotter.boutique.Produit;
+import sopraprojet.harrypotter.compte.Eleve;
+import sopraprojet.harrypotter.ecole.Modules;
 import sopraprojet.harrypotter.exception.EvenementException;
-import sopraprojet.harrypotter.service.ProduitService;
+import sopraprojet.harrypotter.service.EleveService;
+import sopraprojet.harrypotter.service.ModuleService;
+
 
 @RestController
-@RequestMapping("/api/catalogue")
-public class ProduitRestController {
+@RequestMapping("/api/bulletin")
+public class ModuleRestController {
+
+	@Autowired
+	private ModuleService moduleService;
+	@Autowired
+	private EleveService eleveService;
 
 	
-	@Autowired
-	private ProduitService produitService;
-	
-	@JsonView(JsonViews.Produit.class)
-	@GetMapping("")
-	public List<Produit> getAll() {
-		return produitService.getAll();
+	@JsonView(JsonViews.Common.class)
+	@GetMapping("/{id}")
+	public List<Modules> getAllById(@PathVariable Integer id) {
+		Eleve e = eleveService.getById(id);
+		return moduleService.findModuleWithEleve(e);
 	}
-	
-	private Produit createOrUpdate(Produit produit, BindingResult br) {
+	private Modules createOrUpdate(Modules modules, BindingResult br) {
 		if (br.hasErrors()) {
 			throw new EvenementException();
 		}
-		return produitService.save(produit);
+		return moduleService.save(modules);
 	}
 	
 	@JsonView(JsonViews.Common.class)
 	@PostMapping("")
 	@ResponseStatus(code = HttpStatus.CREATED)
-	public Produit create(@Valid @RequestBody Produit produit, BindingResult br) {
-		return createOrUpdate(produit, br);
+	public Modules create(@Valid @RequestBody Modules modules, BindingResult br) {
+		return createOrUpdate(modules, br);
 	}
 	
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable Integer id) {
-		produitService.delete(id);
+		moduleService.delete(id);
 	}
 
 	@JsonView(JsonViews.Common.class)
 	@PutMapping("/{id}")
-	public Produit update(@PathVariable Integer id, @Valid @RequestBody Produit produit,
+	public Modules update(@PathVariable Integer id, @Valid @RequestBody Modules modules,
 			BindingResult br) {
-		produit.setId(id);
-		return createOrUpdate(produit, br);
+		modules.setId(id);
+		return createOrUpdate(modules, br);
 	}
-		
-
 	
 }

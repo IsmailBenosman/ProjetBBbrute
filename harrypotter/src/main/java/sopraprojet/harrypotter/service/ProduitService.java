@@ -38,4 +38,13 @@ public class ProduitService {
 		produitRepository.delete(p);
 	}
 
+	public void delete(Integer id) {
+		produitRepository.delete(getById(id));
+		
+	}
+
+	public Produit save(Produit produit) {
+		return	produitRepository.save(produit);
+	}
+
 }
