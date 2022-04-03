@@ -90,6 +90,7 @@ public abstract class Compte implements UserDetails {
 	@ManyToOne
 	private Maison maison;
 
+
 	@Version
 	private int version;
 
@@ -249,6 +250,13 @@ public abstract class Compte implements UserDetails {
 	public boolean isEnabled() {
 		// TODO Auto-generated method stub
 		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Compte [id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", login=" + login + ", password="
+				+ password + ", naissance=" + naissance + ", solde=" + solde + ", img=" + img + ", version=" + version
+				+ "]";
 	}
 
 }
