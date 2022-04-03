@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import sopraprojet.harrypotter.boutique.Panier;
 import sopraprojet.harrypotter.compte.Compte;
+import sopraprojet.harrypotter.ecole.InscriptionCours;
 import sopraprojet.harrypotter.exception.PanierException;
 import sopraprojet.harrypotter.repositories.PanierRepository;
 
@@ -36,12 +37,12 @@ public class PanierService {
 		return panierRepository.save(panier);
 	}
 
-	public void delete(Panier vehicule) {
-		delete(vehicule.getId());
+	public void delete(Panier panier) {
+		panierRepository.delete(panier);
 	}
-
-	public void delete(Integer id) {
-		panierRepository.deleteById(id);
+	
+	public void deleteById(Integer id) {
+		delete(getById(id));
 	}
 
 

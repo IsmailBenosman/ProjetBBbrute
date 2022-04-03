@@ -42,8 +42,5 @@ public class JsonViews {
 	public static class EvenementWithCompte extends Common{
 
 	}
-	
-	public static class MaisonWithCompte extends Common{
 
-	}
 }

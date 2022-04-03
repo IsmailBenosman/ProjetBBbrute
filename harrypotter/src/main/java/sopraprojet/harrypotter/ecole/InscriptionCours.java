@@ -15,29 +15,41 @@ import javax.persistence.Table;
 import javax.persistence.Version;
 
 import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonView;
+
+import sopraprojet.harrypotter.Json.JsonViews;
 import sopraprojet.harrypotter.compte.Eleve;
 import sopraprojet.harrypotter.compte.Prof;
 
 @Entity
 @Table(name = "Inscription_cours")
 public class InscriptionCours {
-
+	
+	@JsonView(JsonViews.Common.class)
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id_inscription")
 	private Integer id;
 	
+	@JsonView(JsonViews.Common.class)
 	@ManyToOne
 	@JoinColumn(name="cours_fk")
 	private Cours cours;
 	
+	@JsonView(JsonViews.Common.class)
 	@ManyToOne
 	@JoinColumn(name="eleve_fk")
 	private Eleve eleve;
-
+	
+	@JsonView(JsonViews.Common.class)
 	@Version
 	private int version;
 	
+	
+	public InscriptionCours() {
+		// TODO Auto-generated constructor stub
+	}
 	public InscriptionCours(Integer id, Cours cours, Eleve eleve) {
 		this.id = id;
 		this.cours = cours;
@@ -71,6 +83,16 @@ public class InscriptionCours {
 
 	public void setEleve(Eleve eleve) {
 		this.eleve = eleve;
+	}
+
+	public Object getVersion() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public void setVersion(Object version2) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	

@@ -10,90 +10,84 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+import sopraprojet.harrypotter.Json.JsonViews;
 import sopraprojet.harrypotter.compte.Prof;
-
-
-
 
 @Entity
 @DiscriminatorValue("cours")
-@Table(name="cours")
+@Table(name = "cours")
 public class Cours {
-		
-		@Id
-		@GeneratedValue(strategy = GenerationType.IDENTITY)
-		private Integer id;
-		private String intitule;
-		
-		
-		@ManyToOne
-		private Prof professeur;
-		
-		@OneToOne
-		private Modules module;
+	@JsonView(JsonViews.Common.class)
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
+	private String intitule;
 
-		public Cours() {}
+	@JsonView(JsonViews.Common.class)
+	@ManyToOne
+	private Prof professeur;
 
-		public Cours(Integer id, String intitule, Prof professeur) {
-			super();
-			this.id = id;
-			this.intitule = intitule;
-			this.professeur = professeur;
-		}
+	@JsonView(JsonViews.Common.class)
+	@OneToOne
+	private Modules module;
 
-		public Cours(String intitule, Prof professeur) {
-			this.intitule = intitule;
-			this.professeur = professeur;
-		}
+	public Cours() {
+	}
 
-		public Cours(String intitule) {
-			super();
-			this.intitule = intitule;
-		}
+	public Cours(Integer id, String intitule, Prof professeur) {
+		super();
+		this.id = id;
+		this.intitule = intitule;
+		this.professeur = professeur;
+	}
 
+	public Cours(String intitule, Prof professeur) {
+		this.intitule = intitule;
+		this.professeur = professeur;
+	}
 
-		public Integer getId() {
-			return id;
-		}
+	public Cours(String intitule) {
+		super();
+		this.intitule = intitule;
+	}
 
+	public Integer getId() {
+		return id;
+	}
 
-		public void setId(Integer id) {
-			this.id = id;
-		}
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
+	public String getIntitule() {
+		return intitule;
+	}
 
-		public String getIntitule() {
-			return intitule;
-		}
+	public void setIntitule(String intitule) {
+		this.intitule = intitule;
+	}
 
+	public Prof getProfesseur() {
+		return professeur;
+	}
 
-		public void setIntitule(String intitule) {
-			this.intitule = intitule;
-		}
+	public void setProfesseur(Prof professeur) {
+		this.professeur = professeur;
+	}
 
+	public Modules getModule() {
+		return module;
+	}
 
-		public Prof getProfesseur() {
-			return professeur;
-		}
+	public void setModule(Modules module) {
+		this.module = module;
+	}
 
+	@Override
+	public String toString() {
+		return "Cours [id=" + id + ", intitule=" + intitule + ", professeur=" + professeur + ", module=" + module + "]";
+	}
 
-		public void setProfesseur(Prof professeur) {
-			this.professeur = professeur;
-		}
-
-
-		public Modules getModule() {
-			return module;
-		}
-
-		public void setModule(Modules module) {
-			this.module = module;
-		}
-
-		@Override
-		public String toString() {
-			return "Cours [id=" + id + ", intitule=" + intitule + ", professeur=" + professeur + ", module=" + module
-					+ "]";
-		}		
-		
 }
