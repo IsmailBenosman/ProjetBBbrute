@@ -20,6 +20,9 @@ import javax.validation.constraints.NotEmpty;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+import sopraprojet.harrypotter.Json.JsonViews;
 import sopraprojet.harrypotter.compte.Eleve;
 
 
@@ -28,15 +31,17 @@ import sopraprojet.harrypotter.compte.Eleve;
 @DiscriminatorValue("evenements")
 @Table(name = "evenements")
 public class Evenement {
+	
+	@JsonView(JsonViews.Common.class)
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id_evenement")
 	private Integer id;
-	
+	@JsonView(JsonViews.Common.class)
 	@NotEmpty(message="Champ obligatoire")
 	@Column(name="evenement")
 	private String nomEven;
-	
+	@JsonView(JsonViews.Common.class)
 	@Future
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate date;
