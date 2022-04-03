@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import sopraprojet.harrypotter.compte.Eleve;
 import sopraprojet.harrypotter.ecole.Modules;
 import sopraprojet.harrypotter.exception.ModuleException;
 import sopraprojet.harrypotter.repositories.ModuleRepository;
@@ -36,5 +37,9 @@ public class ModuleService {
 	public void delete(Modules e) {
 		moduleRepository.delete(e);
 	}
+	public List<Module> findModuleWithEleve(Eleve e) {
+		return moduleRepository.findByEleve(e);
+	}
+	
 
 }

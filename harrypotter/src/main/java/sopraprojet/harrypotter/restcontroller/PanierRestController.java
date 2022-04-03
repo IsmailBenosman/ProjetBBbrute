@@ -46,7 +46,7 @@ public class PanierRestController {
 
 	@JsonView(JsonViews.Common.class)
 	@GetMapping("/compte/{id}")
-	public List<Panier> getAll(@PathVariable Integer id) {
+	public List<Panier> getById(@PathVariable Integer id) {
 		Compte c = compteService.getById(id);
 		return panierService.findPanierWithCompteDanssLePanier(c);
 	}
