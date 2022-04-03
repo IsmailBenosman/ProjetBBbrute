@@ -34,23 +34,22 @@ public class MaisonRestController {
 	private EleveService eleveService;
 
 	@JsonView(JsonViews.Maison.class)
-	@GetMapping("")
+	@GetMapping("/scores")
 	public List<Maison> getAllMaisonWithScoreTotal() {
-		
-		
 		List<Maison> maisons = maisonService.getAll();
-		List<Eleve> eleves = eleveService.getAll();
-
 		for (Maison h : maisons) {
 			int scoreMaison = 0;
+			List<Eleve> eleves = eleveService.getAll();
+			
 			for (Eleve e : eleves) {
-				List<Modules> modules = e.getMesCours();
 				int totalNotes = 0;
-				for (Modules mod : modules) {
-					totalNotes += mod.getNote();
-				}
-				scoreMaison += totalNotes;
-			}
+				if (h.getNom().equals(e.getMaison().getNom())) {
+					List<Modules> modules = e.getMesCours();
+					for (Modules mod : modules) {
+						totalNotes += mod.getNote();
+					}
+				}scoreMaison += totalNotes;
+			}			
 			h.setScore(scoreMaison);
 			maisonService.save(h);
 		}
