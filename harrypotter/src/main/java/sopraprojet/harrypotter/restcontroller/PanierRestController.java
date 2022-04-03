@@ -1,5 +1,6 @@
 package sopraprojet.harrypotter.restcontroller;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -22,7 +23,6 @@ import com.fasterxml.jackson.annotation.JsonView;
 import sopraprojet.harrypotter.Json.JsonViews;
 import sopraprojet.harrypotter.boutique.Panier;
 import sopraprojet.harrypotter.compte.Compte;
-import sopraprojet.harrypotter.ecole.Evenement;
 import sopraprojet.harrypotter.exception.PanierException;
 import sopraprojet.harrypotter.service.CompteService;
 import sopraprojet.harrypotter.service.PanierService;
@@ -38,27 +38,27 @@ public class PanierRestController {
 	private PanierService panierService;
 	
 	
-	@JsonView(JsonViews.Produit.class)
+	@JsonView(JsonViews.Common.class)
 	@GetMapping("")
 	public List<Panier> getAll() {
 		return panierService.getAll();
 	}
 
-	@JsonView(JsonViews.Produit.class)
-	@GetMapping("/{id}")
+	@JsonView(JsonViews.Common.class)
+	@GetMapping("/compte/{id}")
 	public List<Panier> getAll(@PathVariable Integer id) {
 		Compte c = compteService.getById(id);
 		return panierService.findPanierWithCompteDanssLePanier(c);
 	}
 
-	@JsonView(JsonViews.Produit.class)
-	@GetMapping("/historique/{id}")
+	@JsonView(JsonViews.Common.class)
+	@GetMapping("/historique/compte/{id}")
 	public List<Panier> getAllHistorique(@PathVariable Integer id) {
 		Compte c = compteService.getById(id);
 		return panierService.findPanierWithCompteWithHistorique(c);
 	}
 
-	@JsonView(JsonViews.Produit.class)
+	@JsonView(JsonViews.PanierWithCompte.class)
 	@PutMapping("/{id}")
 	public Panier update(@PathVariable Integer id, @Valid @RequestBody Panier panier, BindingResult br) {
 		panier.setId(id);
@@ -66,37 +66,46 @@ public class PanierRestController {
 	}
 
 	private Panier createOrUpdate(Panier panier, BindingResult br) {
+		System.out.println(panier);
+		System.out.println(panier.getCompte());
+		System.out.println(panier.getArticles());
 		if (br.hasErrors()) {
 			throw new PanierException("Erreur");
 		}
 		return panierService.save(panier);
 	}
+	
 
-	@JsonView(JsonViews.Produit.class)
-	@GetMapping("/achat/validation")
+	@JsonView(JsonViews.Common.class)
+	@GetMapping("/validation/compte/{id}")
 	private Compte soldeCheck(@PathVariable Integer id, @Valid @RequestBody Panier panier) {
 		Compte c = compteService.getById(id);
 		List<Panier> articlesPanier = panierService.findPanierWithCompteDanssLePanier(c);
+		double totalPanier = 0;
 		for (Panier p : articlesPanier) {
-			if (c.getSolde() - (p.getArticles().getPrix() * p.getQuantite()) >= c.getSolde()) {
-				return validationPanier(id, panier);
-			} else {
-				throw new PanierException("Erreur: Solde insuffisant");
+			totalPanier+=p.getArticles().getPrix() * p.getQuantite();	
+		}
+		
+		if(c.getSolde()>=totalPanier) 
+		{
+			for (Panier p : articlesPanier) {
+				p.setAchat(true);
+				p.setDateAchat(LocalDateTime.now());
+				panierService.save(p);
 			}
+			c.setSolde(c.getSolde()-totalPanier);
+			compteService.save(c);
+		}
+		else 
+		{
+		System.out.println("Modifier : Solde insuffisant");	
 		}
 		return compteService.save(c);
 	}
 
-	private Compte validationPanier(@PathVariable Integer id, @Valid @RequestBody Panier panier) {
-		Compte c = compteService.getById(id);
-		List<Panier> articlesPanier = panierService.findPanierWithCompteDanssLePanier(c);
-		for (Panier p : articlesPanier) {
-			double newSolde = c.getSolde() - (p.getArticles().getPrix() * p.getQuantite());
-			c.setSolde(newSolde);
-			panierService.save(p);
-		}
-		return compteService.save(c);
-	}
+	
+	
+	
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
 	@DeleteMapping("/{id}") 
 	public void delete(@PathVariable Integer id) {

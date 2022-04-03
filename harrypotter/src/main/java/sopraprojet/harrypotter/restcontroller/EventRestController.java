@@ -37,13 +37,13 @@ public class EventRestController {
 	@Autowired
 	private EvenementService eventService;
 	
-	@JsonView(JsonViews.EvenementWithCompte.class)
+	@JsonView(JsonViews.Common.class)
 	@GetMapping("")
 	public List<Evenement> getAllEvent() {
 		return eventService.getAll();
 	}
 	
-	@JsonView(JsonViews.EvenementWithCompte.class)
+	@JsonView(JsonViews.Common.class)
 	@GetMapping("/admin/{id}")
 	public Evenement getById(@PathVariable Integer id) {
 		return eventService.getById(id);
@@ -69,7 +69,7 @@ public class EventRestController {
 	}
 	
 	@PatchMapping("/{id}")
-	@JsonView(JsonViews.EvenementWithCompte.class)
+	@JsonView(JsonViews.Common.class)
 	public Evenement partialUpdate(@RequestBody Map<String, Object> fields, @PathVariable Integer id) {
 		Evenement event = eventService.getById(id);
 		fields.forEach((k, v) -> {
