@@ -9,7 +9,7 @@ import sopraprojet.harrypotter.ecole.Evenement;
 
 public interface EvenementRepository extends JpaRepository<Evenement, Integer>{
 
-	Evenement findByIdWithEleve(Integer id);
+	
 	
 	
 	
