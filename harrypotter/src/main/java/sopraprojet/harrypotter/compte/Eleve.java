@@ -12,6 +12,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Past;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import sopraprojet.harrypotter.boutique.Panier;
 import sopraprojet.harrypotter.ecole.Evenement;
 import sopraprojet.harrypotter.ecole.InscriptionCours;
@@ -22,13 +24,14 @@ import sopraprojet.harrypotter.ecole.Modules;
 @DiscriminatorValue("eleve")
 @Table(name = "eleve")
 public class Eleve extends Compte {
-
+	
 	@OneToMany(mappedBy = "eleve")
 	private List<Modules> mesCours;
+	
 
 	@ManyToMany(mappedBy = "participants")
 	private List<Evenement> event;
-
+	
 	@OneToMany(mappedBy = "eleve")
 	private List<InscriptionCours> inscription;
 

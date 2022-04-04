@@ -1,24 +1,30 @@
 package sopraprojet.harrypotter.restcontroller;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.fasterxml.jackson.annotation.JsonView;
-
-import sopraprojet.harrypotter.Json.JsonViews;
+import sopraprojet.harrypotter.compte.Compte;
+import sopraprojet.harrypotter.service.CompteService;
 
 @RestController
+@RequestMapping("/api/compte")
 public class HomeRestController {
 
-	@GetMapping("/")
+	@Autowired
+	
+	CompteService compteService; 
+	@GetMapping("")
 	public String hello() {
 		return ("<h1>Hello</h1>");
 	}
 
 	@GetMapping("/admin")
-	public String homeAdmin() {
-		return ("<h1>Hello admin</h1>");
+	public List<Compte> homeAdmin() {
+		return compteService.getAll();
 	}
 
 	@GetMapping("/eleve")

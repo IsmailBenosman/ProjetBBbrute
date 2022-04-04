@@ -11,6 +11,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Past;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import sopraprojet.harrypotter.boutique.Panier;
 import sopraprojet.harrypotter.ecole.Cours;
 import sopraprojet.harrypotter.ecole.Maison;
@@ -19,7 +22,7 @@ import sopraprojet.harrypotter.ecole.Maison;
 @DiscriminatorValue("prof")
 @Table(name = "prof")
 public class Prof extends Compte {
-
+	
 	@OneToMany(mappedBy = "module")
 	private List<Cours> uE;
 

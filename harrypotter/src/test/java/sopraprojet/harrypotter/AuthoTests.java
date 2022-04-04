@@ -1,4 +1,4 @@
-<<<<<<< Updated upstream
+
 //package sopraprojet.harrypotter;
 //
 //
@@ -69,7 +69,7 @@
 //	
 //
 //
-=======
+
 /*package sopraprojet.harrypotter;
 
 
@@ -168,7 +168,7 @@ class AuthoTests {
 		utilisateurRepo.save(u);
 	}
 	*/
->>>>>>> Stashed changes
+
 //	@Test
 //	@Transactional
 //	@Commit
@@ -196,7 +196,7 @@ class AuthoTests {
 //				new HashSet<Role>(Arrays.asList(Role.ROLE_ELEVE)));
 //		utilisateurRepo.save(u);
 //	}
-<<<<<<< Updated upstream
+
 //	
 ////	@Test
 ////	@Transactional
@@ -229,9 +229,4 @@ class AuthoTests {
 //
 //
 //}
-=======
 
-
-
-
->>>>>>> Stashed changes
