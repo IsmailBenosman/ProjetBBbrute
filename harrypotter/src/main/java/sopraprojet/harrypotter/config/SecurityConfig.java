@@ -17,7 +17,6 @@ import sopraprojet.harrypotter.service.CustomUserDetailsService;
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-	
 	@Autowired
 	private CustomUserDetailsService userDetailsService;
 
@@ -29,39 +28,39 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-//		
-//		http.antMatcher("/api/**")
-//		.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-//		.and()
-//		.csrf().disable();
 
-		//_______________________ ou _____________________
+// @formatter:off
 		
 		http.antMatcher("/api/**")
-		.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+		.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS) //Garder des infos en mémoire avec les variables de session
 		.and()
-		.csrf().ignoringAntMatchers("/api/**")
-		.and()
-		.authorizeHttpRequests();
+		.csrf().disable() //
+		.authorizeHttpRequests()
+		
 
 		//_______________________  +  _____________________
 		
 		// cette partie seule permet l'authentifiation, mais ne permet pas encore de faire le CRUD. Si on veut
 		// tester le crud, il faut la partie du haut (premiere partie ou la 2e) sans celle du bas
-		http.authorizeHttpRequests()
-				.antMatchers("/admin").hasRole("ADMIN")
-				.antMatchers("/prof").hasAnyRole("PROF","ADMIN")
-				.antMatchers("/eleve").hasAnyRole("ELEVE", "ADMIN")
-				.antMatchers("/**").permitAll()
-				.anyRequest().authenticated().and().formLogin();
+		
+			.antMatchers("/api/compte").permitAll()
+			
+			.antMatchers("/api/compte/admin").hasAnyRole("ADMIN")
+			.antMatchers("/api/compte/prof").hasAnyRole("PROF","ADMIN")
+			.antMatchers("/api/compte/eleve").hasAnyRole("ELEVE", "ADMIN")
+			
+			.antMatchers("/api/compte/**").authenticated()
+		//	.anyRequest().authenticated().and().formLogin()
+			.anyRequest().denyAll()
+			.and().httpBasic();
 	}
-
+	// @formatter:on
 
 //	@Bean
 //	public PasswordEncoder passwordEncoder() {
 //		return new BCryptPasswordEncoder();
 //	}
-	
+
 	@Bean
 	public PasswordEncoder passwordEncoder() {
 		return NoOpPasswordEncoder.getInstance();
