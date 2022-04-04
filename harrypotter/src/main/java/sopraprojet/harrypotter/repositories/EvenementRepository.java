@@ -8,6 +8,8 @@ import sopraprojet.harrypotter.ecole.Evenement;
 
 
 public interface EvenementRepository extends JpaRepository<Evenement, Integer>{
+
+	
 	
 	
 	
