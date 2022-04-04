@@ -18,4 +18,6 @@ public interface ModuleRepository extends JpaRepository<Modules,Integer>{
 
 	List<Modules> findByEleve(Eleve e);
 	
+	@Query("select avg(modules.note) from Modules modules where modules.eleve=:eleve")
+	int moyenneByEleve(@Param("eleve") Eleve eleve);
 }
