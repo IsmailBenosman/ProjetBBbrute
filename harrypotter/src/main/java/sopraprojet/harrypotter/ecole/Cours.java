@@ -1,5 +1,6 @@
 package sopraprojet.harrypotter.ecole;
 
+import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -23,14 +24,18 @@ public class Cours {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	
+	@Column(name="cours")
 	private String intitule;
 
 	@JsonView(JsonViews.Common.class)
 	@ManyToOne
+	@JoinColumn(name="professeur")
 	private Prof professeur;
 
 	@JsonView(JsonViews.Common.class)
 	@OneToOne
+	@JoinColumn(name="module")
 	private Modules module;
 
 	public Cours() {
