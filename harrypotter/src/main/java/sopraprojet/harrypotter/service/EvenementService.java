@@ -5,7 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import sopraprojet.harrypotter.compte.Eleve;
 import sopraprojet.harrypotter.ecole.Evenement;
+import sopraprojet.harrypotter.ecole.Modules;
 import sopraprojet.harrypotter.exception.ModuleException;
 import sopraprojet.harrypotter.repositories.EvenementRepository;
 
@@ -15,6 +17,7 @@ public class EvenementService {
 
 	@Autowired
 	private EvenementRepository evenementRepository;
+
 
 	public void create(Evenement e) {
 		evenementRepository.save(e);

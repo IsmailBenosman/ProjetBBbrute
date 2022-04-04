@@ -51,6 +51,9 @@ public class ModuleService {
 		
 	}
 
+	public int moyenne(Eleve eleve) {
+		return moduleRepository.moyenneByEleve(eleve);
+	}
 	
 
 }
