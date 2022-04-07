@@ -12,8 +12,10 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Past;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import sopraprojet.harrypotter.boutique.Panier;
 import sopraprojet.harrypotter.ecole.Evenement;
 import sopraprojet.harrypotter.ecole.InscriptionCours;
@@ -25,13 +27,15 @@ import sopraprojet.harrypotter.ecole.Modules;
 @Table(name = "eleve")
 public class Eleve extends Compte {
 	
+	@Cascade(CascadeType.DELETE)
 	@OneToMany(mappedBy = "eleve")
 	private List<Modules> mesCours;
 	
-
+	@Cascade(CascadeType.DELETE)
 	@ManyToMany(mappedBy = "participants")
 	private List<Evenement> event;
 	
+	@Cascade(CascadeType.DELETE)
 	@OneToMany(mappedBy = "eleve")
 	private List<InscriptionCours> inscription;
 

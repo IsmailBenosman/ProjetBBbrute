@@ -5,8 +5,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import sopraprojet.harrypotter.compte.Eleve;
 import sopraprojet.harrypotter.compte.Prof;
 import sopraprojet.harrypotter.exception.ProfException;
+import sopraprojet.harrypotter.repositories.CompteRepository;
+import sopraprojet.harrypotter.repositories.CoursRepository;
 import sopraprojet.harrypotter.repositories.ProfRepository;
 
 
@@ -16,15 +19,11 @@ public class ProfService {
 
 	@Autowired
 	private ProfRepository profRepository;
+	@Autowired
+	private CompteRepository compteRepo;
+	@Autowired
+	private CoursRepository coursRepo;
 	
-	/*
-	 * public Prof insert(Prof pf) { EntityManager em =
-	 * Context.getSingleton().getEmf().createEntityManager();
-	 * em.getTransaction().begin(); em.persist(pf); em.getTransaction().commit();
-	 * em.close(); return null;
-	 
-		
-	}	*/
 	public void create(Prof pf) {
 		if (pf.getId() != null) {
 			throw new ProfException("l'id ne doit pas etre defini");
@@ -58,25 +57,24 @@ public class ProfService {
 		});
 	}
 
-	/*public Prof getByNumeroWithReservation(Integer id) {
-		return ProfRepository.findByNumeroWithReservations(numero).orElseThrow(() -> {
-			throw new ClientException("numero inconnu");
-		});
-	}*/
-
-	public void delete(Prof pf) {
-//		Client clientEnBaseAvecReservations = getByNumeroWithReservation(c.getNumero());
-//		reservationRepository.deleteAll(clientEnBaseAvecReservations.getReservations());
-//		clientRepository.delete(clientEnBaseAvecReservations);
-
-		Prof profEnBase = getById(pf.getId());
-		//profRepository.deleteByProf(profEnBase);
-		profRepository.delete(profEnBase);
+	public void delete(Prof e) {
+		profRepository.delete(e);
+	}
+	public void delete(Integer id) {
+		profRepository.deleteById(id);
 	}
 
 	public void deleteByNumero(Integer id) {
 		Prof prof = new Prof();
 		prof.setId(id);
 		delete(prof);
+	}
+	
+	public Prof save(Prof prof) {
+		if (prof.getId() != null) {
+			Prof profEnBase = getById(prof.getId());
+			prof.setVersion(profEnBase.getVersion());
+		}
+		return profRepository.save(prof);
 	}
 }

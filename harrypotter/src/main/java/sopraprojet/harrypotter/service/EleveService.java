@@ -8,7 +8,9 @@ import org.springframework.stereotype.Service;
 import sopraprojet.harrypotter.compte.Eleve;
 import sopraprojet.harrypotter.ecole.Maison;
 import sopraprojet.harrypotter.exception.EleveException;
+import sopraprojet.harrypotter.repositories.CompteRepository;
 import sopraprojet.harrypotter.repositories.EleveRepository;
+import sopraprojet.harrypotter.repositories.InscriptionCoursRepository;
 import sopraprojet.harrypotter.repositories.ModuleRepository;
 
 
@@ -19,6 +21,10 @@ public class EleveService {
 	private EleveRepository eleveRepository;
 	@Autowired
 	private ModuleRepository moduleRepository;
+	@Autowired
+	private InscriptionCoursRepository inscriptionRepo;
+	@Autowired
+	private CompteRepository compteRepo;
 
 	public void create(Eleve e) {
 		if (e.getId() != null) {
@@ -59,7 +65,6 @@ public class EleveService {
 
 
 	public void delete(Eleve e) {
-		moduleRepository.deleteByEleve(e);
 		eleveRepository.delete(e);
 	}
 	public void delete(Integer id) {

@@ -9,6 +9,7 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -35,7 +36,7 @@ class EventTest {
 	@Autowired
 	MaisonService maisonService;
 	
-
+	@Disabled
 	@Test
 	@Transactional
 	@Commit
@@ -44,7 +45,7 @@ class EventTest {
 		evenementService.create(event);
 	}
 	
-
+	@Disabled
 	@Test
 	@Transactional
 	@Commit
@@ -64,7 +65,7 @@ class EventTest {
 		System.out.println(participant);
 		
 	}
-	
+	@Disabled
 	@Test
 	void evenementServiceTest() {
 		assertNotNull(evenementService);
