@@ -34,7 +34,7 @@ public class MaisonRestController {
 	private EleveService eleveService;
 
 	@JsonView(JsonViews.Maison.class)
-	@GetMapping("/scores")
+	@GetMapping("")
 	public List<Maison> getAllMaisonWithScoreTotal() {
 		List<Maison> maisons = maisonService.getAll();
 		for (Maison h : maisons) {

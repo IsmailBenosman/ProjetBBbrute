@@ -23,10 +23,6 @@ public class EvenementService {
 		evenementRepository.save(e);
 	}
 
-	public void update(Evenement e) {
-		evenementRepository.save(e);
-	}
-
 	public List<Evenement> getAll() {
 		return evenementRepository.findAll();
 	}
@@ -38,17 +34,17 @@ public class EvenementService {
 	}
 
 	public void delete(Evenement e) {
-		evenementRepository.delete(e);
+		delete(e.getId());
 	}
 
 	public void delete(Integer id) {
-
+		evenementRepository.deleteById(id);
 	}
 
 	public Evenement save(Evenement evenement) {
 		if (evenement.getId() != null) {
-			Evenement eleveEnBase = getById(evenement.getId());
-			evenement.setVersion(eleveEnBase.getVersion());
+			Evenement event = getById(evenement.getId());
+			evenement.setVersion(event.getVersion());
 		}
 		return evenementRepository.save(evenement);
 

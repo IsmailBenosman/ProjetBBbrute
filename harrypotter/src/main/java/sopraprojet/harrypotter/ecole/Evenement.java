@@ -19,6 +19,7 @@ import javax.validation.constraints.Future;
 import javax.validation.constraints.NotEmpty;
 
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
@@ -38,7 +39,7 @@ public class Evenement {
 	@Column(name="id_evenement")
 	private Integer id;
 	@JsonView(JsonViews.Common.class)
-	@NotEmpty(message="Champ obligatoire")
+	@NotEmpty(message="champ obligatoire")
 	@Column(name="evenement")
 	private String nomEven;
 	@JsonView(JsonViews.Common.class)
@@ -46,6 +47,7 @@ public class Evenement {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate date;
 	
+	@JsonView(JsonViews.Common.class)
 	private LocalTime heure;
 	
 	@ManyToMany

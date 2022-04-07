@@ -9,7 +9,7 @@ public class EvenementException extends RuntimeException {
 	// exception avec un msg si on a envie
 
 	public EvenementException(String message) {
-		super(message);
+		super("il se passe quoi");
 	}
 	
 	

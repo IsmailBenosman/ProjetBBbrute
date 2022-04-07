@@ -3,13 +3,11 @@ package sopraprojet.harrypotter.config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import sopraprojet.harrypotter.service.CustomUserDetailsService;
@@ -36,13 +34,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		.and()
 		.csrf().disable() //
 		.authorizeHttpRequests()
-		
-
-		//_______________________  +  _____________________
-		
-		// cette partie seule permet l'authentifiation, mais ne permet pas encore de faire le CRUD. Si on veut
-		// tester le crud, il faut la partie du haut (premiere partie ou la 2e) sans celle du bas
-		
 			.antMatchers("/api/compte").permitAll()
 			.antMatchers("/api/eleve/**").permitAll()
 			.antMatchers("/api/prof").hasAnyRole("PROF","ADMIN")
@@ -53,19 +44,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.antMatchers("/api/compte/eleve").hasAnyRole("ELEVE", "ADMIN")
 			
 			.antMatchers("/api/compte/**").authenticated()
-		//	.anyRequest().authenticated().and().formLogin()
 			.anyRequest().denyAll()
 			.and().httpBasic();
 	}
-	// @formatter:on
 
 	@Bean
 	public PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
 
-	/*
-	 * @Bean public PasswordEncoder passwordEncoder() { return
-	 * NoOpPasswordEncoder.getInstance(); }
-	 */
 }
