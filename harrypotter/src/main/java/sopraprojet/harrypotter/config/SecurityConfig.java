@@ -34,14 +34,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		.and()
 		.csrf().disable() //
 		.authorizeHttpRequests()
-			.antMatchers("/api/compte").permitAll()
-			.antMatchers("/api/eleve/**").permitAll()
-			.antMatchers("/api/prof").hasAnyRole("PROF","ADMIN")
-			.antMatchers("/api/prof/{id}").hasAnyRole("PROF","ADMIN")
-			.antMatchers("/api/compte/admin").hasAnyRole("ADMIN")
-			.antMatchers("/api/eleve/edit").hasAnyRole("ADMIN")
-			.antMatchers("/api/compte/prof").hasAnyRole("PROF","ADMIN")
-			.antMatchers("/api/compte/eleve").hasAnyRole("ELEVE", "ADMIN")
+			.antMatchers("/api/**").permitAll()
+			//je fais l'angular
+			
+//			.antMatchers("/api/compte").permitAll()
+//			.antMatchers("/api/eleve/**").permitAll()
+//			.antMatchers("/api/prof").hasAnyRole("PROF","ADMIN")
+//			.antMatchers("/api/prof/{id}").hasAnyRole("PROF","ADMIN")
+//			.antMatchers("/api/compte/admin").hasAnyRole("ADMIN")
+//			.antMatchers("/api/eleve/edit").hasAnyRole("ADMIN")
+//			.antMatchers("/api/compte/prof").hasAnyRole("PROF","ADMIN")
+//			.antMatchers("/api/compte/eleve").hasAnyRole("ELEVE", "ADMIN")
 			
 			.antMatchers("/api/compte/**").authenticated()
 			.anyRequest().denyAll()

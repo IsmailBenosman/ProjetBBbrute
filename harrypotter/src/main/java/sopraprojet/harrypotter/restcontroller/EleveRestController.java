@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.util.ReflectionUtils;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -35,28 +36,31 @@ import sopraprojet.harrypotter.service.EleveService;
 
 @RestController
 @RequestMapping("/api/eleve")
+@CrossOrigin(origins="*")
 public class EleveRestController {
 
 	@Autowired
 	EleveRepository eleveRepo;
 	@Autowired
 	EleveService eleveService;
-
+	
+	@JsonView(JsonViews.Maison.class)
 	@GetMapping("")
 	public List<Eleve> lesEleves() {
 		return eleveService.getAll();
 	}
+	@JsonView(JsonViews.Common.class)
 	@GetMapping("/{id}")
 	public Eleve getById(@PathVariable Integer id) {
 		return eleveService.getById(id);
 	}
-
+	@JsonView(JsonViews.Common.class)
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable Integer id) {
 		eleveService.delete(id);
 	}
-
+	@JsonView(JsonViews.Common.class)
 	private Eleve createOrUpdate(Eleve eleve, BindingResult br) {
 		if (br.hasErrors()) {
 			throw new EleveException();
