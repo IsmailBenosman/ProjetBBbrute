@@ -7,7 +7,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import sopraprojet.harrypotter.compte.Admin;
 import sopraprojet.harrypotter.compte.Compte;
+import sopraprojet.harrypotter.service.AdminService;
 import sopraprojet.harrypotter.service.CompteService;
 
 @RestController
@@ -15,8 +17,10 @@ import sopraprojet.harrypotter.service.CompteService;
 public class HomeRestController {
 
 	@Autowired
-	
 	CompteService compteService; 
+	@Autowired
+	AdminService adminService;
+	
 	@GetMapping("")
 	public String hello() {
 		return ("<h1>Hello</h1>");
@@ -33,8 +37,7 @@ public class HomeRestController {
 	}
 
 	@GetMapping("/prof")
-	public String prof() {
-		return ("<h1>Hello prof</h1>");
+	public List<Admin> lesAdmin() {
+		return adminService.getAll();
 	}
-
 }

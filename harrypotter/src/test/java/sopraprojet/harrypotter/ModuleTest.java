@@ -10,12 +10,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Commit;
 
+import sopraprojet.harrypotter.compte.Admin;
 import sopraprojet.harrypotter.compte.Eleve;
 import sopraprojet.harrypotter.compte.Prof;
 import sopraprojet.harrypotter.ecole.Cours;
 import sopraprojet.harrypotter.ecole.InscriptionCours;
 import sopraprojet.harrypotter.ecole.Maison;
 import sopraprojet.harrypotter.ecole.Modules;
+import sopraprojet.harrypotter.service.AdminService;
 import sopraprojet.harrypotter.service.CoursService;
 import sopraprojet.harrypotter.service.EleveService;
 import sopraprojet.harrypotter.service.InscriptionCoursService;
@@ -34,7 +36,8 @@ class ModuleTest {
 	CoursService coursService;
 	@Autowired
 	EleveService eleveService;
-	
+	@Autowired
+	AdminService adminService;
 	@Autowired
 	MaisonService maisonService;
 	@Autowired
@@ -51,6 +54,7 @@ class ModuleTest {
 		Maison m4 = new Maison("Poufsouffle");
 		Eleve e1 = new Eleve("Pierson", "Robin", "testing", "rob", LocalDate.parse("1997-03-18"), 0,m2);
 		Eleve e2 = new Eleve("Vong", "Michel", "michelTest", "michel", LocalDate.parse("1992-03-18"), 0,m4);
+		Admin a = new Admin("Abid", "Jordan", "jojo", "jojo", LocalDate.parse("1988-06-10"),1000000, m4);
 		Prof p1 = new Prof("Pinel","Matthieu", "mattTest","matt", LocalDate.parse("1998-02-23"),10000,m1);
 		Cours co = new Cours("Histoire de la magie", p1);
 		Cours co1 = new Cours("Métamorphose", p1);
@@ -70,6 +74,7 @@ class ModuleTest {
 		eleveService.create(e1);
 		eleveService.create(e2);
 		profService.create(p1);
+		adminService.create(a);
 		coursService.create(co);
 		coursService.create(co1);
 		coursService.create(co2);
@@ -85,6 +90,7 @@ class ModuleTest {
 		moduleService.create(m44);
 		moduleService.create(m55);
 		System.out.println(moduleService.moyenne(e2));
+		moduleService.getEleveWithMoyenne();
 	}
 
 }
