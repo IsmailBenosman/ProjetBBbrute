@@ -12,6 +12,9 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Past;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import sopraprojet.harrypotter.boutique.Panier;
@@ -22,7 +25,8 @@ import sopraprojet.harrypotter.ecole.Maison;
 @DiscriminatorValue("prof")
 @Table(name = "prof")
 public class Prof extends Compte {
-	
+
+	@Cascade(CascadeType.REMOVE)
 	@OneToMany(mappedBy = "module")
 	private List<Cours> uE;
 

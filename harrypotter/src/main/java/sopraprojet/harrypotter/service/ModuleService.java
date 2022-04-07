@@ -1,5 +1,6 @@
 package sopraprojet.harrypotter.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,9 @@ public class ModuleService {
 	@Autowired
 	private ModuleRepository moduleRepository;
 
+	@Autowired
+	private EleveService eleveService;
+	
 	public void create(Modules e) {
 		moduleRepository.save(e);
 	}
@@ -53,7 +57,18 @@ public class ModuleService {
 
 	public int moyenne(Eleve eleve) {
 		return moduleRepository.moyenneByEleve(eleve);
-	}
+		}
 	
+	public void getEleveWithMoyenne(){
+		List moyenne = new ArrayList();
+		List<Modules> modules = getAll();
+		
+		List<Eleve> eleves = eleveService.getAll();
+		for (Eleve el:eleves) {
+			int moy= moyenne(el);
+			moyenne.add(moy);
+		}
+		System.out.println(moyenne);
+	}
 
 }
