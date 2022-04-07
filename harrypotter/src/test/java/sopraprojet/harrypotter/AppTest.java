@@ -6,6 +6,7 @@ import java.time.LocalDate;
 
 import javax.transaction.Transactional;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -27,7 +28,7 @@ class AppTest {
 	
 	@Autowired
 	MaisonService maisonService;
-	
+	@Disabled
 	@Test
 	
 	@Commit
@@ -43,7 +44,7 @@ class AppTest {
 		eleveService.create(e1);
 		eleveService.create(e2);
 	}
-
+	@Disabled
 	@Test
 	void eleveservicetest() {
 		assertNotNull(eleveService);

@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -25,7 +26,7 @@ class LivraisonTest {
 	
 	@Autowired
 	BoutiqueService boutiqueService;
-	
+	@Disabled
 	@Test
 	@Transactional
 	@Commit
