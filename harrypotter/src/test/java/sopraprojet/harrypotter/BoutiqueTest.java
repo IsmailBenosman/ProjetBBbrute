@@ -27,7 +27,7 @@ class BoutiqueTest {
 	@Autowired
 	ProduitService produitService;
 	
-
+	@Disabled
 	@Test
 	@Transactional
 	@Commit
@@ -37,12 +37,12 @@ class BoutiqueTest {
 
 	}
 	
-
+	@Disabled
 	@Test
 	void boutiqueservicetest() {
 		assertNotNull(boutiqueService);
 	}
-
+	@Disabled
 	@Test
 	@Transactional
 	@Commit
@@ -52,7 +52,7 @@ class BoutiqueTest {
 		boutiqueService.create(boutique);
 		produitService.create(produit);
 	}
-
+	@Disabled
 	@Test
 	void produitservicetest() {
 		assertNotNull(produitService);
