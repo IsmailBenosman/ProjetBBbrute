@@ -4,6 +4,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import sopraprojet.harrypotter.boutique.Boutique;
 import sopraprojet.harrypotter.boutique.Produit;
 import sopraprojet.harrypotter.exception.ModuleException;
 import sopraprojet.harrypotter.repositories.ProduitRepository;
@@ -35,16 +36,21 @@ public class ProduitService {
 	}
 	
 	public void delete(Produit p) {
-		produitRepository.delete(p);
+		delete(p.getId());
 	}
 
 	public void delete(Integer id) {
-		produitRepository.delete(getById(id));
+		produitRepository.deleteById(id);
 		
 	}
 
 	public Produit save(Produit produit) {
 		return	produitRepository.save(produit);
+	}
+
+	public List<Produit> findAllByBoutique(Boutique b) {
+		return	produitRepository.findByBoutique(b);
+
 	}
 
 }

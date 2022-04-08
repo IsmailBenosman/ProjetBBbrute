@@ -22,62 +22,50 @@ import com.fasterxml.jackson.annotation.JsonView;
 
 import sopraprojet.harrypotter.Json.JsonViews;
 import sopraprojet.harrypotter.boutique.Boutique;
-import sopraprojet.harrypotter.boutique.Produit;
-import sopraprojet.harrypotter.exception.EvenementException;
-import sopraprojet.harrypotter.exception.ProduitException;
+import sopraprojet.harrypotter.exception.BoutiqueException;
 import sopraprojet.harrypotter.service.BoutiqueService;
-import sopraprojet.harrypotter.service.ProduitService;
 
 @RestController
-@RequestMapping("/api/catalogue")
+@RequestMapping("/api/boutiques")
 @CrossOrigin(origins="*")
-public class ProduitRestController {
+public class BoutiqueRestController {
+
 
 	@Autowired
-	private BoutiqueService boutiqueService;	
-	@Autowired
-	private ProduitService produitService;
+	private BoutiqueService boutiqueService;
 	
 	@JsonView(JsonViews.ProduitWithBoutique.class)
 	@GetMapping("")
-	public List<Produit> getAll() {
-		return produitService.getAll();
-	}
-	@JsonView(JsonViews.ProduitWithBoutique.class)
-	@GetMapping("/boutique/{id}")
-	public List<Produit> getAllByBoutique(@PathVariable Integer id) {
-		Boutique b = boutiqueService.getById(id);
-		return produitService.findAllByBoutique(b);
+	public List<Boutique> getAll() {
+		return boutiqueService.getAll();
 	}
 	
-	private Produit createOrUpdate(Produit produit, BindingResult br) {
+	private Boutique createOrUpdate(Boutique boutique, BindingResult br) {
 		if (br.hasErrors()) {
-			throw new ProduitException();
+			throw new BoutiqueException();
 		}
-		return produitService.save(produit);
+		return boutiqueService.save(boutique);
 	}
 	
 	@JsonView(JsonViews.Common.class)
 	@PostMapping("")
 	@ResponseStatus(code = HttpStatus.CREATED)
-	public Produit create(@Valid @RequestBody Produit produit, BindingResult br) {
-		return createOrUpdate(produit, br);
+	public Boutique create(@Valid @RequestBody Boutique boutique, BindingResult br) {
+		return createOrUpdate(boutique, br);
 	}
 	
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable Integer id) {
-		produitService.delete(id);
+		boutiqueService.delete(id);
 	}
 
 	@JsonView(JsonViews.Common.class)
 	@PutMapping("/{id}")
-	public Produit update(@PathVariable Integer id, @Valid @RequestBody Produit produit,
+	public Boutique update(@PathVariable Integer id, @Valid @RequestBody Boutique boutique,
 			BindingResult br) {
-		produit.setId(id);
-		return createOrUpdate(produit, br);
+		boutique.setId(id);
+		return createOrUpdate(boutique, br);
 	}
 		
-
-	
 }

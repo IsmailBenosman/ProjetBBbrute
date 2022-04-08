@@ -41,8 +41,11 @@ public class BoutiqueService {
 		return boutiqueRepository.save(boutique);
 	}
 	
+	public void delete(Integer id) {
+		boutiqueRepository.deleteById(id);
+	}
 	public void delete(Boutique b) {
-		boutiqueRepository.delete(b);
+		delete(b.getId());
 	}
 	
 	public void deleteById(Integer id) {
