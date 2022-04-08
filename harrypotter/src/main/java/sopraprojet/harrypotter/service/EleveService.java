@@ -65,6 +65,7 @@ public class EleveService {
 
 
 	public void delete(Eleve e) {
+		//moduleRepository.deleteByEleve(e);
 		eleveRepository.delete(e);
 	}
 	public void delete(Integer id) {

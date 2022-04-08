@@ -1,6 +1,10 @@
 package sopraprojet.harrypotter;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 import javax.transaction.Transactional;
 
@@ -13,12 +17,22 @@ import org.springframework.test.annotation.Commit;
 
 import sopraprojet.harrypotter.boutique.Boutique;
 import sopraprojet.harrypotter.boutique.Categorie;
+import sopraprojet.harrypotter.boutique.Livraison;
 import sopraprojet.harrypotter.boutique.Produit;
 import sopraprojet.harrypotter.compte.Admin;
 import sopraprojet.harrypotter.compte.Eleve;
 import sopraprojet.harrypotter.compte.Prof;
+import sopraprojet.harrypotter.ecole.Cours;
+import sopraprojet.harrypotter.ecole.Evenement;
+import sopraprojet.harrypotter.ecole.InscriptionCours;
 import sopraprojet.harrypotter.ecole.Maison;
+import sopraprojet.harrypotter.ecole.Modules;
 import sopraprojet.harrypotter.repositories.BoutiqueRepository;
+import sopraprojet.harrypotter.repositories.CoursRepository;
+import sopraprojet.harrypotter.repositories.EvenementRepository;
+import sopraprojet.harrypotter.repositories.InscriptionCoursRepository;
+import sopraprojet.harrypotter.repositories.LivraisonRepository;
+import sopraprojet.harrypotter.repositories.ModuleRepository;
 import sopraprojet.harrypotter.repositories.ProfRepository;
 import sopraprojet.harrypotter.service.AdminService;
 import sopraprojet.harrypotter.service.BoutiqueService;
@@ -54,6 +68,16 @@ class AuthentificationTests {
 	private BoutiqueService boutiqueS;
 	@Autowired
 	private BoutiqueRepository boutiqueR;
+	@Autowired
+	private ModuleRepository moduleR;
+	@Autowired
+	private CoursRepository coursR;
+	@Autowired 
+	InscriptionCoursRepository inscriptionR;
+	@Autowired
+	EvenementRepository eventR;
+	@Autowired
+	LivraisonRepository livraisonR;
 
 
 	@Disabled
@@ -96,33 +120,66 @@ class AuthentificationTests {
 		
 		Eleve e1 = new Eleve("Robin", "Pierson", "Rob", passwordEncoder.encode("Rob"), null, 0, m1);
 		eService.create(e1);
-		
 		Eleve e2 = new Eleve("Michel", "Vong", "Mich", passwordEncoder.encode("Mich"), null, 0, m3);
 		eService.create(e2);
-		
 		Eleve e3 = new Eleve("Pauline", "Baccelli", "Popo", passwordEncoder.encode("Popo"), null, 0, m4);
 		eService.create(e3);
-		
 		Eleve e4 = new Eleve("Anne", "Tournillon", "Anne", passwordEncoder.encode("Anne"), null, 0, m2);
 		eService.create(e4);
-		
-		
+		Eleve e5 = new Eleve("Anais", "Clavel-L'Haridon", "Anais", passwordEncoder.encode("Anais"), null, 0, m4);
+		eService.create(e5);
+		Eleve e6 = new Eleve("Hugo", "Michel", "Hugo", passwordEncoder.encode("Hugo"), null, 0, m3);
+		eService.create(e6);
 		Prof p1 = new Prof("Pinel","Matthieu", "Matthieu",passwordEncoder.encode("Matthieu"), LocalDate.parse("1998-02-23"),10000,m1);
 		pRepo.save(p1);
-		
 		Prof p2 = new Prof("Benosman","Ismail", "Ismail",passwordEncoder.encode("Ismail"), LocalDate.parse("1996-02-16"),10000,m4);
 		pRepo.save(p2);
-		
 		Prof p3 = new Prof("Ye","Elisabeth", "Elisabeth",passwordEncoder.encode("Elisabeth"), LocalDate.parse("1996-10-15"),10000,m3);
-		pRepo.save(p3);
-		
+		pRepo.save(p3);	
 		Prof p4 = new Prof("Gozlan","Olivier", "Olivier",passwordEncoder.encode("Olivier"), LocalDate.parse("1996-10-15"),10000,m2);
 		pRepo.save(p4);
 		
 		
 		Admin a1 = new Admin("Abid","Jordan", "Jordan",passwordEncoder.encode("Jordan"), LocalDate.parse("1998-02-23"),10000,m2);
 		aService.create(a1);
-		
+		Cours co = new Cours("Histoire de la magie", p1);
+		Cours co1 = new Cours("Métamorphose", p1);
+		Cours co2 = new Cours("Défense", p1);
+		Cours co3 = new Cours("Initiation au balai", p2);
+		Cours co4 = new Cours("Potions", p2);
+		Cours co5 = new Cours("Soins aux creatures magiques", p2);
+		Cours co6 = new Cours("Divination", p3);
+		Cours co7 = new Cours("Astronomie", p3);
+		Cours co8 = new Cours("Arithmancie", p3);
+		Modules m = new Modules(co, 14, "Sur la bonne voie",e1);
+		Modules m11 = new Modules(co1, 11, "Passable",e1);
+		Modules m12 = new Modules(co2, 5, "Aie",e1);
+		Modules m21 = new Modules(co, 18, "Excellent",e2);
+		Modules m22 = new Modules(co1, 13, "Pas mal",e2);
+		Modules m23 = new Modules(co2, 2, "Tu viendras me voir",e2);
+		Modules m31 = new Modules(co3,7,"Il faut reprendre ça",e3);
+		Modules m32 = new Modules(co4,16,"Tres bien",e3);
+		Modules m33 = new Modules(co5,19,"Tu es faites pour t'occuper des animaux",e3);
+		Modules m41 = new Modules(co6,17,"Ton esprit s'est revele",e5);
+		Modules m42 = new Modules(co7,9,"Reprends un peu le cours et ça va le faire",e5);
+		Modules m43 = new Modules(co8,16,"Excellent travail",e5);
+		Modules m51 = new Modules(co6,6,"Ton esprit est trop terre a terre",e6);
+		Modules m52 = new Modules(co7,19,"L'espace n'a plus de secret pour toi",e6);
+		Modules m53 = new Modules(co8,16,"On voit que tu aimes les maths",e6);
+		InscriptionCours i1 = new InscriptionCours(co, e1);
+		InscriptionCours i2 = new InscriptionCours(co, e2);
+		InscriptionCours i3 = new InscriptionCours(co3, e3);
+		InscriptionCours i4 = new InscriptionCours(co3, e4);
+		InscriptionCours i5 = new InscriptionCours(co2, e1);
+		InscriptionCours i6 = new InscriptionCours(co2, e4);
+		InscriptionCours i7 = new InscriptionCours(co5, e2);
+		InscriptionCours i8 = new InscriptionCours(co5, e3);
+		InscriptionCours i9 = new InscriptionCours(co6, e5);
+		InscriptionCours i10 = new InscriptionCours(co7, e5);
+		InscriptionCours i11 = new InscriptionCours(co8, e5);
+		InscriptionCours i12 = new InscriptionCours(co6, e6);
+		InscriptionCours i13 = new InscriptionCours(co7, e6);
+		InscriptionCours i14 = new InscriptionCours(co8, e6);
 		Boutique b1= new Boutique(Categorie.Balais,"Magasin d’accessoires de Quidditch "," 24 chemin de traverse" );
 		Boutique b2= new Boutique(Categorie.Herboristerie,"L’apothicaire "," 37 chemin de traverse" );
 		Boutique b3= new Boutique(Categorie.Bar,"Le Chaudron Baveur "," 1 chemin de traverse" );
@@ -210,26 +267,115 @@ class AuthentificationTests {
 		Produit produit51= new Produit(b6,"Le rat gris" ,10, "C'est la variété de rat à laquelle Croûtard appartient.");
 		Produit produit52= new Produit(b6,"Le triton à double queue" ,10, "Le triton à double queue est un animal de compagnie des sorciers.");
 		Produit produit53= new Produit(b7,"Baguette de Chadwick Boot" ,10, "Frêne épineux, corne de serpent cordnu");
-		/*
-		 * Produit produit54= new Produit(b7,"Baguette de W " ,10,
-		 * "Le triton à double queue est un animal de compagnie des sorciers."); Produit
-		 * produit55= new Produit(b7,"Baguette de " ,10,
-		 * "Le triton à double queue est un animal de compagnie des sorciers."); Produit
-		 * produit56= new Produit(b7,"Baguette de " ,10,
-		 * "Le triton à double queue est un animal de compagnie des sorciers."); Produit
-		 * produit57= new Produit(b7,"Baguette de " ,10,
-		 * "Le triton à double queue est un animal de compagnie des sorciers."); Produit
-		 * produit58= new Produit(b7,"Baguette de " ,10,
-		 * "Le triton à double queue est un animal de compagnie des sorciers."); Produit
-		 * produit59= new Produit(b7,"Baguette de " ,10,
-		 * "Le triton à double queue est un animal de compagnie des sorciers."); Produit
-		 * produit60= new Produit(b7,"Baguette de " ,10,
-		 * "Le triton à double queue est un animal de compagnie des sorciers."); Produit
-		 * produit61= new Produit(b7,"Baguette de " ,10,
-		 * "Le triton à double queue est un animal de compagnie des sorciers."); Produit
-		 * produit62= new Produit(b7,"Baguette de " ,10,
-		 * "Le triton à double queue est un animal de compagnie des sorciers.");
-		 */
+		Produit produit54= new Produit(b7,"Baguette de W " ,10,
+				  "Le triton à double queue est un animal de compagnie des sorciers.");
+				  Produit produit55= new Produit(b7,"Baguette de " ,10,
+				  "Le triton à double queue est un animal de compagnie des sorciers.");
+				  Produit produit56= new Produit(b7,"Baguette de " ,10,
+				  "Le triton à double queue est un animal de compagnie des sorciers."); 
+				  Produit produit57= new Produit(b7,"Baguette de " ,10,
+				  "Le triton à double queue est un animal de compagnie des sorciers.");
+				  Produit produit58= new Produit(b7,"Baguette de " ,10,
+				  "Le triton à double queue est un animal de compagnie des sorciers."); Produit
+				  produit59= new Produit(b7,"Baguette de " ,10,
+				  "Le triton à double queue est un animal de compagnie des sorciers."); Produit
+				  produit60= new Produit(b7,"Baguette de " ,10,
+				  "Le triton à double queue est un animal de compagnie des sorciers."); Produit
+				  produit61= new Produit(b7,"Baguette de " ,10,
+				  "Le triton à double queue est un animal de compagnie des sorciers."); Produit
+				  produit62= new Produit(b7,"Baguette de " ,10,
+				  "Le triton à double queue est un animal de compagnie des sorciers.");
+		Produit produit89 = new Produit(b2, "Menthe poivrée", 3.60 ,"Une plante très utilisée pour les confiseries");
+		Produit produit90 = new Produit(b2, "Valériane", 6.50 ,"Un bon remède naturel");
+		Produit produit91 = new Produit(b2, "Têtes de coquelicot", 7.25 ,"Utile pour des potions du sommeil ou d'amnésie");
+		Produit produit92 = new Produit(b2, "Belladone", 20.50 ,"Manger 6 baies de cette plante est mortel");
+		Produit produit93 = new Produit(b2, "Aconit", 5.50 ,"Plante très toxique");
+		Produit produit94 = new Produit(b2, "La Digitale", 6.50 ,"Plante vénéneuse au toucher");
+		Produit produit95 = new Produit(b2, "Branchiflore", 11 ,"Une plante qui permet de respirer sous l'eau");
+		
+		
+		  
+		 
+		Produit produit96 = new Produit(b3, "Bieraubeurre", 3.50 ,"Un grand classique de la maison");
+		Produit produit97 = new Produit(b3, "Jus de citrouille", 2.50 ,"Un jus très prisé des sorciers");
+		Produit produit98 = new Produit(b3, "Jus d'oeuillet", 3.25 ,"Un jus vitaminé qui pétille");
+		Produit produit99 = new Produit(b3, "Whisky pur feu", 5.50 ,"Un brevage très alcoolisé");
+		Produit produit100 = new Produit(b3, "Cognac", 7 ,"Un tord-boyau qui purifie");
+		Produit produit101 = new Produit(b4, "Chroniques de Lockhart vol1", 15 ,"Un best-seller sur le grand Guildoroy Lockhart");
+		Produit produit102 = new Produit(b4, "Chroniques de Lockhart vol2", 15 ,"La suite du best-seller");
+		Produit produit103 = new Produit(b4, "Chroniques de Lockhart vol3", 15 ,"Epilogue du best-seller");
+		Produit produit104 = new Produit(b4, "Monstrueux livre des monstres", 11.50 ,"Tout savoir sur les créatures magiques");
+		Produit produit105 = new Produit(b4, "Histoire de sang-mele", 12 ,"Témoignages d'un sang-mele");
+		Produit produit106 = new Produit(b5, "Compte sorcier", 3 ,"Un compte bancaire pour tout sorcier");
+		Produit produit107 = new Produit(b5, "Compte sage", 2 ,"Un compte bancaire pour plus de 60 ans");
+		Produit produit108 = new Produit(b5, "Compte premium", 7 ,"Un compte bancaire pour les revenus aises");
+		Produit produit109 = new Produit(b5, "Compte aurore", 2 ,"Un compte bancaire pour les aurores");
+		
+		Produit produit110 = new Produit(b8, "Oreilles a rallonge", 9 ,"Pour écouter à distance");
+		Produit produit111 = new Produit(b8, "Marécage portable", 6 ,"Un petit coin de nature à portee de main");
+		Produit produit112 = new Produit(b8, "Pendu réutilisable", 3 ,"Trouvez le bon sort ou il aura la corde au cou");
+		Produit produit113 = new Produit(b8, "Baguette farceuse", 7.50 ,"Baguette qui se transforme quand est utilise");
+		Produit produit114 = new Produit(b8, "Cartes pipees", 2 ,"Pour faire des tours incroyables");
+		Produit produit115 = new Produit(b9, "Cranes humains", 10 ,"Plus glauque tu meurs");
+		Produit produit116 = new Produit(b9, "Main de la gloire", 6 ,"Reserve au bonne poigne");
+		Produit produit117 = new Produit(b9, "Gros oeil de verre", 4 ,"Envie d'un troiseme oeil ?");
+		Produit produit118 = new Produit(b9, "Jeu de cartes ensanglentes", 2.50 ,"Pour les soires gore");
+		Produit produit119 = new Produit(b10, "Potion de sommeil", 5 ,"Permet de dormir sur ses deux oreilles");
+		Produit produit120 = new Produit(b10, "Potion de metamorphose", 6 ,"Transformez vous en ce que vous voulez");
+		Produit produit121 = new Produit(b10, "Potion d'amnesie", 9 ,"Perte de la memoire pendant 2 heures");
+		Produit produit122 = new Produit(b10, "Filtre d'amour", 15 ,"Votre moitie est dingue de vous pendant 1 journee");
+		Produit produit123 = new Produit(b10, "Potion du silence", 3.50 ,"Aucun son ne sortira de votre bouche durant 3h");
+		Produit produit124 = new Produit(b11, "Rat des champs", 4 ,"Un rat sauvage tres farouche");
+		Produit produit125 = new Produit(b11, "Rat des villes", 4.50 ,"Un rat tres casanier");
+		/*Produit produit126 = new Produit(b11, "Grenouille", 5 ,"Un animal docile et attachant");
+		Produit produit127 = new Produit(b11, "Crapaud", 5.50 ,"Un animal repoussant au regard mais affectueux");
+		Produit produit128 = new Produit(b11, "Chat", 8 ,"Le plus mignon des animaux");
+		Produit produit129 = new Produit(b11, "Hibou", 10 ,"Un animal messager tres fidele");
+		Produit produit130 = new Produit(b12, "Robe de sorcier", 15 ,"Une tenue tres prisee des sorciers");
+		Produit produit131 = new Produit(b12, "Chapeau", 6 ,"Couvre-chef avec un look magique");
+		Produit produit132 = new Produit(b12, "Blazer de poudlard", 18 ,"Costume saillant et chic");
+		Produit produit133 = new Produit(b12, "Pantalon", 12 ,"Un pantalon sobre et chic");
+		Produit produit134 = new Produit(b13, "Echarpe de Griffondor", 7 ,"Une echarpe a l'effigie des rouges");
+		Produit produit135 = new Produit(b13, "Echarpe de Serpentard", 7 ,"Une echarpe a l'effigie des verts");
+		Produit produit136 = new Produit(b13, "Echarpe de Serdaigle", 7 ,"Une echarpe a l'effigie des bleus");
+		Produit produit137 = new Produit(b13, "Echarpe de Poufsouffle", 7 ,"Une echarpe a l'effigie des jaunes");
+		Produit produit138 = new Produit(b14, "Poncho", 10 ,"Un look hispanique");
+		Produit produit139 = new Produit(b14, "Salopette", 14 ,"Gutten tag");
+		Produit produit140 = new Produit(b14, "Mariniere", 8 ,"Un look so frenchie");
+		Produit produit141 = new Produit(b15, "Jupe", 13 ,"Une jupe elegante et raffinee");
+		Produit produit142 = new Produit(b15, "Ceinture", 4 ,"Pour rester classe en toute circonstance");
+		Produit produit143 = new Produit(b15, "Chaussettes", 6.50 ,"Une paire de chaussettes tout ce qu'il y a de plus banal");*/
+		
+		Evenement event1 = new Evenement("Bal de fin d'annee",LocalDate.parse("2023-07-28"), LocalTime.of(23, 0,0));
+		Evenement event2 = new Evenement("Tournoi des 4 Maisons",LocalDate.parse("2022-09-03"), LocalTime.of(14,30,0));
+		Evenement event3 = new Evenement("Finale de Quidditch ",LocalDate.parse("2022-06-01"), LocalTime.of(21, 0,0));
+		Evenement event4 = new Evenement("Banquet de Noel",LocalDate.parse("2022-12-20"), LocalTime.of(20,30,0));
+		List<Eleve> participant2 = new ArrayList();
+		List<Eleve> participant3 = new ArrayList();
+		Collections.addAll(participant2, e1,e2,e3,e4);
+		Collections.addAll(participant3, e1,e2,e3,e4,e5,e6);
+		event1.setParticipants(participant3);
+		event2.setParticipants(participant2);
+		event3.setParticipants(participant3);
+		List<Livraison> modes = new ArrayList();
+		Livraison livraison = new Livraison("LaPoste", 0.50, "Livraison sous 14 jours");
+		Livraison livraison1 = new Livraison("Hiboux", 5.20, "Livraison sous 7 jours");
+		Livraison livraison2= new Livraison("Dragon", 7.80, "Livraison sous 3 jours");
+		Livraison livraison3 = new Livraison("Elfe", 10.99, "Livraison dans l'heure");
+		Collections.addAll(modes, livraison,livraison1,livraison2,livraison3);
+		b1.setModeLivraison(modes);
+		b4.setModeLivraison(modes);
+		b8.setModeLivraison(modes);
+		b9.setModeLivraison(modes);
+		b16.setModeLivraison(modes);
+		livraisonR.save(livraison);
+		livraisonR.save(livraison1);
+		livraisonR.save(livraison2);
+		livraisonR.save(livraison3);
+		eventR.save(event1);
+		eventR.save(event2);
+		eventR.save(event3);
+		eventR.save(event4);
 		produitS.save(produit1);
 		produitS.save(produit2);
 		produitS.save(produit3);
@@ -283,7 +429,109 @@ class AuthentificationTests {
 		produitS.save(produit50);
 		produitS.save(produit51);
 		produitS.save(produit52);
-		
+		produitS.save(produit53);
+		produitS.save(produit54);
+		produitS.save(produit55);
+		produitS.save(produit56);
+		produitS.save(produit57);
+		produitS.save(produit58);
+		produitS.save(produit59);
+		produitS.save(produit60);
+		produitS.save(produit61);
+		produitS.save(produit62);
+		produitS.save(produit89);
+		produitS.save(produit90);
+		produitS.save(produit91);
+		produitS.save(produit92);
+		produitS.save(produit93);
+		produitS.save(produit94);
+		produitS.save(produit95);
+		produitS.save(produit96);
+		produitS.save(produit97);
+		produitS.save(produit98);
+		produitS.save(produit99);
+		produitS.save(produit100);
+		produitS.save(produit101);
+		produitS.save(produit102);
+		produitS.save(produit103);
+		produitS.save(produit104);
+		produitS.save(produit105);
+		produitS.save(produit106);
+		produitS.save(produit107);
+		produitS.save(produit108);
+		produitS.save(produit109);
+		produitS.save(produit110);
+		produitS.save(produit111);
+		produitS.save(produit112);
+		produitS.save(produit113);
+		produitS.save(produit114);
+		produitS.save(produit115);
+		produitS.save(produit116);
+		produitS.save(produit117);
+		produitS.save(produit118);
+		produitS.save(produit119);
+		produitS.save(produit120);
+		produitS.save(produit121);
+		produitS.save(produit122);
+		produitS.save(produit123);
+		produitS.save(produit124);
+		produitS.save(produit125);
+		/*produitS.save(produit126);
+		produitS.save(produit127);
+		produitS.save(produit128);
+		produitS.save(produit129);
+		produitS.save(produit130);
+		produitS.save(produit131);
+		produitS.save(produit132);
+		produitS.save(produit133);
+		produitS.save(produit134);
+		produitS.save(produit135);
+		produitS.save(produit136);
+		produitS.save(produit137);
+		produitS.save(produit138);
+		produitS.save(produit139);
+		produitS.save(produit140);
+		produitS.save(produit141);
+		produitS.save(produit142);
+		produitS.save(produit143);*/
+		coursR.save(co);
+		coursR.save(co1);
+		coursR.save(co2);
+		coursR.save(co3);
+		coursR.save(co4);
+		coursR.save(co5);
+		coursR.save(co6);
+		coursR.save(co7);
+		coursR.save(co8);
+		moduleR.save(m);
+		moduleR.save(m11);
+		moduleR.save(m12);
+		moduleR.save(m21);
+		moduleR.save(m22);
+		moduleR.save(m23);
+		moduleR.save(m31);
+		moduleR.save(m32);
+		moduleR.save(m33);
+		moduleR.save(m41);
+		moduleR.save(m42);
+		moduleR.save(m43);
+		moduleR.save(m51);
+		moduleR.save(m52);
+		moduleR.save(m53);
+		inscriptionR.save(i1);
+		inscriptionR.save(i2);
+		inscriptionR.save(i3);
+		inscriptionR.save(i4);
+		inscriptionR.save(i5);
+		inscriptionR.save(i6);
+		inscriptionR.save(i7);
+		inscriptionR.save(i8);
+		inscriptionR.save(i9);
+		inscriptionR.save(i10);
+		inscriptionR.save(i11);
+		inscriptionR.save(i12);
+		inscriptionR.save(i13);
+		inscriptionR.save(i14);
 	}
 	
 	@Disabled
