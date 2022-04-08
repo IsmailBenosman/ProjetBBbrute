@@ -42,11 +42,11 @@ class ModuleTest {
 	MaisonService maisonService;
 	@Autowired
 	InscriptionCoursService inscriptioncoursService;
-	@Disabled
+	//@Disabled
 	@Test
 	@Transactional
 	@Commit
-	void ModuleTest() {
+	void CreationModuleTest() {
 	
 		Maison m1 = new Maison("Griffondor");
 		Maison m2 = new Maison("Serpentard");

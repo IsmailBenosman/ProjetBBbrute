@@ -50,6 +50,7 @@ public class Evenement {
 	@JsonView(JsonViews.Common.class)
 	private LocalTime heure;
 	
+	@JsonView(JsonViews.Common.class)
 	@ManyToMany
   	@JoinTable(
 			name="participant_event",
@@ -68,6 +69,7 @@ public class Evenement {
 		this.date = date;
 		this.heure = heure;
 	}
+	
 
 	public Integer getId() {
 		return id;

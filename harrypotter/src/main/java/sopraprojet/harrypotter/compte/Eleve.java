@@ -27,15 +27,15 @@ import sopraprojet.harrypotter.ecole.Modules;
 @Table(name = "eleve")
 public class Eleve extends Compte {
 	
-	@Cascade(CascadeType.DELETE)
+	//@Cascade(CascadeType.DELETE)
 	@OneToMany(mappedBy = "eleve")
 	private List<Modules> mesCours;
 	
-	@Cascade(CascadeType.DELETE)
+	//@Cascade(CascadeType.DELETE)
 	@ManyToMany(mappedBy = "participants")
 	private List<Evenement> event;
 	
-	@Cascade(CascadeType.DELETE)
+	//@Cascade(CascadeType.DELETE)
 	@OneToMany(mappedBy = "eleve")
 	private List<InscriptionCours> inscription;
 
