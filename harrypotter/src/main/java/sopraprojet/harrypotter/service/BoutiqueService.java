@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import sopraprojet.harrypotter.boutique.Boutique;
+import sopraprojet.harrypotter.boutique.Produit;
 import sopraprojet.harrypotter.exception.BoutiqueException;
 import sopraprojet.harrypotter.repositories.BoutiqueRepository;
 
@@ -51,4 +52,5 @@ public class BoutiqueService {
 	public void deleteById(Integer id) {
 		boutiqueRepository.delete(getById(id));
 	}
+
 }
