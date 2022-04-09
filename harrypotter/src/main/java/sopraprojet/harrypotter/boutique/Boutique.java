@@ -46,6 +46,7 @@ public class Boutique {
 	private String adresse;
 	
 	@OneToMany(mappedBy="boutique")
+	@JsonView(JsonViews.BoutiqueWithProduit.class)
 	private List<Produit> produits;
 	
 	@ManyToMany@JoinTable(name="mode_livraison", joinColumns=@JoinColumn(name="mode"),inverseJoinColumns=@JoinColumn(name="boutique"))

@@ -34,7 +34,7 @@ public class BoutiqueRestController {
 	@Autowired
 	private BoutiqueService boutiqueService;
 	
-	@JsonView(JsonViews.ProduitWithBoutique.class)
+	@JsonView(JsonViews.BoutiqueWithProduit.class)
 	@GetMapping("")
 	public List<Boutique> getAll() {
 		return boutiqueService.getAll();
@@ -47,7 +47,7 @@ public class BoutiqueRestController {
 		return boutiqueService.save(boutique);
 	}
 	
-	@JsonView(JsonViews.Common.class)
+	@JsonView(JsonViews.BoutiqueWithProduit.class)
 	@PostMapping("")
 	@ResponseStatus(code = HttpStatus.CREATED)
 	public Boutique create(@Valid @RequestBody Boutique boutique, BindingResult br) {
@@ -60,7 +60,7 @@ public class BoutiqueRestController {
 		boutiqueService.delete(id);
 	}
 
-	@JsonView(JsonViews.Common.class)
+	@JsonView(JsonViews.BoutiqueWithProduit.class)
 	@PutMapping("/{id}")
 	public Boutique update(@PathVariable Integer id, @Valid @RequestBody Boutique boutique,
 			BindingResult br) {
