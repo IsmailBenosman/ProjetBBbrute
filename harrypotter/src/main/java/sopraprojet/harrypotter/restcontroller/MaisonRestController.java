@@ -58,7 +58,7 @@ public class MaisonRestController {
 		return maisonService.getAll();
 	}
 
-	@JsonView(JsonViews.MaisonWithCompte.class)
+	@JsonView(JsonViews.Maison.class)
 	@GetMapping("/{id}")
 	public Maison getById(@PathVariable Integer id) {
 		return maisonService.getById(id);
