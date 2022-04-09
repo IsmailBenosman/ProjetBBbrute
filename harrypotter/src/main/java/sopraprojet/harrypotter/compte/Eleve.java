@@ -2,21 +2,16 @@ package sopraprojet.harrypotter.compte;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Past;
 
-import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.CascadeType;
+import com.fasterxml.jackson.annotation.JsonView;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import sopraprojet.harrypotter.boutique.Panier;
+import sopraprojet.harrypotter.Json.JsonViews;
 import sopraprojet.harrypotter.ecole.Evenement;
 import sopraprojet.harrypotter.ecole.InscriptionCours;
 import sopraprojet.harrypotter.ecole.Maison;
@@ -26,15 +21,17 @@ import sopraprojet.harrypotter.ecole.Modules;
 @DiscriminatorValue("eleve")
 @Table(name = "eleve")
 public class Eleve extends Compte {
-	
+	@JsonView(JsonViews.Cours.class)
 	//@Cascade(CascadeType.DELETE)
 	@OneToMany(mappedBy = "eleve")
 	private List<Modules> mesCours;
 	
+	@JsonView(JsonViews.ModuleWithEleve.class)
 	//@Cascade(CascadeType.DELETE)
 	@ManyToMany(mappedBy = "participants")
 	private List<Evenement> event;
 	
+	@JsonView(JsonViews.Cours.class)
 	//@Cascade(CascadeType.DELETE)
 	@OneToMany(mappedBy = "eleve")
 	private List<InscriptionCours> inscription;

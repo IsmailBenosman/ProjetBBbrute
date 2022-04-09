@@ -23,13 +23,13 @@ public class Maison {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	@JsonView(JsonViews.Maison.class)
+	@JsonView(JsonViews.Common.class)
 	private String nom;
 	@JsonView(JsonViews.Maison.class)
 	private int score;
 	
-	
-	@OneToMany(mappedBy="maison",cascade = CascadeType.ALL, orphanRemoval = true)
+	@JsonView(JsonViews.Maison.class)
+	@OneToMany(mappedBy="maison",cascade = CascadeType.ALL)
 	private List<Compte> comptes;
 
 	public Maison() {

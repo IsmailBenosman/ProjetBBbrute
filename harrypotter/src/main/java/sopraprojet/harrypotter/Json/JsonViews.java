@@ -56,5 +56,22 @@ public class JsonViews {
 	public static class BoutiqueWithProduit extends Common{
 
 	}
+
+	public static class Module extends Common{
+
+	}
+	public static class CoursWithProf extends Common{
+
+	}
+	public static class CoursWithModule extends Common{
+
+	}
+	public static class Cours extends Common{
+
+	}
+	public static class Inscription extends Common{
+
+	}
+
 	
 }

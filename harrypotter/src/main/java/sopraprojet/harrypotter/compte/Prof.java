@@ -27,7 +27,7 @@ import sopraprojet.harrypotter.ecole.Maison;
 public class Prof extends Compte {
 
 	//@Cascade(CascadeType.REMOVE)
-	@OneToMany(mappedBy = "module")
+	@OneToMany(mappedBy = "professeur")
 	private List<Cours> uE;
 
 	public Prof() {

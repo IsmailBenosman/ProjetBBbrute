@@ -27,7 +27,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import sopraprojet.harrypotter.Json.JsonViews;
-import sopraprojet.harrypotter.compte.Admin;
 import sopraprojet.harrypotter.compte.Eleve;
 import sopraprojet.harrypotter.exception.EleveException;
 import sopraprojet.harrypotter.repositories.EleveRepository;
@@ -54,12 +53,23 @@ public class EleveRestController {
 	public Eleve getById(@PathVariable Integer id) {
 		return eleveService.getById(id);
 	}
+	
+	
+	@JsonView(JsonViews.Cours.class)
+	@GetMapping("/cours/{id}")
+	public Eleve getByIdWithInscription(@PathVariable Integer id) {
+		return eleveService.getById(id);
+	}
+	
+	
 	@JsonView(JsonViews.Common.class)
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable Integer id) {
 		eleveService.delete(id);
 	}
+	
+	
 	@JsonView(JsonViews.Common.class)
 	private Eleve createOrUpdate(Eleve eleve, BindingResult br) {
 		if (br.hasErrors()) {
