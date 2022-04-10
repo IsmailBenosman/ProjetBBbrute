@@ -43,7 +43,7 @@ public class EleveRestController {
 	@Autowired
 	EleveService eleveService;
 	
-	@JsonView(JsonViews.Maison.class)
+	@JsonView(JsonViews.Common.class)
 	@GetMapping("")
 	public List<Eleve> lesEleves() {
 		return eleveService.getAll();

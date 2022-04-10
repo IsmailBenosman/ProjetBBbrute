@@ -36,12 +36,13 @@ public class ProfRestController {
 	ProfRepository ProfRepo;
 	@Autowired
 	ProfService profService;
-
+	
+	@JsonView(JsonViews.Compte.class)
 	@GetMapping("")
 	public List<Prof> getProf() {
 		return profService.getAll();
 	}
-	
+	@JsonView(JsonViews.Cours.class)
 	@GetMapping("/{id}")
 	public Prof getById(@PathVariable Integer id) {
 		return profService.getById(id);
