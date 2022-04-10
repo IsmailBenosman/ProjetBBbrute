@@ -212,25 +212,25 @@ class AuthentificationTests {
 		boutiqueS.create(b12);
 		boutiqueS.create(b14);
 		boutiqueS.create(b15);
-		boutiqueS.create(b16);
+		//boutiqueS.create(b16);
 		
 		Produit produit1= new Produit(b1,"Balétoile XXI", 200.0, "Le Balétoile XXI est un balai de course. Il est utilisé par l'équipe de Quidditch des États-Unis lors de la Coupe du Monde de Quidditch de 2014.");
 		Produit produit2= new Produit(b1,"La Bombe bleue", 200.0, "La Bombe bleue  est un balai familial sûr, stable et équipé d'une sirène antivol");
 		Produit produit3= new Produit(b1,"Le Brossdur 1", 200.0, "Le Brossdur 1 est un modèle de balais de course, produit en 1926 par la Compagnie des balais Brossdur.");
-		Produit produit4= new Produit(b1,"Le Brossdur 2", 200.0, "Le Brossdur 2 est un modèle de balais de course, produit en 1934 par la Compagnie des balais Brossdur.");
+		/*Produit produit4= new Produit(b1,"Le Brossdur 2", 200.0, "Le Brossdur 2 est un modèle de balais de course, produit en 1934 par la Compagnie des balais Brossdur.");
 		Produit produit5= new Produit(b1,"Le Brossdur 3", 200.0, "Le Brossdur 3 est un modèle de balais de course, produit en 1937 par la Compagnie des balais Brossdur.");
 		Produit produit6= new Produit(b1,"Le Brossdur 5", 200.0, "Le Brossdur 5 , aussi appelé Astiqueur 5, est un modèle de balais de course, produit par la Compagnie des balais Brossdur. Les jumeaux Weasley en étaient propriétaires");
 		Produit produit7= new Produit(b1,"Le Brossdur 6", 200.0, "Le Brossdur 6 est un modèle de balais de course, produit par la Compagnie des Balais Brossdur.");
 		Produit produit8= new Produit(b1,"Le Brossdur 7", 200.0, "Le Brossdur 7 est un modèle de balais de course, produit par la Compagnie des Balais Brossdur.");
 		Produit produit9= new Produit(b1,"Le Brossdur 11", 200.0, "Le Brossdur 11 (  Angl.  Cleansweep Eleven ) est un modèle de balais de course, produit par la Compagnie des balais Brossdur, capable de passer de 0 à 100 km/h en dix secondes.");
-		Produit produit10= new Produit(b1,"Le Comète 140", 200.0, "Le Comète 140 est un modèle de balais de course, produit par la Compagnie de la comète. Il doit le chiffre de son nom aux cent quarante exemplaires testés avant d'en lancer sa commercialisation.");
-		Produit produit11= new Produit(b1,"Le Comète 180", 200.0, "Le Comète 180 est un modèle de balais de course, produit en 1938 par la Compagnie de la comète. Il est le rival du Brossdur 2 et du Brossdur 3.");
+		*/Produit produit10= new Produit(b1,"Le Comète 140", 200.0, "Le Comète 140 est un modèle de balais de course, produit par la Compagnie de la comète. Il doit le chiffre de son nom aux cent quarante exemplaires testés avant d'en lancer sa commercialisation.");
+		/*Produit produit11= new Produit(b1,"Le Comète 180", 200.0, "Le Comète 180 est un modèle de balais de course, produit en 1938 par la Compagnie de la comète. Il est le rival du Brossdur 2 et du Brossdur 3.");
 		Produit produit12= new Produit(b1,"Le Comète 260", 200.0, "Le Comète 260 est un modèle de balais de course, produit par la Compagnie de la comète.");
 		Produit produit13= new Produit(b1,"Le Comète 290", 200.0, "Le Comète 290 est un modèle de balais de course, produit par la Compagnie de la comète.");
-		Produit produit14= new Produit(b1,"L'Éclair de Feu", 200.0, "L'Éclair de Feu est un balai volant sorti en 1993. C'est le balai le plus rapide au monde.");
-		Produit produit15= new Produit(b1,"L'Éclair de Feu Suprême", 200.0, "L'Éclair de Feu Suprême est un balai de course. Il est utilisé par l'équipe de Quidditch de Bulgarie lors de la Coupe du Monde de Quidditch de 2014.[1]");
+		*/Produit produit14= new Produit(b1,"L'Éclair de Feu", 200.0, "L'Éclair de Feu est un balai volant sorti en 1993. C'est le balai le plus rapide au monde.");
+		//Produit produit15= new Produit(b1,"L'Éclair de Feu Suprême", 200.0, "L'Éclair de Feu Suprême est un balai de course. Il est utilisé par l'équipe de Quidditch de Bulgarie lors de la Coupe du Monde de Quidditch de 2014.[1]");
 		Produit produit16= new Produit(b1,"L'Étoile filante", 200.0, "l'Étoile filante est produite en 1955 par la Compagnie des balais universels. Il s'agit alors du balai de course le moins cher du marché.");
-		Produit produit17= new Produit(b1,"Le Flèche d'Argent", 200.0, "Le Flèche d'Argent est un précurseur du balai de course et atteint des vitesses très supérieures au Lancechêne 79 et au Friselune.");
+		/*Produit produit17= new Produit(b1,"Le Flèche d'Argent", 200.0, "Le Flèche d'Argent est un précurseur du balai de course et atteint des vitesses très supérieures au Lancechêne 79 et au Friselune.");
 		Produit produit18= new Produit(b1,"Le Feuopoudre", 200.0, "Le Feuopoudre  est un modèle de balai de course, produit à partir de 1940 par la Compagnie Ellerby et Spudmore. Bien qu'étant un modèle très résistant, sa vitesse l'empêche de rivaliser avec les deux grandes marques de l'époque : Brossdur et Comète.");
 		Produit produit19= new Produit(b1,"Le Friselune", 200.0, "Le Friselune a représenté un bond en avant dans la construction des balais et, pendant longtemps, il fut très demandé par les joueurs de Quidditch. Son principal avantage était sa capacité à atteindre des altitudes importantes tout en restant contrôlable. ");
 		Produit produit20= new Produit(b1,"Le Lancechêne 79", 200.0, "Le Lancechêne 79 est nommé ainsi en référence à l'année de sa création, 1879. Il s'agit d'un balai conçu pour les vols d'endurance et la résistance aux vents violents. C'est maintenant un balai de collection très recherché");
@@ -239,14 +239,14 @@ class AuthentificationTests {
 		Produit produit23= new Produit(b1,"Le Nimbus 1001", 200.0, "Le Nimbus 1001 est un modèle de balais de course, produit par la Société des balais de course Nimbus. Successeur du Nimbus 1000, il a permis à la société de demeurer au premier rang.");
 		Produit produit24= new Produit(b1,"Le Nimbus 1500", 200.0, "Le Nimbus 1500 est un modèle de balais de course, produit par la Société des balais de course Nimbus. Il a permis à la société de demeurer au premier rang.");
 		Produit produit25= new Produit(b1,"Le Nimbus 1700", 200.0, "Le Nimbus 1700 est un modèle de balais de course, produit par la Société des balais de course Nimbus. Il a permis à la société de demeurer au premier rang.");
-		Produit produit26= new Produit(b1,"Le Nimbus 2000", 200.0, "Le Nimbus 2000 est un balai de course, le plus rapide des balais à sa sortie en 1991. L'année suivante, le Nimbus 2001 fut commercialisé et détrôna son frère.");
+		*/Produit produit26= new Produit(b1,"Le Nimbus 2000", 200.0, "Le Nimbus 2000 est un balai de course, le plus rapide des balais à sa sortie en 1991. L'année suivante, le Nimbus 2001 fut commercialisé et détrôna son frère.");
 		Produit produit27= new Produit(b1,"Le Nimbus 2001", 200.0, "Le Nimbus 2001 est le successeur du Nimbus 2000 en tant que balai de course. Il est le plus rapide des balais jusqu'à la sortie de l'Éclair de Feu l'année suivante, en 1993.");
-		Produit produit28= new Produit(b1,"Le Varápidos", 200.0, "Le Varápidos est un balai de course. Il est utilisé par l'équipe de Quidditch du Brésil lors de la Coupe du Monde de Quidditch de 2014.");
+		/*Produit produit28= new Produit(b1,"Le Varápidos", 200.0, "Le Varápidos est un balai de course. Il est utilisé par l'équipe de Quidditch du Brésil lors de la Coupe du Monde de Quidditch de 2014.");
 		Produit produit29= new Produit(b1,"Le Yajirushi", 200.0, "Le Yajirushi est un balai de course. Il est utilisé par l'équipe de Quidditch du Japon lors de la Coupe du Monde de Quidditch de 2014. Il a été révélé pour la première fois au cours de ce tournoi.");
-		Produit produit30= new Produit(b6,"Le Boursouf" ,200, "Le Boursouf est un charognard qui mange n'importe quoi avec sa longue langue extensible et notamment les restes de repas ou les araignées, mais il apprécie plus particulièrement les crottes de nez des sorciers,");
-		Produit produit31= new Produit(b6,"Le Boursouflet" ,200, "On dit du Boursouflet, qu'il est adorable, mignon et qu'il donne envie de le caresser. Les Boursouflets peuvent rouler sur eux-mêmes, émettre des cris aigus...");
+		*/Produit produit30= new Produit(b6,"Le Boursouf" ,200, "Le Boursouf est un charognard qui mange n'importe quoi avec sa longue langue extensible et notamment les restes de repas ou les araignées, mais il apprécie plus particulièrement les crottes de nez des sorciers,");
+		//Produit produit31= new Produit(b6,"Le Boursouflet" ,200, "On dit du Boursouflet, qu'il est adorable, mignon et qu'il donne envie de le caresser. Les Boursouflets peuvent rouler sur eux-mêmes, émettre des cris aigus...");
 		Produit produit32= new Produit(b6,"Le Chat Blanc" ,9, "Le chat blanc a souvent des beaux yeux bleus qui créent un contraste saisissant avec sa robe d'un blanc neige.");
-		Produit produit33= new Produit(b6,"Le Chat Tigré" ,9, "Le chat tigré est facilement reconnaissable grâce à sa robe rayée de couleur grise, marron ou rousse. Il est aussi appelé chat de gouttière.");
+		/*Produit produit33= new Produit(b6,"Le Chat Tigré" ,9, "Le chat tigré est facilement reconnaissable grâce à sa robe rayée de couleur grise, marron ou rousse. Il est aussi appelé chat de gouttière.");
 		Produit produit34= new Produit(b6,"Le Chat Noir" ,9, "Le chat noir est un animal de compagnie fidèle et agréable.");
 		Produit produit35= new Produit(b6,"Le Chat Roux" ,9, "Le chat roux est un magnifique chat roux taché de noir. Il est en vente à la Ménagerie magique pour neuf Gallions");
 		Produit produit36= new Produit(b6,"Le Chat Siamois" ,11, "Avec ses magnifiques yeux perçants, sa silhouette fine et sa tête triangulaire, le chat siamois est considéré par certains comme la plus belle race de félins.");
@@ -254,28 +254,28 @@ class AuthentificationTests {
 		Produit produit38= new Produit(b6,"Crapaud violet géant" ,5, "Le crapaud violet géant est un animal friand de mouches mortes et autres insectes.");
 		Produit produit39= new Produit(b6,"Le Crabe de Feu" ,5, "Le Crabe de Feu  malgré son nom ne ressemble non pas à un crabe mais à une tortue dont la carapace est incrustée de pierres précieuses.");
 		Produit produit40= new Produit(b6,"Le Fléreur" ,5, "Le Fléreur, également appelé Kneazle, est une petite créature poilue, proche du chat, connue pour son intelligence et sa clairvoyance. Originaire de Grande-Bretagne, l'animal est aujourd'hui présent dans le monde entier.");
-		Produit produit41= new Produit(b11,"La chouette des bois" ,10, "La chouette des bois possède une vision binoculaire ainsi qu'une audition directionnelle exceptionnelle. Ces atouts font d'elle un redoutable prédateur nocturne. Elle se nourrit essentiellement de petits rongeurs et de mulots.");
-		Produit produit42= new Produit(b11,"La chouette effraie" ,10, "La chouette effraie est très répandue en Europe. C'est un oiseau qui possède une ouïe très développée.");
+		*/Produit produit41= new Produit(b11,"La chouette des bois" ,10, "La chouette des bois possède une vision binoculaire ainsi qu'une audition directionnelle exceptionnelle. Ces atouts font d'elle un redoutable prédateur nocturne. Elle se nourrit essentiellement de petits rongeurs et de mulots.");
+		/*Produit produit42= new Produit(b11,"La chouette effraie" ,10, "La chouette effraie est très répandue en Europe. C'est un oiseau qui possède une ouïe très développée.");
 		Produit produit43= new Produit(b11,"La chouette hulotte" ,10, "La chouette hulotte a une ouïe très développée. Le mâle et la femelle communiquent en hululant longuement.");
 		Produit produit44= new Produit(b11,"houette lapone" ,10, "Errol (qui appartient à la famille Weasley ) est une chouette lapone.");
 		Produit produit45= new Produit(b11,"Le Grand-duc" ,10, "Le Grand-duc fait parti des animaux de compagnie dans le monde des sorciers.");
 		Produit produit46= new Produit(b11,"Le petit-duc" ,15, "Le petit-duc est un oiseau extrêmement agile qui se nourrit de lapins, de mulots, de rats, de souris et de reptiles.");
-		Produit produit47= new Produit(b6,"Lapin" ,10, "Les lapins sont des animaux de compagnie dans le monde des sorciers aussi bien que dans le monde des Moldus.");
+		*/Produit produit47= new Produit(b6,"Lapin" ,10, "Les lapins sont des animaux de compagnie dans le monde des sorciers aussi bien que dans le monde des Moldus.");
 		Produit produit48= new Produit(b6,"Le Musard" ,10, "Le Musard est un escargot géant qui change de couleur toutes les heures.");
-		Produit produit49= new Produit(b6,"Le Niffleur" ,10, "Le Niffleur est une petite créature à la fourrure noire qui a une prédilection pour tout ce qui brille.");
+		//Produit produit49= new Produit(b6,"Le Niffleur" ,10, "Le Niffleur est une petite créature à la fourrure noire qui a une prédilection pour tout ce qui brille.");
 		Produit produit50= new Produit(b6,"Le rat noir" ,10, "Le rat noir est apparemment plus intelligent que les autres rats.");
-		Produit produit51= new Produit(b6,"Le rat gris" ,10, "C'est la variété de rat à laquelle Croûtard appartient.");
+		/*Produit produit51= new Produit(b6,"Le rat gris" ,10, "C'est la variété de rat à laquelle Croûtard appartient.");
 		Produit produit52= new Produit(b6,"Le triton à double queue" ,10, "Le triton à double queue est un animal de compagnie des sorciers.");
-		Produit produit53= new Produit(b7,"Baguette de Chadwick Boot" ,10, "Frêne épineux, corne de serpent cordnu");
-		Produit produit54= new Produit(b7,"Baguette de W " ,10,
-				  "Le triton à double queue est un animal de compagnie des sorciers.");
-				  Produit produit55= new Produit(b7,"Baguette de " ,10,
-				  "Le triton à double queue est un animal de compagnie des sorciers.");
-				  Produit produit56= new Produit(b7,"Baguette de " ,10,
-				  "Le triton à double queue est un animal de compagnie des sorciers."); 
-				  Produit produit57= new Produit(b7,"Baguette de " ,10,
-				  "Le triton à double queue est un animal de compagnie des sorciers.");
-				  Produit produit58= new Produit(b7,"Baguette de " ,10,
+		*/Produit produit53= new Produit(b7,"Baguette de Chadwick Boot" ,10, "Frêne épineux, corne de serpent cordnu");
+		Produit produit54= new Produit(b7,"Baguette de Jacob " ,10,
+				  "Bois d'érable, ventricule de dragon");
+		Produit produit55= new Produit(b7,"Baguette de Marwood" ,10,
+				  "Bois de pommier, crin de licorne");
+		Produit produit56= new Produit(b7,"Baguette de Cattermole" ,10,
+				  "Bois de cerisier, cheveu de Vélane"); 
+		Produit produit57= new Produit(b7,"Baguette de Catogan" ,10,
+				  "Bois de prunellier, moustache de troll");
+				  /*Produit produit58= new Produit(b7,"Baguette de " ,10,
 				  "Le triton à double queue est un animal de compagnie des sorciers."); Produit
 				  produit59= new Produit(b7,"Baguette de " ,10,
 				  "Le triton à double queue est un animal de compagnie des sorciers."); Produit
@@ -285,7 +285,7 @@ class AuthentificationTests {
 				  "Le triton à double queue est un animal de compagnie des sorciers."); Produit
 				  produit62= new Produit(b7,"Baguette de " ,10,
 				  "Le triton à double queue est un animal de compagnie des sorciers.");
-		Produit produit89 = new Produit(b2, "Menthe poivrée", 3.60 ,"Une plante très utilisée pour les confiseries");
+		*/Produit produit89 = new Produit(b2, "Menthe poivrée", 3.60 ,"Une plante très utilisée pour les confiseries");
 		Produit produit90 = new Produit(b2, "Valériane", 6.50 ,"Un bon remède naturel");
 		Produit produit91 = new Produit(b2, "Têtes de coquelicot", 7.25 ,"Utile pour des potions du sommeil ou d'amnésie");
 		Produit produit92 = new Produit(b2, "Belladone", 20.50 ,"Manger 6 baies de cette plante est mortel");
@@ -327,14 +327,14 @@ class AuthentificationTests {
 		Produit produit123 = new Produit(b10, "Potion du silence", 3.50 ,"Aucun son ne sortira de votre bouche durant 3h");
 		Produit produit124 = new Produit(b11, "Rat des champs", 4 ,"Un rat sauvage tres farouche");
 		Produit produit125 = new Produit(b11, "Rat des villes", 4.50 ,"Un rat tres casanier");
-		/*Produit produit126 = new Produit(b11, "Grenouille", 5 ,"Un animal docile et attachant");
+		Produit produit126 = new Produit(b11, "Grenouille", 5 ,"Un animal docile et attachant");
 		Produit produit127 = new Produit(b11, "Crapaud", 5.50 ,"Un animal repoussant au regard mais affectueux");
-		Produit produit128 = new Produit(b11, "Chat", 8 ,"Le plus mignon des animaux");
+		/*Produit produit128 = new Produit(b11, "Chat", 8 ,"Le plus mignon des animaux");
 		Produit produit129 = new Produit(b11, "Hibou", 10 ,"Un animal messager tres fidele");
-		Produit produit130 = new Produit(b12, "Robe de sorcier", 15 ,"Une tenue tres prisee des sorciers");
+		*/Produit produit130 = new Produit(b12, "Robe de sorcier", 15 ,"Une tenue tres prisee des sorciers");
 		Produit produit131 = new Produit(b12, "Chapeau", 6 ,"Couvre-chef avec un look magique");
 		Produit produit132 = new Produit(b12, "Blazer de poudlard", 18 ,"Costume saillant et chic");
-		Produit produit133 = new Produit(b12, "Pantalon", 12 ,"Un pantalon sobre et chic");
+		//Produit produit133 = new Produit(b12, "Pantalon", 12 ,"Un pantalon sobre et chic");
 		Produit produit134 = new Produit(b13, "Echarpe de Griffondor", 7 ,"Une echarpe a l'effigie des rouges");
 		Produit produit135 = new Produit(b13, "Echarpe de Serpentard", 7 ,"Une echarpe a l'effigie des verts");
 		Produit produit136 = new Produit(b13, "Echarpe de Serdaigle", 7 ,"Une echarpe a l'effigie des bleus");
@@ -344,7 +344,7 @@ class AuthentificationTests {
 		Produit produit140 = new Produit(b14, "Mariniere", 8 ,"Un look so frenchie");
 		Produit produit141 = new Produit(b15, "Jupe", 13 ,"Une jupe elegante et raffinee");
 		Produit produit142 = new Produit(b15, "Ceinture", 4 ,"Pour rester classe en toute circonstance");
-		Produit produit143 = new Produit(b15, "Chaussettes", 6.50 ,"Une paire de chaussettes tout ce qu'il y a de plus banal");*/
+		Produit produit143 = new Produit(b15, "Chaussettes", 6.50 ,"Une paire de chaussettes tout ce qu'il y a de plus banal");
 		
 		Evenement event1 = new Evenement("Bal de fin d'annee",LocalDate.parse("2023-07-28"), LocalTime.of(23, 0,0));
 		Evenement event2 = new Evenement("Tournoi des 4 Maisons",LocalDate.parse("2022-09-03"), LocalTime.of(14,30,0));
@@ -379,21 +379,21 @@ class AuthentificationTests {
 		produitS.save(produit1);
 		produitS.save(produit2);
 		produitS.save(produit3);
-		produitS.save(produit4);
+		/*produitS.save(produit4);
 		produitS.save(produit4);
 		produitS.save(produit5);
 		produitS.save(produit6);
 		produitS.save(produit7);
 		produitS.save(produit8);
-		produitS.save(produit9);
+		produitS.save(produit9);*/
 		produitS.save(produit10);
-		produitS.save(produit11);
+		/*produitS.save(produit11);
 		produitS.save(produit12);
-		produitS.save(produit13);
+		produitS.save(produit13);*/
 		produitS.save(produit14);
-		produitS.save(produit15);
+		//produitS.save(produit15);
 		produitS.save(produit16);
-		produitS.save(produit17);
+		/*produitS.save(produit17);
 		produitS.save(produit18);
 		produitS.save(produit19);
 		produitS.save(produit20);
@@ -401,44 +401,44 @@ class AuthentificationTests {
 		produitS.save(produit22);
 		produitS.save(produit23);
 		produitS.save(produit24);
-		produitS.save(produit25);
+		produitS.save(produit25);*/
 		produitS.save(produit26);
 		produitS.save(produit27);
-		produitS.save(produit28);
-		produitS.save(produit29);
+		/*produitS.save(produit28);
+		produitS.save(produit29);*/
 		produitS.save(produit30);
-		produitS.save(produit31);
+		//produitS.save(produit31);
 		produitS.save(produit32);
-		produitS.save(produit33);
+		/*produitS.save(produit33);
 		produitS.save(produit34);
 		produitS.save(produit35);
 		produitS.save(produit36);
 		produitS.save(produit37);
 		produitS.save(produit38);
 		produitS.save(produit39);
-		produitS.save(produit40);
+		produitS.save(produit40);*/
 		produitS.save(produit41);
-		produitS.save(produit42);
+		/*produitS.save(produit42);
 		produitS.save(produit43);
 		produitS.save(produit44);
 		produitS.save(produit45);
-		produitS.save(produit46);
+		produitS.save(produit46);*/
 		produitS.save(produit47);
 		produitS.save(produit48);
-		produitS.save(produit49);
+		//produitS.save(produit49);
 		produitS.save(produit50);
-		produitS.save(produit51);
-		produitS.save(produit52);
+		/*produitS.save(produit51);
+		produitS.save(produit52);*/
 		produitS.save(produit53);
 		produitS.save(produit54);
 		produitS.save(produit55);
 		produitS.save(produit56);
 		produitS.save(produit57);
-		produitS.save(produit58);
+		/*produitS.save(produit58);
 		produitS.save(produit59);
 		produitS.save(produit60);
 		produitS.save(produit61);
-		produitS.save(produit62);
+		produitS.save(produit62);*/
 		produitS.save(produit89);
 		produitS.save(produit90);
 		produitS.save(produit91);
@@ -476,24 +476,24 @@ class AuthentificationTests {
 		produitS.save(produit123);
 		produitS.save(produit124);
 		produitS.save(produit125);
-		/*produitS.save(produit126);
+		produitS.save(produit126);
 		produitS.save(produit127);
-		produitS.save(produit128);
-		produitS.save(produit129);
+		/*produitS.save(produit128);
+		produitS.save(produit129);*/
 		produitS.save(produit130);
 		produitS.save(produit131);
 		produitS.save(produit132);
-		produitS.save(produit133);
+		/*produitS.save(produit133);
 		produitS.save(produit134);
 		produitS.save(produit135);
 		produitS.save(produit136);
-		produitS.save(produit137);
+		produitS.save(produit137);*/
 		produitS.save(produit138);
 		produitS.save(produit139);
 		produitS.save(produit140);
 		produitS.save(produit141);
 		produitS.save(produit142);
-		produitS.save(produit143);*/
+		produitS.save(produit143);
 		coursR.save(co);
 		coursR.save(co1);
 		coursR.save(co2);
