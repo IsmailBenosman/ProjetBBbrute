@@ -6,9 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import sopraprojet.harrypotter.compte.Eleve;
+import sopraprojet.harrypotter.ecole.Cours;
 import sopraprojet.harrypotter.ecole.Maison;
+import sopraprojet.harrypotter.ecole.Modules;
 import sopraprojet.harrypotter.exception.EleveException;
 import sopraprojet.harrypotter.repositories.CompteRepository;
+import sopraprojet.harrypotter.repositories.CoursRepository;
 import sopraprojet.harrypotter.repositories.EleveRepository;
 import sopraprojet.harrypotter.repositories.InscriptionCoursRepository;
 import sopraprojet.harrypotter.repositories.ModuleRepository;
@@ -25,6 +28,8 @@ public class EleveService {
 	private InscriptionCoursRepository inscriptionRepo;
 	@Autowired
 	private CompteRepository compteRepo;
+	@Autowired
+	private CoursRepository coursRepo;
 
 	public void create(Eleve e) {
 		if (e.getId() != null) {
@@ -38,6 +43,10 @@ public class EleveService {
 			throw new EleveException("Mot de passe manquant");
 		}
 		eleveRepository.save(e);
+		Cours point = new Cours("Point de maison",null);
+		coursRepo.save(point);
+		Modules modulespoint= new Modules(point,0,"Module destiné aux points de maison",e);
+		moduleRepository.save(modulespoint);
 	}
 
 	public void update(Eleve e) {
