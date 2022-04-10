@@ -28,7 +28,7 @@ public class Maison {
 	@JsonView(JsonViews.Maison.class)
 	private int score;
 	
-	@JsonView(JsonViews.Maison.class)
+	@JsonView(JsonViews.MaisonWithCompte.class)
 	@OneToMany(mappedBy="maison",cascade = CascadeType.ALL)
 	private List<Compte> comptes;
 

@@ -43,12 +43,12 @@ public class EleveRestController {
 	@Autowired
 	EleveService eleveService;
 	
-	@JsonView(JsonViews.Common.class)
+	@JsonView(JsonViews.Maison.class)
 	@GetMapping("")
 	public List<Eleve> lesEleves() {
 		return eleveService.getAll();
 	}
-	@JsonView(JsonViews.Common.class)
+	@JsonView(JsonViews.Maison.class)
 	@GetMapping("/{id}")
 	public Eleve getById(@PathVariable Integer id) {
 		return eleveService.getById(id);
@@ -72,31 +72,25 @@ public class EleveRestController {
 	
 	@JsonView(JsonViews.Common.class)
 	private Eleve createOrUpdate(Eleve eleve, BindingResult br) {
-		if (br.hasErrors()) {
-			throw new EleveException();
-		}
+//		if (br.hasErrors()) {
+//			throw new EleveException();
+//		}
 		return eleveService.save(eleve);
 	}
 	
 	@JsonView(JsonViews.Common.class)
-	@PostMapping("/edit")
+	@PostMapping("/creer")
 	@ResponseStatus(code = HttpStatus.CREATED)
 	public Eleve create(@Valid @RequestBody Eleve eleve, BindingResult br) {
 		return createOrUpdate(eleve, br);
 	}
-
+	@JsonView(JsonViews.Common.class)
 	@PutMapping("/{id}")
 	public Eleve update(@PathVariable Integer id, @Valid @RequestBody Eleve eleve, BindingResult br) {
 		eleve.setId(id);
-		return save(eleve, br);
+		return createOrUpdate(eleve, br);
 	}
 
-	private Eleve save(Eleve eleve, BindingResult br) {
-		if (br.hasErrors()) {
-			throw new EleveException();
-		}
-		return eleveService.save(eleve);
-	}
 
 	/*@PatchMapping("/{id}")
 	public Eleve partialUpdate(@RequestBody Map<String, Object> fields, @PathVariable Integer id) {

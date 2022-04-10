@@ -37,7 +37,7 @@ public class ProfRestController {
 	@Autowired
 	ProfService profService;
 	
-	@JsonView(JsonViews.Compte.class)
+	@JsonView(JsonViews.Maison.class)
 	@GetMapping("")
 	public List<Prof> getProf() {
 		return profService.getAll();

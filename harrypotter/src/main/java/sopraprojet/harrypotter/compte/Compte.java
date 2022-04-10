@@ -58,22 +58,18 @@ public abstract class Compte implements UserDetails {
 	@JsonView(JsonViews.Common.class)
 	protected Integer id;
 
-	@NotEmpty(message = "Champ obligatoire")
 	@JsonView(JsonViews.Common.class)
 	protected String nom;
 
-	@NotEmpty(message = "Champ obligatoire")
 	@JsonView(JsonViews.Common.class)
 	protected String prenom;
 
-	@NotEmpty(message = "Champ obligatoire")
 	@JsonView(JsonViews.Common.class)
-	@Column(name = "login", nullable = false, length = 200, unique = true)
+	@Column(name = "login")
 	protected String login;
 
 	@JsonView(JsonViews.Common.class)
-	@NotEmpty(message = "Champ obligatoire")
-	@Column(name = "password", nullable = false, length = 200)
+	@Column(name = "password")
 	protected String password;
 
 	@Past
@@ -86,7 +82,7 @@ public abstract class Compte implements UserDetails {
 	@JsonView(JsonViews.Common.class)
 	protected String img;
 	
-	@JsonView(JsonViews.MaisonWithCompte.class)
+	@JsonView(JsonViews.Maison.class)
 	@ManyToOne
 	private Maison maison;
 
@@ -252,11 +248,5 @@ public abstract class Compte implements UserDetails {
 		return true;
 	}
 
-	@Override
-	public String toString() {
-		return "Compte [id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", login=" + login + ", password="
-				+ password + ", naissance=" + naissance + ", solde=" + solde + ", img=" + img + ", version=" + version
-				+ "]";
-	}
 
 }
