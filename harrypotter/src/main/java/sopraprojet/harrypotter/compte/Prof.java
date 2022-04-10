@@ -2,22 +2,15 @@ package sopraprojet.harrypotter.compte;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Past;
 
-import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.CascadeType;
+import com.fasterxml.jackson.annotation.JsonView;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-import sopraprojet.harrypotter.boutique.Panier;
+import sopraprojet.harrypotter.Json.JsonViews;
 import sopraprojet.harrypotter.ecole.Cours;
 import sopraprojet.harrypotter.ecole.Maison;
 
@@ -27,6 +20,7 @@ import sopraprojet.harrypotter.ecole.Maison;
 public class Prof extends Compte {
 
 	//@Cascade(CascadeType.REMOVE)
+	@JsonView(JsonViews.Cours.class)
 	@OneToMany(mappedBy = "professeur")
 	private List<Cours> uE;
 
