@@ -1,5 +1,7 @@
 package sopraprojet.harrypotter.ecole;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
@@ -7,16 +9,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
-import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.CascadeType;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
 import sopraprojet.harrypotter.Json.JsonViews;
+import sopraprojet.harrypotter.compte.Eleve;
 import sopraprojet.harrypotter.compte.Prof;
 
 @Entity
@@ -36,7 +36,14 @@ public class Cours {
 	@ManyToOne
 	@JoinColumn(name="professeur")
 	private Prof professeur;
+	
+	@JsonView(JsonViews.CoursWithEleves.class)
+	@ManyToMany(mappedBy = "cours")
+	private List<Eleve> eleve;
 
+	
+	
+	
 	public Cours() {
 	}
 
@@ -80,5 +87,15 @@ public class Cours {
 	public void setProfesseur(Prof professeur) {
 		this.professeur = professeur;
 	}
+
+	public List<Eleve> getEleve() {
+		return eleve;
+	}
+
+	public void setEleve(List<Eleve> eleve) {
+		this.eleve = eleve;
+	}
+
+
 
 }

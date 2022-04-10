@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import sopraprojet.harrypotter.ecole.Cours;
+import sopraprojet.harrypotter.ecole.InscriptionCours;
 import sopraprojet.harrypotter.exception.ModuleException;
 import sopraprojet.harrypotter.repositories.CoursRepository;
 
@@ -37,5 +38,13 @@ public class CoursService {
 	public void delete(Cours e) {
 		coursRepository.delete(e);
 	}
+
+
+	public Cours save(Cours coursAAjouter) {
+		return coursRepository.save(coursAAjouter);
+	}
+	
+		
+	
 
 }
