@@ -105,9 +105,6 @@ public class PanierRestController {
 		return compteService.save(c);
 	}
 
-	
-	
-	
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
 	@DeleteMapping("/{id}") 
 	public void delete(@PathVariable Integer id) {

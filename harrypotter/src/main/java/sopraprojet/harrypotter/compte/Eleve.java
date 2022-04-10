@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -12,6 +14,7 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import sopraprojet.harrypotter.Json.JsonViews;
+import sopraprojet.harrypotter.ecole.Cours;
 import sopraprojet.harrypotter.ecole.Evenement;
 import sopraprojet.harrypotter.ecole.InscriptionCours;
 import sopraprojet.harrypotter.ecole.Maison;
@@ -31,11 +34,15 @@ public class Eleve extends Compte {
 	@ManyToMany(mappedBy = "participants")
 	private List<Evenement> event;
 	
-	@JsonView(JsonViews.Cours.class)
+	@JsonView(JsonViews.EleveWithCours.class)
 	//@Cascade(CascadeType.DELETE)
 	@OneToMany(mappedBy = "eleve")
 	private List<InscriptionCours> inscription;
 
+	@JsonView(JsonViews.EleveWithCours.class)
+	@ManyToMany
+	private List<Cours> cours;
+	
 	public Eleve() {
 
 	}
@@ -79,10 +86,22 @@ public class Eleve extends Compte {
 		this.inscription = inscription;
 	}
 
-	@Override
-	public String toString() {
-		return "Eleve [id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", login=" + login + ", password=" + password
-				+ ", naissance=" + naissance + ", solde=" + solde + ", img=" + img + "]";
+	public List<InscriptionCours> getInscription() {
+		return inscription;
 	}
+
+	public void setInscription(List<InscriptionCours> inscription) {
+		this.inscription = inscription;
+	}
+
+	public List<Cours> getCours() {
+		return cours;
+	}
+
+	public void setCours(List<Cours> cours) {
+		this.cours = cours;
+	}
+
+	
 
 }

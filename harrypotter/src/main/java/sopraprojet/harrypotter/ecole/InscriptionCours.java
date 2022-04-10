@@ -48,7 +48,7 @@ public class InscriptionCours {
 	
 	
 	public InscriptionCours() {
-		// TODO Auto-generated constructor stub
+		
 	}
 	public InscriptionCours(Integer id, Cours cours, Eleve eleve) {
 		this.id = id;

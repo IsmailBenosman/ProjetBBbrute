@@ -75,6 +75,11 @@ public class JsonViews {
 	public static class Inscription extends Common{
 
 	}
+	public static class CoursWithEleves extends Common{
 
-	
+	}
+
+	public static class EleveWithCours extends Common{
+
+	}
 }
