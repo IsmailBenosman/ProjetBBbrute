@@ -28,6 +28,7 @@ import com.fasterxml.jackson.annotation.JsonView;
 
 import sopraprojet.harrypotter.Json.JsonViews;
 import sopraprojet.harrypotter.compte.Eleve;
+import sopraprojet.harrypotter.ecole.Cours;
 import sopraprojet.harrypotter.exception.EleveException;
 import sopraprojet.harrypotter.repositories.EleveRepository;
 import sopraprojet.harrypotter.service.EleveService;
@@ -95,7 +96,21 @@ public class EleveRestController {
 		return createOrUpdate(eleve, br);
 	}
 
+	@PostMapping("/inscriptioncours")
+    @JsonView(JsonViews.Common.class)
+    public Eleve inscriptioncours( @Valid @RequestBody Eleve e, @Valid @RequestBody Cours cours) {
+        List<Cours> listecours= e.getCours();
+        listecours.add(cours);
+        e.setCours(listecours);
+        eleveService.save(e);
+        return e;
+    }
 
+	/*public Eleve inscription(Cours cours) {
+		List<Cours> cours_eleve= getCours(); 
+		cours_eleve.add(cours);
+	}*/
+	
 	/*@PatchMapping("/{id}")
 	public Eleve partialUpdate(@RequestBody Map<String, Object> fields, @PathVariable Integer id) {
 		Eleve eleve = eleveService.getById(id);

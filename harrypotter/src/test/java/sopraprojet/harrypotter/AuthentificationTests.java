@@ -26,14 +26,12 @@ import sopraprojet.harrypotter.ecole.Cours;
 
 
 import sopraprojet.harrypotter.ecole.Evenement;
-import sopraprojet.harrypotter.ecole.InscriptionCours;
 
 import sopraprojet.harrypotter.ecole.Maison;
 import sopraprojet.harrypotter.ecole.Modules;
 import sopraprojet.harrypotter.repositories.BoutiqueRepository;
 import sopraprojet.harrypotter.repositories.CoursRepository;
 import sopraprojet.harrypotter.repositories.EvenementRepository;
-import sopraprojet.harrypotter.repositories.InscriptionCoursRepository;
 import sopraprojet.harrypotter.repositories.LivraisonRepository;
 import sopraprojet.harrypotter.repositories.ModuleRepository;
 import sopraprojet.harrypotter.repositories.ProfRepository;
@@ -76,8 +74,6 @@ class AuthentificationTests {
 	private ModuleRepository moduleR;
 	@Autowired
 	private CoursRepository coursR;
-	@Autowired 
-	InscriptionCoursRepository inscriptionR;
 	@Autowired
 	EvenementRepository eventR;
 	@Autowired
@@ -172,7 +168,7 @@ class AuthentificationTests {
 		Modules m51 = new Modules(co6,6,"Ton esprit est trop terre a terre",e6);
 		Modules m52 = new Modules(co7,19,"L'espace n'a plus de secret pour toi",e6);
 		Modules m53 = new Modules(co8,16,"On voit que tu aimes les maths",e6);
-		InscriptionCours i1 = new InscriptionCours(co, e1);
+		/*InscriptionCours i1 = new InscriptionCours(co, e1);
 		InscriptionCours i2 = new InscriptionCours(co, e2);
 		InscriptionCours i3 = new InscriptionCours(co3, e3);
 		InscriptionCours i4 = new InscriptionCours(co3, e4);
@@ -185,7 +181,7 @@ class AuthentificationTests {
 		InscriptionCours i11 = new InscriptionCours(co8, e5);
 		InscriptionCours i12 = new InscriptionCours(co6, e6);
 		InscriptionCours i13 = new InscriptionCours(co7, e6);
-		InscriptionCours i14 = new InscriptionCours(co8, e6);
+		InscriptionCours i14 = new InscriptionCours(co8, e6);*/
 
 		Boutique b1= new Boutique(Categorie.Balais,"Magasin d’accessoires de Quidditch "," 24 chemin de traverse" );
 		Boutique b2= new Boutique(Categorie.Herboristerie,"L’apothicaire "," 37 chemin de traverse" );
@@ -528,7 +524,7 @@ class AuthentificationTests {
 		List<Cours> cours_eleve = new ArrayList();
 		Collections.addAll(cours_eleve,co,co1,co2);
 		e1.setCours(cours_eleve);
-		inscriptionR.save(i1);
+		/*inscriptionR.save(i1);
 		inscriptionR.save(i2);
 		inscriptionR.save(i3);
 		inscriptionR.save(i4);
@@ -541,7 +537,7 @@ class AuthentificationTests {
 		inscriptionR.save(i11);
 		inscriptionR.save(i12);
 		inscriptionR.save(i13);
-		inscriptionR.save(i14);
+		inscriptionR.save(i14);*/
 	}
 	
 	@Disabled
