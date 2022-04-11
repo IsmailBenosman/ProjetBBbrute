@@ -16,7 +16,6 @@ import com.fasterxml.jackson.annotation.JsonView;
 import sopraprojet.harrypotter.Json.JsonViews;
 import sopraprojet.harrypotter.ecole.Cours;
 import sopraprojet.harrypotter.ecole.Evenement;
-import sopraprojet.harrypotter.ecole.InscriptionCours;
 import sopraprojet.harrypotter.ecole.Maison;
 import sopraprojet.harrypotter.ecole.Modules;
 
@@ -34,10 +33,6 @@ public class Eleve extends Compte {
 	@ManyToMany(mappedBy = "participants")
 	private List<Evenement> event;
 	
-	@JsonView(JsonViews.EleveWithCours.class)
-	//@Cascade(CascadeType.DELETE)
-	@OneToMany(mappedBy = "eleve")
-	private List<InscriptionCours> inscription;
 
 	@JsonView(JsonViews.EleveWithCours.class)
 	@ManyToMany
@@ -83,21 +78,6 @@ public class Eleve extends Compte {
 		this.event = event;
 	}
 
-	public List<InscriptionCours> getEleve() {
-		return inscription;
-	}
-
-	public void setEleve(List<InscriptionCours> inscription) {
-		this.inscription = inscription;
-	}
-
-	public List<InscriptionCours> getInscription() {
-		return inscription;
-	}
-
-	public void setInscription(List<InscriptionCours> inscription) {
-		this.inscription = inscription;
-	}
 
 	public List<Cours> getCours() {
 		return cours;

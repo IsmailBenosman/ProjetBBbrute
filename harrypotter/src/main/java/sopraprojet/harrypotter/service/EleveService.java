@@ -13,7 +13,6 @@ import sopraprojet.harrypotter.exception.EleveException;
 import sopraprojet.harrypotter.repositories.CompteRepository;
 import sopraprojet.harrypotter.repositories.CoursRepository;
 import sopraprojet.harrypotter.repositories.EleveRepository;
-import sopraprojet.harrypotter.repositories.InscriptionCoursRepository;
 import sopraprojet.harrypotter.repositories.ModuleRepository;
 
 
@@ -25,11 +24,11 @@ public class EleveService {
 	@Autowired
 	private ModuleRepository moduleRepository;
 	@Autowired
-	private InscriptionCoursRepository inscriptionRepo;
-	@Autowired
 	private CompteRepository compteRepo;
 	@Autowired
 	private CoursRepository coursRepo;
+	@Autowired
+	private CoursService courss;
 
 	public void create(Eleve e) {
 		if (e.getId() != null) {
@@ -93,6 +92,5 @@ public class EleveService {
 	public List<Eleve> getAllByMaison(Maison m) {
 		return eleveRepository.findByMaison(m);
 	}
-
 
 }

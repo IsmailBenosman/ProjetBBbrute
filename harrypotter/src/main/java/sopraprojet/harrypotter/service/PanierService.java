@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import sopraprojet.harrypotter.boutique.Panier;
 import sopraprojet.harrypotter.compte.Compte;
-import sopraprojet.harrypotter.ecole.InscriptionCours;
 import sopraprojet.harrypotter.exception.PanierException;
 import sopraprojet.harrypotter.repositories.PanierRepository;
 

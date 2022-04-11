@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import sopraprojet.harrypotter.compte.Prof;
 import sopraprojet.harrypotter.ecole.Cours;
-import sopraprojet.harrypotter.ecole.InscriptionCours;
 import sopraprojet.harrypotter.exception.ModuleException;
 import sopraprojet.harrypotter.repositories.CoursRepository;
 
