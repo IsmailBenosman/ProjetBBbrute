@@ -34,7 +34,8 @@ public class CoursRestController {
 	CoursService coursService;
 	@Autowired 
 	ModuleService  moduleService;
-	@JsonView(JsonViews.Maison.class)
+	
+	@JsonView(JsonViews.Cours.class)
 	@GetMapping("")
 	public List<Cours> lesCours() {
 		return coursService.getAll();
