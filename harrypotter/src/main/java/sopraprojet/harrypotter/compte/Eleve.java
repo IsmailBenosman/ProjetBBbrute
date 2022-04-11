@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
@@ -23,19 +24,18 @@ import sopraprojet.harrypotter.ecole.Modules;
 @DiscriminatorValue("eleve")
 @Table(name = "eleve")
 public class Eleve extends Compte {
-	@JsonView(JsonViews.Cours.class)
+
 	//@Cascade(CascadeType.DELETE)
 	@OneToMany(mappedBy = "eleve")
 	private List<Modules> mesCours;
 	
-	@JsonView(JsonViews.ModuleWithEleve.class)
 	//@Cascade(CascadeType.DELETE)
 	@ManyToMany(mappedBy = "participants")
 	private List<Evenement> event;
 	
 
 	@JsonView(JsonViews.Common.class)
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(
 			name="cours_des_eleves",
 			joinColumns = @JoinColumn(name="id_eleve"),

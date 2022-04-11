@@ -47,7 +47,7 @@ public class CoursRestController {
 		return coursService.getbyprof(id);
 	}
 	*/
-	@JsonView(JsonViews.Common.class)
+	@JsonView(JsonViews.Cours.class)
 	@GetMapping("/get/{id}")
 	public Cours getById(@PathVariable Integer id) {
 		return coursService.getById(id);
