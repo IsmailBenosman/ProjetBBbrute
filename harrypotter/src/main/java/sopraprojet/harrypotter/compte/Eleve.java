@@ -41,6 +41,11 @@ public class Eleve extends Compte {
 
 	@JsonView(JsonViews.EleveWithCours.class)
 	@ManyToMany
+	@JoinTable(
+			name="cours_des_eleves",
+			joinColumns = @JoinColumn(name="id_eleve"),
+			inverseJoinColumns = @JoinColumn(name="cours")
+			)
 	private List<Cours> cours;
 	
 	public Eleve() {

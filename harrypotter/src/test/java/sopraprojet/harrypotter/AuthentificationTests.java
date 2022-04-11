@@ -71,14 +71,8 @@ class AuthentificationTests {
 	private ProduitService produitS;
 	@Autowired
 	private BoutiqueService boutiqueS;
-	@Autowired
-	private BoutiqueRepository boutiqueR;
-	@Autowired
 
-	private ModuleService moduleService;
 	@Autowired
-	private CoursService  coursService;
-
 	private ModuleRepository moduleR;
 	@Autowired
 	private CoursRepository coursR;
@@ -153,17 +147,6 @@ class AuthentificationTests {
 		
 		Admin a1 = new Admin("Abid","Jordan", "Jordan",passwordEncoder.encode("Jordan"), LocalDate.parse("1998-02-23"),10000,m2);
 		aService.create(a1);
-
-		
-		
-		Cours cours2 = new Cours("Histoire de la magie", p1);
-		coursService.create(cours2);
-		
-		
-		Modules mod2 = new Modules(cours2, 10, "moyen",e1);
-	
-		
-		
 
 		Cours co = new Cours("Histoire de la magie", p1);
 		Cours co1 = new Cours("Métamorphose", p1);
@@ -542,6 +525,9 @@ class AuthentificationTests {
 		moduleR.save(m51);
 		moduleR.save(m52);
 		moduleR.save(m53);
+		List<Cours> cours_eleve = new ArrayList();
+		Collections.addAll(cours_eleve,co,co1,co2);
+		e1.setCours(cours_eleve);
 		inscriptionR.save(i1);
 		inscriptionR.save(i2);
 		inscriptionR.save(i3);
