@@ -6,6 +6,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+import sopraprojet.harrypotter.Json.JsonViews;
 import sopraprojet.harrypotter.compte.Compte;
 
 @RestController
@@ -13,8 +16,9 @@ import sopraprojet.harrypotter.compte.Compte;
 @CrossOrigin(origins = "*")
 public class AuthRestController {
 
+	@JsonView(JsonViews.Compte.class)
 	@GetMapping("")
-	public String auth(@AuthenticationPrincipal Compte compte) {
-		return compte.getClass().getSimpleName().toLowerCase();
+	public Compte auth(@AuthenticationPrincipal Compte compte) {
+		return compte;
 	}
 }

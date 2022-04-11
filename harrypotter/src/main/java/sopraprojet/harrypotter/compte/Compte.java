@@ -82,7 +82,7 @@ public abstract class Compte implements UserDetails {
 	@JsonView(JsonViews.Common.class)
 	protected String img;
 	
-	@JsonView(JsonViews.Maison.class)
+	@JsonView(JsonViews.Common.class)
 	@ManyToOne
 	private Maison maison;
 
