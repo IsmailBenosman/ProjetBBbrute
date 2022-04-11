@@ -3,6 +3,7 @@ package sopraprojet.harrypotter.ecole;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -40,7 +41,7 @@ public class Modules {
 	private Cours cours;
 	
 	@JsonView(JsonViews.ModuleWithEleve.class)
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="eleve")
 	private Eleve eleve;
 
