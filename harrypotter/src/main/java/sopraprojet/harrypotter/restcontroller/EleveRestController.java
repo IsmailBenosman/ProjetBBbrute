@@ -96,14 +96,15 @@ public class EleveRestController {
 		return createOrUpdate(eleve, br);
 	}
 
-	@PostMapping("/inscriptioncours")
+	@PutMapping("/inscriptioncours/{id}")
     @JsonView(JsonViews.Common.class)
-    public Eleve inscriptioncours( @Valid @RequestBody Eleve e, @Valid @RequestBody Cours cours) {
-        List<Cours> listecours= e.getCours();
+    public List<Cours> inscriptioncours(@PathVariable Integer id, @Valid @RequestBody Cours cours) {
+        Eleve eleve = eleveService.getById(id);
+		List<Cours> listecours= eleve.getCours();
         listecours.add(cours);
-        e.setCours(listecours);
-        eleveService.save(e);
-        return e;
+        eleve.setCours(listecours);
+        eleveService.save(eleve);
+        return listecours;
     }
 
 	/*public Eleve inscription(Cours cours) {

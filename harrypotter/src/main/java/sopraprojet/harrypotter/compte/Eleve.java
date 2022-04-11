@@ -34,7 +34,7 @@ public class Eleve extends Compte {
 	private List<Evenement> event;
 	
 
-	@JsonView(JsonViews.EleveWithCours.class)
+	@JsonView(JsonViews.Common.class)
 	@ManyToMany
 	@JoinTable(
 			name="cours_des_eleves",
