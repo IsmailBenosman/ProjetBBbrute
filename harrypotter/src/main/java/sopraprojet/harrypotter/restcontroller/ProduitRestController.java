@@ -24,6 +24,7 @@ import com.fasterxml.jackson.annotation.JsonView;
 import sopraprojet.harrypotter.Json.JsonViews;
 import sopraprojet.harrypotter.boutique.Boutique;
 import sopraprojet.harrypotter.boutique.Produit;
+import sopraprojet.harrypotter.compte.Eleve;
 import sopraprojet.harrypotter.exception.EvenementException;
 import sopraprojet.harrypotter.exception.ProduitException;
 import sopraprojet.harrypotter.service.BoutiqueService;
@@ -44,7 +45,11 @@ public class ProduitRestController {
 	public List<Produit> getAll() {
 		return produitService.getAll();
 	}
-
+	@JsonView(JsonViews.Common.class)
+	@GetMapping("/{id}")
+	public Produit getById(@PathVariable Integer id) {
+		return produitService.getById(id);
+	}
 	
 	@JsonView(JsonViews.ProduitWithBoutique.class)
 	@GetMapping("/boutique/{id}")

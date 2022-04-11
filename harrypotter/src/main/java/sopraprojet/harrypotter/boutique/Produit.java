@@ -22,26 +22,26 @@ import sopraprojet.harrypotter.Json.JsonViews;
 @Table(name="produit")
 public class Produit {
 	
-	@JsonView(JsonViews.ProduitWithBoutique.class)
+	@JsonView(JsonViews.Common.class)
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	protected Integer id;
 	
-	@JsonView(JsonViews.ProduitWithBoutique.class)
+	@JsonView(JsonViews.Common.class)
 	@ManyToOne
 	private Boutique boutique;
 	
 
-	@JsonView(JsonViews.ProduitWithBoutique.class)
+	@JsonView(JsonViews.Common.class)
 	public String libelle; 	
 	
-	@JsonView(JsonViews.ProduitWithBoutique.class)
+	@JsonView(JsonViews.Common.class)
 	public double prix;
 	
-	@JsonView(JsonViews.ProduitWithBoutique.class)
+	@JsonView(JsonViews.Common.class)
 	private String description;
 	
-	@JsonView(JsonViews.BoutiqueWithProduit.class)
+	@JsonView(JsonViews.Common.class)
 	private String img;
 	
 	@OneToMany(mappedBy = "articles")

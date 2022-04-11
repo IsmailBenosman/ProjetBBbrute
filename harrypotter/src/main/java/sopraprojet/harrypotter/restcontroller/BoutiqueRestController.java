@@ -34,7 +34,7 @@ public class BoutiqueRestController {
 	@Autowired
 	private BoutiqueService boutiqueService;
 	
-	@JsonView(JsonViews.BoutiqueWithProduit.class)
+	@JsonView(JsonViews.Common.class)
 	@GetMapping("")
 	public List<Boutique> getAll() {
 		return boutiqueService.getAll();
