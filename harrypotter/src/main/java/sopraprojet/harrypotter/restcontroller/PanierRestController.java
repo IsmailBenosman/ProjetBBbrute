@@ -39,7 +39,6 @@ public class PanierRestController {
 	@Autowired
 	private PanierService panierService;
 	
-	
 	@JsonView(JsonViews.Common.class)
 	@GetMapping("")
 	public List<Panier> getAll() {
