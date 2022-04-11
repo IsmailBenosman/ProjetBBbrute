@@ -22,10 +22,8 @@ import com.fasterxml.jackson.annotation.JsonView;
 import sopraprojet.harrypotter.Json.JsonViews;
 import sopraprojet.harrypotter.compte.Eleve;
 import sopraprojet.harrypotter.ecole.Cours;
-import sopraprojet.harrypotter.ecole.Evenement;
 import sopraprojet.harrypotter.ecole.InscriptionCours;
 import sopraprojet.harrypotter.exception.InscriptionCoursException;
-
 import sopraprojet.harrypotter.service.CoursService;
 import sopraprojet.harrypotter.service.EleveService;
 import sopraprojet.harrypotter.service.InscriptionCoursService;
@@ -85,14 +83,24 @@ public class InscriptionRestController {
 	}
 
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
-	@DeleteMapping("/{id}") 
+	@DeleteMapping("/{id}")
 	public void delete(@PathVariable Integer id) {
 		inscriptionService.deleteById(id);
 	}
-	@JsonView(JsonViews.Common.class)
+
 	@PostMapping("")
-	@ResponseStatus(code = HttpStatus.CREATED)// get inscription par cours(id) : Marche nickel mais ligne vide !
-	public InscriptionCours create(@Valid @RequestBody InscriptionCours inscription, BindingResult br) {
-		return createOrUpdate(inscription, br);
+	@ResponseStatus(code = HttpStatus.CREATED)
+	public Eleve createInscription(@PathVariable Integer id, @Valid @RequestBody InscriptionCours inscription,
+			BindingResult br) {
+		Eleve eleve = eleveService.getById(id);
+		List<Cours> coursEnPlus = eleve.getCours();
+		Cours coursAAjouter = inscription.getCours();
+		coursEnPlus.add(coursAAjouter);
+		List<Eleve> eleves = coursAAjouter.getEleve();
+		eleves.add(eleve);
+		coursService.save(coursAAjouter);
+		createOrUpdate(inscription, br);
+		return eleveService.save(eleve);
+
 	}
 }

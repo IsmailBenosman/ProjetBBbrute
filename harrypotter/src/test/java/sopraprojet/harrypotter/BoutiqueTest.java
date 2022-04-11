@@ -42,15 +42,16 @@ class BoutiqueTest {
 	void boutiqueservicetest() {
 		assertNotNull(boutiqueService);
 	}
-	@Disabled
+	//@Disabled
 	@Test
 	@Transactional
 	@Commit
 	void CreationProduitTest() {
 		Boutique boutique = new Boutique(Categorie.Boissons, "Bar", "Sorry, je connais toujours pas trop Harry Potter");
-		Produit produit = new Produit(boutique, "Biere au beurre", 4.50 ,"Une bi�re un peu degueux");
+		Boutique boutique1=new Boutique(Categorie.Herboristerie,"L'apothicaire","37 chemin de traverse");
+		
 		boutiqueService.create(boutique);
-		produitService.create(produit);
+		//produitService.create(produit);
 	}
 	@Disabled
 	@Test

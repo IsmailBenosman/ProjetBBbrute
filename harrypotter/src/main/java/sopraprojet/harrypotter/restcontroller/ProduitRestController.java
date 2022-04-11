@@ -1,5 +1,6 @@
 package sopraprojet.harrypotter.restcontroller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -43,6 +44,8 @@ public class ProduitRestController {
 	public List<Produit> getAll() {
 		return produitService.getAll();
 	}
+
+	
 	@JsonView(JsonViews.ProduitWithBoutique.class)
 	@GetMapping("/boutique/{id}")
 	public List<Produit> getAllByBoutique(@PathVariable Integer id) {

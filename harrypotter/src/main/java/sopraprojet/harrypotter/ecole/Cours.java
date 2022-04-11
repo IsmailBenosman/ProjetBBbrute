@@ -1,5 +1,7 @@
 package sopraprojet.harrypotter.ecole;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
@@ -7,42 +9,50 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
-import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.CascadeType;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
 import sopraprojet.harrypotter.Json.JsonViews;
+import sopraprojet.harrypotter.compte.Eleve;
 import sopraprojet.harrypotter.compte.Prof;
 
 @Entity
 @DiscriminatorValue("cours")
 @Table(name = "cours")
 public class Cours {
+<<<<<<< HEAD
 	
 	@JsonView(JsonViews.Common.class)
+=======
+	@JsonView(JsonViews.Cours.class)
+>>>>>>> main
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
+<<<<<<< HEAD
 	@JsonView(JsonViews.Common.class)
+=======
+	@JsonView(JsonViews.Cours.class)
+>>>>>>> main
 	@Column(name="cours")
 	private String intitule;
 
-	@JsonView(JsonViews.Common.class)
+	@JsonView(JsonViews.CoursWithProf.class)
 	@ManyToOne
 	@JoinColumn(name="professeur")
 	private Prof professeur;
+	
+	@JsonView(JsonViews.CoursWithEleves.class)
+	@ManyToMany(mappedBy = "cours")
+	private List<Eleve> eleve;
 
-	@JsonView(JsonViews.Common.class)
-	@OneToOne
-	@JoinColumn(name="module")
-	private Modules module;
-
+	
+	
+	
 	public Cours() {
 	}
 	public Cours(String intitule, Prof professeur, Modules module) {
@@ -94,17 +104,14 @@ public class Cours {
 		this.professeur = professeur;
 	}
 
-	public Modules getModule() {
-		return module;
+	public List<Eleve> getEleve() {
+		return eleve;
 	}
 
-	public void setModule(Modules module) {
-		this.module = module;
+	public void setEleve(List<Eleve> eleve) {
+		this.eleve = eleve;
 	}
 
-	@Override
-	public String toString() {
-		return "Cours [id=" + id + ", intitule=" + intitule + ", professeur=" + professeur + ", module=" + module + "]";
-	}
+
 
 }

@@ -49,13 +49,42 @@ public class JsonViews {
 	public static class Maison extends Common{
 
 	}
+<<<<<<< HEAD
 	
 	public static class Cours extends Common{
+=======
+	public static class Compte extends Common{
+>>>>>>> main
 
 	}
 
 	public static class MaisonWithCompte extends Common{
 
 	}
-	
+	public static class BoutiqueWithProduit extends Common{
+
+	}
+
+	public static class Module extends Common{
+
+	}
+	public static class CoursWithProf extends Common{
+
+	}
+	public static class CoursWithModule extends Common{
+
+	}
+	public static class Cours extends Common{
+
+	}
+	public static class Inscription extends Common{
+
+	}
+	public static class CoursWithEleves extends Common{
+
+	}
+
+	public static class EleveWithCours extends Common{
+
+	}
 }

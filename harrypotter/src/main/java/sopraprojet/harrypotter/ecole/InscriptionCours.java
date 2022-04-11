@@ -26,29 +26,29 @@ import sopraprojet.harrypotter.compte.Prof;
 @Table(name = "Inscription_cours")
 public class InscriptionCours {
 	
-	@JsonView(JsonViews.Common.class)
+	@JsonView(JsonViews.Cours.class)
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id_inscription")
 	private Integer id;
 	
-	@JsonView(JsonViews.Common.class)
+	@JsonView(JsonViews.Cours.class)
 	@ManyToOne
 	@JoinColumn(name="cours_fk")
 	private Cours cours;
 	
-	@JsonView(JsonViews.Common.class)
+	@JsonView(JsonViews.InscriptionCoursWithEleve.class)
 	@ManyToOne
 	@JoinColumn(name="eleve_fk")
 	private Eleve eleve;
 	
-	@JsonView(JsonViews.Common.class)
+	@JsonView(JsonViews.Inscription.class)
 	@Version
 	private int version;
 	
 	
 	public InscriptionCours() {
-		// TODO Auto-generated constructor stub
+		
 	}
 	public InscriptionCours(Integer id, Cours cours, Eleve eleve) {
 		this.id = id;
