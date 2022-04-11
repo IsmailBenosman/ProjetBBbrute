@@ -66,7 +66,7 @@ public class EleveService {
 	}
 
 	public Eleve getById(Integer id) {
-		return eleveRepository.findById(id).orElseThrow(() -> {
+		return eleveRepository.findByIdWithModule(id).orElseThrow(() -> {
 			throw new EleveException("numero inconnu");
 		});
 	}

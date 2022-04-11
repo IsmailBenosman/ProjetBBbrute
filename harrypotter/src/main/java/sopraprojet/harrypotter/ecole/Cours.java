@@ -31,12 +31,12 @@ public class Cours {
 	private Integer id;
 	
 
-	@JsonView(JsonViews.Cours.class)
+	@JsonView(JsonViews.Common.class)
 
 	@Column(name="cours")
 	private String intitule;
 
-	@JsonView(JsonViews.CoursWithProf.class)
+	@JsonView(JsonViews.Common.class)
 	@ManyToOne
 	@JoinColumn(name="professeur")
 	private Prof professeur;
