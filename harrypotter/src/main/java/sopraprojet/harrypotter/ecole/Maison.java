@@ -19,13 +19,13 @@ import sopraprojet.harrypotter.compte.Compte;
 @Table(name = "maison")
 public class Maison {
 
-	@JsonView(JsonViews.Maison.class)
+	@JsonView(JsonViews.Common.class)
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	@JsonView(JsonViews.Maison.class)
+	@JsonView(JsonViews.Common.class)
 	private String nom;
-	@JsonView(JsonViews.Maison.class)
+	@JsonView(JsonViews.Common.class)
 	private int score;
 	
 	@JsonView(JsonViews.MaisonWithCompte.class)
