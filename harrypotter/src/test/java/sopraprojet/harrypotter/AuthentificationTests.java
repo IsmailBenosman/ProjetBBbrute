@@ -1,6 +1,7 @@
 package sopraprojet.harrypotter;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -18,8 +19,10 @@ import org.springframework.test.annotation.Commit;
 import sopraprojet.harrypotter.boutique.Boutique;
 import sopraprojet.harrypotter.boutique.Categorie;
 import sopraprojet.harrypotter.boutique.Livraison;
+import sopraprojet.harrypotter.boutique.Panier;
 import sopraprojet.harrypotter.boutique.Produit;
 import sopraprojet.harrypotter.compte.Admin;
+import sopraprojet.harrypotter.compte.Compte;
 import sopraprojet.harrypotter.compte.Eleve;
 import sopraprojet.harrypotter.compte.Prof;
 import sopraprojet.harrypotter.ecole.Cours;
@@ -140,7 +143,7 @@ class AuthentificationTests {
 		Prof p4 = new Prof("Gozlan","Olivier", "Olivier",passwordEncoder.encode("Olivier"), LocalDate.parse("1996-10-15"),10000,m2);
 		pRepo.save(p4);
 		
-		
+		//Panier panier = new Panier(int quantite, Compte compte, boolean achat, Produit articles, LocalDateTime dateAchat)
 		Admin a1 = new Admin("Abid","Jordan", "Jordan",passwordEncoder.encode("Jordan"), LocalDate.parse("1998-02-23"),10000,m2);
 		aService.create(a1);
 

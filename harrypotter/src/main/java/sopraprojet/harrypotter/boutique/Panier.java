@@ -28,7 +28,7 @@ public class Panier {
 	protected Integer id;
 
 	@JsonView(JsonViews.Common.class)
-	@Column(name = "quantite", nullable = false)
+	@Column(name = "quantite")
 	private int quantite;
 
 	@JsonView(JsonViews.Common.class)
@@ -45,7 +45,7 @@ public class Panier {
 	@JsonView(JsonViews.Common.class)
 	private Produit articles;
 
-	@Column(name="date_achat",nullable = true)
+	@Column(name="date_achat")
 	private LocalDateTime dateAchat;
 	
 	@JsonView(JsonViews.Common.class)
@@ -55,7 +55,14 @@ public class Panier {
 	public Panier() {
 	}
 
-	
+	public Panier(int quantite, Compte compte, boolean achat, Produit articles, LocalDateTime dateAchat) {
+		super();
+		this.quantite = quantite;
+		this.compte = compte;
+		this.achat = achat;
+		this.articles = articles;
+		this.dateAchat = dateAchat;
+	}
 
 	public int getQuantite() {
 		return quantite;

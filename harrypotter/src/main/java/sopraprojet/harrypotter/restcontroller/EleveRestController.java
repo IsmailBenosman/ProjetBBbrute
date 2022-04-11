@@ -99,7 +99,7 @@ public class EleveRestController {
 	@PutMapping("/inscriptioncours/{id}")
     @JsonView(JsonViews.Common.class)
     public List<Cours> inscriptioncours(@PathVariable Integer id, @Valid @RequestBody Cours cours) {
-        Eleve eleve = eleveService.getById(id);
+        Eleve eleve = eleveService.getByIdAvecModule(id);
 		List<Cours> listecours= eleve.getCours();
         listecours.add(cours);
         eleve.setCours(listecours);
