@@ -32,6 +32,7 @@ import sopraprojet.harrypotter.compte.Eleve;
 import sopraprojet.harrypotter.exception.EleveException;
 import sopraprojet.harrypotter.repositories.EleveRepository;
 import sopraprojet.harrypotter.service.EleveService;
+import sopraprojet.harrypotter.service.ModuleService;
 
 
 @RestController
@@ -43,6 +44,9 @@ public class EleveRestController {
 	EleveRepository eleveRepo;
 	@Autowired
 	EleveService eleveService;
+	@Autowired
+	private ModuleService moduleService;
+	
 	
 	@JsonView(JsonViews.Maison.class)
 	@GetMapping("")

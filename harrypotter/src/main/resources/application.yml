@@ -8,12 +8,12 @@ spring:
       max-total: 10
     driver-class-name: com.mysql.cj.jdbc.Driver
 
-    password: 
-    url: jdbc:mysql://localhost:3306/poudlard?serverTimezone=UTC
+    password: root
+    url: jdbc:mysql://localhost:8889/poudlard?serverTimezone=UTC
     username: root
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: create
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQL5InnoDBDialect

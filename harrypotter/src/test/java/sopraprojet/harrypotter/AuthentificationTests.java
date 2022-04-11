@@ -17,13 +17,17 @@ import sopraprojet.harrypotter.boutique.Produit;
 import sopraprojet.harrypotter.compte.Admin;
 import sopraprojet.harrypotter.compte.Eleve;
 import sopraprojet.harrypotter.compte.Prof;
+import sopraprojet.harrypotter.ecole.Cours;
 import sopraprojet.harrypotter.ecole.Maison;
+import sopraprojet.harrypotter.ecole.Modules;
 import sopraprojet.harrypotter.repositories.BoutiqueRepository;
 import sopraprojet.harrypotter.repositories.ProfRepository;
 import sopraprojet.harrypotter.service.AdminService;
 import sopraprojet.harrypotter.service.BoutiqueService;
+import sopraprojet.harrypotter.service.CoursService;
 import sopraprojet.harrypotter.service.EleveService;
 import sopraprojet.harrypotter.service.MaisonService;
+import sopraprojet.harrypotter.service.ModuleService;
 import sopraprojet.harrypotter.service.ProduitService;
 import sopraprojet.harrypotter.service.ProfService;
 
@@ -54,6 +58,10 @@ class AuthentificationTests {
 	private BoutiqueService boutiqueS;
 	@Autowired
 	private BoutiqueRepository boutiqueR;
+	@Autowired
+	private ModuleService moduleService;
+	@Autowired
+	private CoursService  coursService;
 
 
 	@Disabled
@@ -65,10 +73,10 @@ class AuthentificationTests {
 		Maison m2 = new Maison("Serpentard");
 		Maison m3 = new Maison("Serdaigle");
 		Maison m4 = new Maison("Poufsouffle");
-		mService.save(m1);
-		mService.save(m2);
-		mService.save(m3);
-		mService.save(m4);
+		mService.create(m1);
+		mService.create(m2);
+		mService.create(m3);
+		mService.create(m4);
 		Eleve e1 = new Eleve("Ismail", "Benosman", "isma", passwordEncoder.encode("isma"), null, 0, m4);
 		Eleve e2 = new Eleve("Ahmed", "Skalli", "ska", passwordEncoder.encode("ska"), null, 0, m2);
 		Eleve e3 = new Eleve("Mohamed", "Belarbi", "momo", passwordEncoder.encode("momo"), null, 0, m1);
@@ -122,6 +130,15 @@ class AuthentificationTests {
 		
 		Admin a1 = new Admin("Abid","Jordan", "Jordan",passwordEncoder.encode("Jordan"), LocalDate.parse("1998-02-23"),10000,m2);
 		aService.create(a1);
+		
+		
+		Cours cours2 = new Cours("Histoire de la magie", p1);
+		coursService.create(cours2);
+		
+		
+		Modules mod2 = new Modules(cours2, 10, "moyen",e1);
+	
+		
 		
 		Boutique b1= new Boutique(Categorie.Balais,"Magasin d’accessoires de Quidditch "," 24 chemin de traverse" );
 		Boutique b2= new Boutique(Categorie.Herboristerie,"L’apothicaire "," 37 chemin de traverse" );
