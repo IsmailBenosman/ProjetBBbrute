@@ -23,11 +23,11 @@ import sopraprojet.harrypotter.compte.Admin;
 import sopraprojet.harrypotter.compte.Eleve;
 import sopraprojet.harrypotter.compte.Prof;
 import sopraprojet.harrypotter.ecole.Cours;
-<<<<<<< HEAD
-=======
+
+
 import sopraprojet.harrypotter.ecole.Evenement;
 import sopraprojet.harrypotter.ecole.InscriptionCours;
->>>>>>> main
+
 import sopraprojet.harrypotter.ecole.Maison;
 import sopraprojet.harrypotter.ecole.Modules;
 import sopraprojet.harrypotter.repositories.BoutiqueRepository;
@@ -74,11 +74,11 @@ class AuthentificationTests {
 	@Autowired
 	private BoutiqueRepository boutiqueR;
 	@Autowired
-<<<<<<< HEAD
+
 	private ModuleService moduleService;
 	@Autowired
 	private CoursService  coursService;
-=======
+
 	private ModuleRepository moduleR;
 	@Autowired
 	private CoursRepository coursR;
@@ -88,7 +88,7 @@ class AuthentificationTests {
 	EvenementRepository eventR;
 	@Autowired
 	LivraisonRepository livraisonR;
->>>>>>> main
+
 
 
 	@Disabled
@@ -153,7 +153,7 @@ class AuthentificationTests {
 		
 		Admin a1 = new Admin("Abid","Jordan", "Jordan",passwordEncoder.encode("Jordan"), LocalDate.parse("1998-02-23"),10000,m2);
 		aService.create(a1);
-<<<<<<< HEAD
+
 		
 		
 		Cours cours2 = new Cours("Histoire de la magie", p1);
@@ -164,7 +164,7 @@ class AuthentificationTests {
 	
 		
 		
-=======
+
 		Cours co = new Cours("Histoire de la magie", p1);
 		Cours co1 = new Cours("Métamorphose", p1);
 		Cours co2 = new Cours("Défense", p1);
@@ -203,7 +203,7 @@ class AuthentificationTests {
 		InscriptionCours i12 = new InscriptionCours(co6, e6);
 		InscriptionCours i13 = new InscriptionCours(co7, e6);
 		InscriptionCours i14 = new InscriptionCours(co8, e6);
->>>>>>> main
+
 		Boutique b1= new Boutique(Categorie.Balais,"Magasin d’accessoires de Quidditch "," 24 chemin de traverse" );
 		Boutique b2= new Boutique(Categorie.Herboristerie,"L’apothicaire "," 37 chemin de traverse" );
 		Boutique b3= new Boutique(Categorie.Bar,"Le Chaudron Baveur "," 1 chemin de traverse" );

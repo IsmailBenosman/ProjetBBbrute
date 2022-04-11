@@ -23,21 +23,16 @@ import sopraprojet.harrypotter.compte.Prof;
 @DiscriminatorValue("cours")
 @Table(name = "cours")
 public class Cours {
-<<<<<<< HEAD
+
 	
-	@JsonView(JsonViews.Common.class)
-=======
 	@JsonView(JsonViews.Cours.class)
->>>>>>> main
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-<<<<<<< HEAD
-	@JsonView(JsonViews.Common.class)
-=======
+
 	@JsonView(JsonViews.Cours.class)
->>>>>>> main
+
 	@Column(name="cours")
 	private String intitule;
 
@@ -54,12 +49,6 @@ public class Cours {
 	
 	
 	public Cours() {
-	}
-	public Cours(String intitule, Prof professeur, Modules module) {
-		
-		this.intitule = intitule;
-		this.professeur = professeur;
-		this.module = module;
 	}
 
 

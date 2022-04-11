@@ -49,12 +49,7 @@ public class JsonViews {
 	public static class Maison extends Common{
 
 	}
-<<<<<<< HEAD
-	
-	public static class Cours extends Common{
-=======
 	public static class Compte extends Common{
->>>>>>> main
 
 	}
 
