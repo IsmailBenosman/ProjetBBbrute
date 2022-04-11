@@ -31,7 +31,7 @@ public class Produit {
 	@ManyToOne
 	private Boutique boutique;
 	
-	@NotNull(message = "champ obligatoire")
+
 	@JsonView(JsonViews.ProduitWithBoutique.class)
 	public String libelle; 	
 	

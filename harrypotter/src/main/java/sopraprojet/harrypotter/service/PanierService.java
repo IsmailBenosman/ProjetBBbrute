@@ -25,6 +25,7 @@ public class PanierService {
 	}
 
 	public Panier getById(Integer id) {
+		
 		return panierRepository.findById(id).orElseThrow(PanierException::new);
 	}
 

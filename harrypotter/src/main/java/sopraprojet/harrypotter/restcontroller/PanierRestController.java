@@ -23,7 +23,10 @@ import com.fasterxml.jackson.annotation.JsonView;
 
 import sopraprojet.harrypotter.Json.JsonViews;
 import sopraprojet.harrypotter.boutique.Panier;
+import sopraprojet.harrypotter.boutique.Produit;
 import sopraprojet.harrypotter.compte.Compte;
+import sopraprojet.harrypotter.compte.Eleve;
+import sopraprojet.harrypotter.ecole.Cours;
 import sopraprojet.harrypotter.exception.PanierException;
 import sopraprojet.harrypotter.service.CompteService;
 import sopraprojet.harrypotter.service.PanierService;
@@ -110,8 +113,23 @@ public class PanierRestController {
 		panierService.deleteById(id);
 	}
 	
+//	@PostMapping("/ajoutproduit/{id}")
+//    @JsonView(JsonViews.Common.class)
+//    public List<Panier> ajoutProduit(@PathVariable Integer id, @Valid @RequestBody Produit produit) {
+//		Compte compte = compteService.getByIdWithPanier(id);
+//		List<Panier> listepanier= compte.getPanier();
+//		Panier panier= new Panier();
+//        panier.setArticles(produit);
+//        listepanier.add(panier);
+//        compte.setPanier(listepanier);
+//        panierService.save(panier);
+//        compteService.save(compte);
+//        return listepanier;
+//    }
+
+	
 	@JsonView(JsonViews.Common.class)
-	@PostMapping("")
+	@PostMapping("/{id}")
 	@ResponseStatus(code = HttpStatus.CREATED)
 	public Panier create(@Valid @RequestBody Panier panier, BindingResult br) {
 		return createOrUpdate(panier, br);

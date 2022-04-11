@@ -66,11 +66,16 @@ public class EleveService {
 	}
 
 	public Eleve getById(Integer id) {
+		return eleveRepository.findById(id).orElseThrow(() -> {
+			throw new EleveException("numero inconnu");
+		});
+	}
+	
+	public Eleve getByIdAvecModule(Integer id) {
 		return eleveRepository.findByIdWithModule(id).orElseThrow(() -> {
 			throw new EleveException("numero inconnu");
 		});
 	}
-
 
 	public void delete(Eleve e) {
 		//moduleRepository.deleteByEleve(e);
