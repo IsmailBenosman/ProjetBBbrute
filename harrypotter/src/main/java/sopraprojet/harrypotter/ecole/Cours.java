@@ -26,7 +26,7 @@ import sopraprojet.harrypotter.compte.Prof;
 public class Cours {
 
 	
-	@JsonView(JsonViews.Cours.class)
+	@JsonView(JsonViews.Common.class)
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
