@@ -24,18 +24,18 @@ import sopraprojet.harrypotter.compte.Eleve;
 @Table(name = "module")
 public class Modules {
 	
-	@JsonView(JsonViews.Cours.class)
+	@JsonView(JsonViews.Common.class)
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	@JsonView(JsonViews.Cours.class)
+	@JsonView(JsonViews.Common.class)
 	private int note;
 	
-	@JsonView(JsonViews.Cours.class)
+	@JsonView(JsonViews.Common.class)
 	private String commentaire;
 
-	@JsonView(JsonViews.Cours.class)
+	@JsonView(JsonViews.Common.class)
 	@OneToOne
 	@JoinColumn(name="cours")
 	private Cours cours;
