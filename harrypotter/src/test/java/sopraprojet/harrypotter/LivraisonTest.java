@@ -44,10 +44,10 @@ class LivraisonTest {
 		Boutique boutique = new Boutique(Categorie.Confiserie, "Confiserie", "rue JeSaisPas");
 		boutique.setModeLivraison(modes);
 		
-		livraisonService.create(livraison);
-		livraisonService.create(livraison1);
-		livraisonService.create(livraison2);
-		livraisonService.create(livraison3);
+//		livraisonService.create(livraison);
+//		livraisonService.create(livraison1);
+//		livraisonService.create(livraison2);
+//		livraisonService.create(livraison3);
 		boutiqueService.create(boutique);
 		System.out.println(modes);
 
