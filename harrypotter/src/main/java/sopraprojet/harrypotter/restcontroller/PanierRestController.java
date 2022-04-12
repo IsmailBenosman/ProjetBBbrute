@@ -32,7 +32,7 @@ import sopraprojet.harrypotter.service.CompteService;
 import sopraprojet.harrypotter.service.PanierService;
 
 @RestController
-@RequestMapping("/api/panier")
+@RequestMapping("/api/historique")
 @CrossOrigin(origins="*")
 public class PanierRestController {
 
@@ -131,7 +131,9 @@ public class PanierRestController {
 	@JsonView(JsonViews.Common.class)
 	@PostMapping("/{id}")
 	@ResponseStatus(code = HttpStatus.CREATED)
-	public Panier create(@Valid @RequestBody Panier panier, BindingResult br) {
+	public Panier create(@PathVariable Integer id,@Valid @RequestBody Panier panier, BindingResult br) {
+		Compte compte = compteService.getById(id);
+		panier.setCompte(compte);
 		return createOrUpdate(panier, br);
 	}
 }

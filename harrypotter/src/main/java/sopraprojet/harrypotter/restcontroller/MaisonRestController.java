@@ -64,11 +64,11 @@ public class MaisonRestController {
 		return maisonService.getById(id);
 	}
 
-	private Maison save(Maison activite, BindingResult br) {
+	private Maison save(Maison maison, BindingResult br) {
 		if (br.hasErrors()) {
 			throw new MaisonException();
 		}
-		return maisonService.save(activite);
+		return maisonService.save(maison);
 	}
 
 	@PutMapping("/{id}")
