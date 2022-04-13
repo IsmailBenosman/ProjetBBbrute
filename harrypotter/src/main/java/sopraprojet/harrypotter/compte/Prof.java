@@ -28,7 +28,7 @@ public class Prof extends Compte {
 	}
 
 	public Prof(Integer id, String nom, String prenom, String login, String password, LocalDate naissance, double solde,
-			Maison maison) {
+			Maison maison,String img) {
 		super(id, nom, prenom, login, password, naissance, solde, maison);
 		// TODO Auto-generated constructor stub
 	}
@@ -36,6 +36,11 @@ public class Prof extends Compte {
 	public Prof(String nom, String prenom, String login, String password, LocalDate naissance, double solde,
 			Maison maison) {
 		super(nom, prenom, login, password, naissance, solde, maison);
+	}
+	
+	public Prof(String nom, String prenom, String login, String password, LocalDate naissance, double solde,
+			Maison maison,String img) {
+		super(nom, prenom, login, password, naissance, solde, maison,img);
 	}
 
 	public List<Cours> getuE() {
