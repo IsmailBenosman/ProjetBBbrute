@@ -53,6 +53,7 @@ public class ModuleRestController {
 	public Modules getById(@PathVariable Integer id) {
 		return moduleService.getById(id);
 	}
+	
 	private Modules createOrUpdate(Modules modules, BindingResult br) {
 		if (br.hasErrors()) {
 			throw new ModuleException();
