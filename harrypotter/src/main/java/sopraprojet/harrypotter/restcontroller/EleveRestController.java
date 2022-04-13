@@ -44,18 +44,18 @@ public class EleveRestController {
 	private CoursService coursS;
 	
 	
-	@JsonView(JsonViews.Maison.class)
+	@JsonView(JsonViews.Common.class)
 	@GetMapping("")
 	public List<Eleve> lesEleves() {
 		return eleveService.getAll();
 	}
-	@JsonView(JsonViews.Maison.class)
+	@JsonView(JsonViews.Common.class)
 	@GetMapping("/{id}")
 	public Eleve getById(@PathVariable Integer id) {
 		return eleveService.getById(id);
 	}
 	
-	@JsonView(JsonViews.Maison.class)
+	@JsonView(JsonViews.Common.class)
 	@GetMapping("/listeparcours/{id}")
 	public List<Eleve> getEleveByCours(@PathVariable Integer id) {
 		Cours cours= coursS.getById(id);

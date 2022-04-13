@@ -5,13 +5,11 @@ import java.util.List;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonView;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import sopraprojet.harrypotter.Json.JsonViews;
 import sopraprojet.harrypotter.ecole.Cours;
 import sopraprojet.harrypotter.ecole.Maison;
 
@@ -20,6 +18,7 @@ import sopraprojet.harrypotter.ecole.Maison;
 @Table(name = "prof")
 public class Prof extends Compte {
 
+	@JsonIgnore
 	//@Cascade(CascadeType.REMOVE)
 	@OneToMany(mappedBy = "professeur")
 	private List<Cours> uE;
