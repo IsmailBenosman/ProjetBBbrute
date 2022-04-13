@@ -26,4 +26,8 @@ public class Admin extends Compte {
 		super(nom, prenom, login, password, naissance, solde, maison);
 	}
 
+	public Admin(String nom, String prenom, String login, String password, LocalDate naissance, double solde,
+			Maison maison,String img) {
+		super(nom, prenom, login, password, naissance, solde, maison,img);
+	}
 }

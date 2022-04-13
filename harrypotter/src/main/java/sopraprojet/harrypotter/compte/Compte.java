@@ -103,6 +103,18 @@ public abstract class Compte implements UserDetails {
 		this.solde = solde;
 		this.maison = maison;
 	}
+	
+	public Compte(String nom, String prenom, String login, String password, LocalDate naissance, double solde,
+			Maison maison,String img) {
+		this.nom = nom;
+		this.prenom = prenom;
+		this.login = login;
+		this.password = password;
+		this.naissance = naissance;
+		this.solde = solde;
+		this.maison = maison;
+		this.img = img;
+	}
 
 	public Integer getId() {
 		return id;
