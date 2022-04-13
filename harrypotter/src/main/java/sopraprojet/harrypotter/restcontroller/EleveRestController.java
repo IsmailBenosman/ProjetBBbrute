@@ -96,7 +96,7 @@ public class EleveRestController {
 		return createOrUpdate(eleve, br);
 	}
 	@JsonView(JsonViews.Common.class)
-	@PutMapping("/{id}")
+	@PutMapping("/put/{id}")
 	public Eleve update(@PathVariable Integer id, @Valid @RequestBody Eleve eleve, BindingResult br) {
 		eleve.setId(id);
 		return createOrUpdate(eleve, br);
