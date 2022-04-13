@@ -42,10 +42,9 @@ public class EleveService {
 			throw new EleveException("Mot de passe manquant");
 		}
 		eleveRepository.save(e);
-		Cours point = new Cours("Point de maison",null);
-		coursRepo.save(point);
-		Modules modulespoint= new Modules(point,0,"Module destiné aux points de maison",e);
-		moduleRepository.save(modulespoint);
+		
+		List<Cours> listecours = coursRepo.findAll();
+		e.setCours(listecours);
 	}
 
 	public void update(Eleve e) {
