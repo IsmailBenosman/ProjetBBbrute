@@ -21,9 +21,11 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import sopraprojet.harrypotter.Json.JsonViews;
+import sopraprojet.harrypotter.boutique.Produit;
 import sopraprojet.harrypotter.compte.Eleve;
 import sopraprojet.harrypotter.ecole.Modules;
 import sopraprojet.harrypotter.exception.EvenementException;
+import sopraprojet.harrypotter.exception.ModuleException;
 import sopraprojet.harrypotter.service.EleveService;
 import sopraprojet.harrypotter.service.ModuleService;
 
@@ -45,12 +47,20 @@ public class ModuleRestController {
 		Eleve e = eleveService.getById(id);
 		return moduleService.findModuleWithEleve(e);
 	}
+	
+	@JsonView(JsonViews.Common.class)
+	@GetMapping("/eleve/{id}")
+	public Modules getById(@PathVariable Integer id) {
+		return moduleService.getById(id);
+	}
 	private Modules createOrUpdate(Modules modules, BindingResult br) {
 		if (br.hasErrors()) {
-			throw new EvenementException();
+			throw new ModuleException();
 		}
 		return moduleService.save(modules);
 	}
+	
+	
 	
 	@JsonView(JsonViews.Common.class)
 	@PostMapping("")
@@ -64,11 +74,10 @@ public class ModuleRestController {
 	public void delete(@PathVariable Integer id) {
 		moduleService.delete(id);
 	}
-
+	
 	@JsonView(JsonViews.Common.class)
-	@PutMapping("/{id}")
-	public Modules update(@PathVariable Integer id, @Valid @RequestBody Modules modules,
-			BindingResult br) {
+	@PutMapping("/update/{id}")
+	public Modules update(@PathVariable Integer id, @Valid @RequestBody Modules modules,BindingResult br) {
 		modules.setId(id);
 		return createOrUpdate(modules, br);
 	}

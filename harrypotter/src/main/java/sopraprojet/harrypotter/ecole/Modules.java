@@ -40,7 +40,7 @@ public class Modules {
 	@JoinColumn(name="cours")
 	private Cours cours;
 	
-	@JsonView(JsonViews.ModuleWithEleve.class)
+	@JsonView(JsonViews.Common.class)
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="eleve")
 	private Eleve eleve;

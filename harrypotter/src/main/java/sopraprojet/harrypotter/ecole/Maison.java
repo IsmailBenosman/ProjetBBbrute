@@ -24,6 +24,7 @@ public class Maison {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	@JsonView(JsonViews.Common.class)
+	
 	private String nom;
 	@JsonView(JsonViews.Common.class)
 	private int score;
