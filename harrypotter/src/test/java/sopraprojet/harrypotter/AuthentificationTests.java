@@ -1,7 +1,6 @@
 package sopraprojet.harrypotter;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -19,20 +18,14 @@ import org.springframework.test.annotation.Commit;
 import sopraprojet.harrypotter.boutique.Boutique;
 import sopraprojet.harrypotter.boutique.Categorie;
 import sopraprojet.harrypotter.boutique.Livraison;
-import sopraprojet.harrypotter.boutique.Panier;
 import sopraprojet.harrypotter.boutique.Produit;
 import sopraprojet.harrypotter.compte.Admin;
-import sopraprojet.harrypotter.compte.Compte;
 import sopraprojet.harrypotter.compte.Eleve;
 import sopraprojet.harrypotter.compte.Prof;
 import sopraprojet.harrypotter.ecole.Cours;
-
-
 import sopraprojet.harrypotter.ecole.Evenement;
-
 import sopraprojet.harrypotter.ecole.Maison;
 import sopraprojet.harrypotter.ecole.Modules;
-import sopraprojet.harrypotter.repositories.BoutiqueRepository;
 import sopraprojet.harrypotter.repositories.CoursRepository;
 import sopraprojet.harrypotter.repositories.EvenementRepository;
 import sopraprojet.harrypotter.repositories.LivraisonRepository;
@@ -40,10 +33,8 @@ import sopraprojet.harrypotter.repositories.ModuleRepository;
 import sopraprojet.harrypotter.repositories.ProfRepository;
 import sopraprojet.harrypotter.service.AdminService;
 import sopraprojet.harrypotter.service.BoutiqueService;
-import sopraprojet.harrypotter.service.CoursService;
 import sopraprojet.harrypotter.service.EleveService;
 import sopraprojet.harrypotter.service.MaisonService;
-import sopraprojet.harrypotter.service.ModuleService;
 import sopraprojet.harrypotter.service.ProduitService;
 import sopraprojet.harrypotter.service.ProfService;
 
@@ -356,13 +347,8 @@ class AuthentificationTests {
 		Evenement event2 = new Evenement("Tournoi des 4 Maisons",LocalDate.parse("2022-09-03"), LocalTime.of(14,30,0));
 		Evenement event3 = new Evenement("Finale de Quidditch ",LocalDate.parse("2022-06-01"), LocalTime.of(21, 0,0));
 		Evenement event4 = new Evenement("Banquet de Noel",LocalDate.parse("2022-12-20"), LocalTime.of(20,30,0));
-		List<Eleve> participant2 = new ArrayList();
-		List<Eleve> participant3 = new ArrayList();
-		Collections.addAll(participant2, e1,e2,e3,e4);
-		Collections.addAll(participant3, e1,e2,e3,e4,e5,e6);
-		event1.setParticipants(participant3);
-		event2.setParticipants(participant2);
-		event3.setParticipants(participant3);
+		
+		
 		List<Livraison> modes = new ArrayList();
 		Livraison livraison = new Livraison("LaPoste", 0.50, "Livraison sous 14 jours");
 		Livraison livraison1 = new Livraison("Hiboux", 5.20, "Livraison sous 7 jours");

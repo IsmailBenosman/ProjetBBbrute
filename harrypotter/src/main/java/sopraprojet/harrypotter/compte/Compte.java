@@ -3,28 +3,18 @@ package sopraprojet.harrypotter.compte;
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.List;
-import java.util.Set;
 
-import javax.persistence.CollectionTable;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
-import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Version;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Past;
 
 import org.springframework.security.core.GrantedAuthority;
@@ -37,7 +27,6 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import sopraprojet.harrypotter.Json.JsonViews;
-import sopraprojet.harrypotter.boutique.Panier;
 import sopraprojet.harrypotter.ecole.Maison;
 
 @Entity
@@ -48,10 +37,9 @@ import sopraprojet.harrypotter.ecole.Maison;
 @DiscriminatorColumn(name = "type_compte", columnDefinition = "ENUM('eleve','prof','admin')")
 @Table(name = "compte")
 public abstract class Compte implements UserDetails {
-
-	@OneToMany(mappedBy = "compte")
-	private List<Panier> panier;
-
+	/*
+	 * @OneToMany(mappedBy = "compte") private List<Panier> panier;
+	 */
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id_compte")
@@ -196,13 +184,11 @@ public abstract class Compte implements UserDetails {
 		this.img = img;
 	}
 
-	public List<Panier> getPanier() {
-		return panier;
-	}
-
-	public void setPanier(List<Panier> panier) {
-		this.panier = panier;
-	}
+	/*
+	 * public List<Panier> getPanier() { return panier; }
+	 * 
+	 * public void setPanier(List<Panier> panier) { this.panier = panier; }
+	 */
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
