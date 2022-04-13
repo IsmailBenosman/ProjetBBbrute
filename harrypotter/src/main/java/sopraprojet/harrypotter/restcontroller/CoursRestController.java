@@ -84,7 +84,7 @@ public class CoursRestController {
 	}
 	
 	@PutMapping("/edit/{id}")
-	@JsonView(JsonViews.Common.class)
+	@JsonView(JsonViews.CoursWithEleves.class)
 	public Cours update(@PathVariable Integer id, @Valid @RequestBody Cours cours, BindingResult br) {
 		cours.setId(id);
 		return coursService.create(cours);
