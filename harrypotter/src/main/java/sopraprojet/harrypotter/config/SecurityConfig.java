@@ -43,11 +43,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.antMatchers(HttpMethod.OPTIONS, "api/**").permitAll()
 			.antMatchers(HttpMethod.GET, "api/**").permitAll()
 			.antMatchers(HttpMethod.POST, "api/**").permitAll()
-				.antMatchers(HttpMethod.PUT, "/**").permitAll()
+		.antMatchers(HttpMethod.PUT, "/**").permitAll()
 			.antMatchers("/api/eleve/**").permitAll()
 			.antMatchers("/api/catalogue/**").permitAll()
 			.antMatchers("/api/inscription/**").permitAll()
 			.antMatchers("/api/historique/**").permitAll()
+			.antMatchers("/api/boutiques/{id}").hasAnyRole("ADMIN")
 			.antMatchers("/api/bulletin/**").hasAnyRole("PROF","ELEVE", "ADMIN")
 			.antMatchers("/api/prof/**").hasAnyRole("PROF","ADMIN")
 			.antMatchers("/api/cours/**").hasAnyRole("ELEVE","PROF","ADMIN")
@@ -57,8 +58,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.antMatchers("/api/eleve/**").hasAnyRole("ELEVE","PROF","ADMIN")
 			.antMatchers("/api/compte/prof/**").hasAnyRole("PROF","ADMIN")
 			.antMatchers("/api/compte/eleve/**").hasAnyRole("ELEVE", "ADMIN")
-			.antMatchers("/api/boutiques/**").hasAnyRole("ELEVE","PROF","ADMIN")
-
 			.antMatchers("/api/**").authenticated()
 
 			.anyRequest().denyAll()
