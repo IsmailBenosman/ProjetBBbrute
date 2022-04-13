@@ -23,9 +23,11 @@ import com.fasterxml.jackson.annotation.JsonView;
 import sopraprojet.harrypotter.Json.JsonViews;
 import sopraprojet.harrypotter.compte.Eleve;
 import sopraprojet.harrypotter.ecole.Cours;
+import sopraprojet.harrypotter.ecole.Maison;
 import sopraprojet.harrypotter.repositories.EleveRepository;
 import sopraprojet.harrypotter.service.CoursService;
 import sopraprojet.harrypotter.service.EleveService;
+import sopraprojet.harrypotter.service.MaisonService;
 import sopraprojet.harrypotter.service.ModuleService;
 
 
@@ -42,7 +44,8 @@ public class EleveRestController {
 	private ModuleService moduleService;
 	@Autowired
 	private CoursService coursS;
-	
+	@Autowired
+	private MaisonService maisonS;
 	
 	@JsonView(JsonViews.Maison.class)
 	@GetMapping("")
@@ -63,7 +66,15 @@ public class EleveRestController {
 		return listeeleve;
 	}
 	
-		
+	@JsonView(JsonViews.Maison.class)
+	@GetMapping("/listeparmaison/{id}")
+	public List<Eleve> getEleveByMaison(@PathVariable Integer id) {
+		Maison m= maisonS.getById(id);
+		List<Eleve> listeeleve = eleveService.getAllByMaison(m);
+		return listeeleve;
+	}
+
+
 	
 	
 	@JsonView(JsonViews.Cours.class)

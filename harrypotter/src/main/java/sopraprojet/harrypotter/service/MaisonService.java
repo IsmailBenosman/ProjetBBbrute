@@ -5,8 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import sopraprojet.harrypotter.boutique.Panier;
-import sopraprojet.harrypotter.compte.Compte;
 import sopraprojet.harrypotter.ecole.Maison;
 import sopraprojet.harrypotter.exception.MaisonException;
 import sopraprojet.harrypotter.repositories.MaisonRepository;

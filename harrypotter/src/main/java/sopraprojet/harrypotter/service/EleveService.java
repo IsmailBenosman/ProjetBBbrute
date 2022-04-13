@@ -94,8 +94,8 @@ public class EleveService {
 		return eleveRepository.save(eleve);
 	}
 
-	public List<Eleve> getAllByMaison(Maison m) {
-		return eleveRepository.findByMaison(m);
+	public List<Eleve> getAllByMaison(Maison maison) {
+		return eleveRepository.findByMaison(maison);
 	}
 	
 	public List<Eleve> getAllByCours(Cours cours){

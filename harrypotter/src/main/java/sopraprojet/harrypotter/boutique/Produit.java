@@ -44,8 +44,8 @@ public class Produit {
 	@JsonView(JsonViews.Common.class)
 	private String img;
 	
-	@OneToMany(mappedBy = "articles")
-	private List<Panier> panier;
+	//@OneToMany(mappedBy = "articles")
+	//private List<Panier> panier;
 
 	@Version
 	private int version;
@@ -59,6 +59,15 @@ public class Produit {
 		this.libelle = libelle;
 		this.prix = prix;
 		this.description = description;
+	}
+	
+	public Produit(Boutique boutique, String libelle, double prix, String description,String img) {
+		super();
+		this.boutique = boutique;
+		this.libelle = libelle;
+		this.prix = prix;
+		this.description = description;
+		this.img =img;
 	}
 
 	public Integer getId() {
@@ -109,14 +118,11 @@ public class Produit {
 		this.img = img;
 	}
 
-	public List<Panier> getPanier() {
-		return panier;
-	}
-
-	public void setPanier(List<Panier> panier) {
-		this.panier = panier;
-	}
-
+	/*
+	 * public List<Panier> getPanier() { return panier; }
+	 * 
+	 * public void setPanier(List<Panier> panier) { this.panier = panier; }
+	 */
 	public int getVersion() {
 		return version;
 	}
@@ -128,7 +134,7 @@ public class Produit {
 	@Override
 	public String toString() {
 		return "Produit [id=" + id + ", boutique=" + boutique + ", libelle=" + libelle + ", prix=" + prix
-				+ ", description=" + description + ", img=" + img + ", panier=" + panier + ", version=" + version + "]";
+				+ ", description=" + description + ", img=" + img + ", panier="  + ", version=" + version + "]";
 	}
 
 	

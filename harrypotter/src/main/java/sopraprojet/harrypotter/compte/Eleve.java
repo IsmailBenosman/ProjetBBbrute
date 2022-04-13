@@ -30,10 +30,10 @@ public class Eleve extends Compte {
 	private List<Modules> mesCours;
 	
 	//@Cascade(CascadeType.DELETE)
-	@ManyToMany(mappedBy = "participants")
-	private List<Evenement> event;
-	
-
+	/*
+	 * @ManyToMany(mappedBy = "participants") private List<Evenement> event;
+	 * 
+	 */
 	@JsonView(JsonViews.Common.class)
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(
@@ -70,14 +70,11 @@ public class Eleve extends Compte {
 		return nom + " " + prenom;
 	}
 
-	public List<Evenement> getEvent() {
-		return event;
-	}
-
-	public void setEvent(List<Evenement> event) {
-		this.event = event;
-	}
-
+	/*
+	 * public List<Evenement> getEvent() { return event; }
+	 * 
+	 * public void setEvent(List<Evenement> event) { this.event = event; }
+	 */
 
 	public List<Cours> getCours() {
 		return cours;

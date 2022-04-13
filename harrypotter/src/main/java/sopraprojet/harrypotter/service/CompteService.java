@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import sopraprojet.harrypotter.boutique.Panier;
 import sopraprojet.harrypotter.compte.Compte;
 import sopraprojet.harrypotter.exception.CompteException;
 import sopraprojet.harrypotter.repositories.CompteRepository;
@@ -54,12 +53,11 @@ public class CompteService {
 		});
 	}
 	
-	public Compte getByIdWithPanier(Integer id) {
-		return compteRepository.findByIdWithPanier(id).orElseThrow(() -> {
-			throw new CompteException("numero inconnu");
-		});
-	}
-
+	/*
+	 * public Compte getByIdWithPanier(Integer id) { return
+	 * compteRepository.findByIdWithPanier(id).orElseThrow(() -> { throw new
+	 * CompteException("numero inconnu"); }); }
+	 */
 	
 	public void delete(Compte c) {
 

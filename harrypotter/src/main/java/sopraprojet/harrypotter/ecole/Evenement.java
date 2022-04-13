@@ -29,7 +29,7 @@ import sopraprojet.harrypotter.compte.Eleve;
 
 
 @Entity
-@DiscriminatorValue("evenements")
+//@DiscriminatorValue("evenements")
 @Table(name = "evenements")
 public class Evenement {
 	
@@ -50,14 +50,15 @@ public class Evenement {
 	@JsonView(JsonViews.Common.class)
 	private LocalTime heure;
 	
-	@JsonView(JsonViews.Common.class)
-	@ManyToMany
+	//@JsonView(JsonViews.Common.class)
+	/*@ManyToMany
   	@JoinTable(
 			name="participant_event",
 			joinColumns = @JoinColumn(name="event"),
 			inverseJoinColumns = @JoinColumn(name="participant")
 			)
-	private List<Eleve> participants;
+			*/
+	//private List<Eleve> participants;
 	
     @Version
 	private int version;
@@ -111,14 +112,12 @@ public class Evenement {
 		this.version = version;
 	}
 
-	public List<Eleve> getParticipants() {
-		return participants;
-	}
-
-	public void setParticipants(List<Eleve> participants) {
-		this.participants = participants;
-	}
-
+	/*
+	 * public List<Eleve> getParticipants() { return participants; }
+	 * 
+	 * public void setParticipants(List<Eleve> participants) { this.participants =
+	 * participants; }
+	 */
 	
 	
 }
