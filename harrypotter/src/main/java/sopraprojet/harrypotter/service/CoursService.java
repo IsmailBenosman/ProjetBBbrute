@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import sopraprojet.harrypotter.compte.Eleve;
 import sopraprojet.harrypotter.compte.Prof;
 import sopraprojet.harrypotter.ecole.Cours;
 import sopraprojet.harrypotter.exception.ModuleException;
@@ -47,7 +48,9 @@ public class CoursService {
 		return coursRepository.findByprof(id);
 	}
 	*/
-	
+	public List<Cours> getByEleve(Eleve eleve){
+		return coursRepository.findByEleve(eleve);
+	}
 
 
 	public Cours save(Cours coursAAjouter) {

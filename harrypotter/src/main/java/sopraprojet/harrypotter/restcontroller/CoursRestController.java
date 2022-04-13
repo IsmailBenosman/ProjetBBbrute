@@ -21,8 +21,12 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import sopraprojet.harrypotter.Json.JsonViews;
+import sopraprojet.harrypotter.compte.Eleve;
 import sopraprojet.harrypotter.ecole.Cours;
+import sopraprojet.harrypotter.repositories.CoursRepository;
+import sopraprojet.harrypotter.repositories.EleveRepository;
 import sopraprojet.harrypotter.service.CoursService;
+import sopraprojet.harrypotter.service.EleveService;
 import sopraprojet.harrypotter.service.ModuleService;
 
 @RestController
@@ -33,7 +37,11 @@ public class CoursRestController {
 	@Autowired
 	CoursService coursService;
 	@Autowired 
-	ModuleService  moduleService;
+	ModuleService moduleService;
+	@Autowired
+	CoursRepository coursRepo;
+	@Autowired
+	EleveService eleveS;
 	
 	@JsonView(JsonViews.Cours.class)
 	@GetMapping("")
@@ -51,6 +59,14 @@ public class CoursRestController {
 	@GetMapping("/get/{id}")
 	public Cours getById(@PathVariable Integer id) {
 		return coursService.getById(id);
+	}
+	
+	@JsonView(JsonViews.Maison.class)
+	@GetMapping("/listepareleve/{id}")
+	public List<Cours> getCoursByEleve(@PathVariable Integer id) {
+		Eleve eleve= eleveS.getById(id);
+		List<Cours> listecours = coursService.getByEleve(eleve);
+		return listecours;
 	}
 	
 	@JsonView(JsonViews.Common.class)
