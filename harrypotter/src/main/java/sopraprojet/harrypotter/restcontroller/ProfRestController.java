@@ -62,7 +62,7 @@ public class ProfRestController {
 	}
 	
 	@JsonView(JsonViews.Common.class)
-	@PostMapping("/edit")
+	@PostMapping("/add")
 	@ResponseStatus(code = HttpStatus.CREATED)
 	public Prof create(@Valid @RequestBody Prof prof, BindingResult br) {
 		return createOrUpdate(prof, br);

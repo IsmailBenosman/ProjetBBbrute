@@ -17,6 +17,7 @@ import javax.persistence.Table;
 import javax.persistence.Version;
 import javax.validation.constraints.Past;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -62,6 +63,7 @@ public abstract class Compte implements UserDetails {
 
 	@Past
 	@JsonView(JsonViews.Common.class)
+	@DateTimeFormat(pattern = "dd-MM-yyyy")
 	protected LocalDate naissance;
 
 	@JsonView(JsonViews.Common.class)
