@@ -35,7 +35,7 @@ public class Eleve extends Compte {
 	 * 
 	 */
 	@JsonView(JsonViews.Common.class)
-	@ManyToMany(fetch = FetchType.EAGER)
+	@ManyToMany
 	@JoinTable(
 			name="cours_des_eleves",
 			joinColumns = @JoinColumn(name="id_eleve"),
