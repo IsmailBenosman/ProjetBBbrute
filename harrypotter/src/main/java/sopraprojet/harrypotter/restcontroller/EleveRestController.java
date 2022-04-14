@@ -1,5 +1,6 @@
 package sopraprojet.harrypotter.restcontroller;
 
+import java.util.Iterator;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -25,6 +26,7 @@ import sopraprojet.harrypotter.Json.JsonViews;
 import sopraprojet.harrypotter.compte.Eleve;
 import sopraprojet.harrypotter.ecole.Cours;
 import sopraprojet.harrypotter.ecole.Maison;
+import sopraprojet.harrypotter.ecole.Modules;
 import sopraprojet.harrypotter.repositories.EleveRepository;
 import sopraprojet.harrypotter.service.CoursService;
 import sopraprojet.harrypotter.service.EleveService;
@@ -107,15 +109,21 @@ public class EleveRestController {
 	@PostMapping("/creer")
 	@ResponseStatus(code = HttpStatus.CREATED)
 	public Eleve create(@Valid @RequestBody Eleve eleve, BindingResult br) {
+		List<Cours> cours = coursS.getAll(); 
+		eleve.setCours(cours);
+		Modules module = new Modules();
+		for (Cours c: cours)
+		{
+			module.setCours(c);
+			module.setEleve(eleve);
+			moduleService.create(module);
+		}
 		eleve.setPassword(passwordEncoder.encode(eleve.getPassword()));
 		return createOrUpdate(eleve, br);
 	}
 	@JsonView(JsonViews.Common.class)
 	@PutMapping("/put/{id}")
 	public Eleve update(@PathVariable Integer id, @Valid @RequestBody Eleve eleve, BindingResult br) {
-		System.out.println("____________________________________");
-		System.out.println(eleve);
-		System.out.println("____________________________________");
 		eleve.setId(id);
 		return createOrUpdate(eleve, br);
 	}
