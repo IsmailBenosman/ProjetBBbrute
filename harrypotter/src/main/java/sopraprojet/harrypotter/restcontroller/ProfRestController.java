@@ -42,7 +42,7 @@ public class ProfRestController {
 	public List<Prof> getProf() {
 		return profService.getAll();
 	}
-	@JsonView(JsonViews.Cours.class)
+	@JsonView(JsonViews.Maison.class)
 	@GetMapping("/{id}")
 	public Prof getById(@PathVariable Integer id) {
 		return profService.getById(id);
@@ -67,7 +67,7 @@ public class ProfRestController {
 	public Prof create(@Valid @RequestBody Prof prof, BindingResult br) {
 		return createOrUpdate(prof, br);
 	}
-
+	@JsonView(JsonViews.Maison.class)
 	@PutMapping("/{id}")
 	public Prof update(@PathVariable Integer id, @Valid @RequestBody Prof prof, BindingResult br) {
 		prof.setId(id);
