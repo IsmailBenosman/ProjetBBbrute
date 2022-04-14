@@ -111,15 +111,15 @@ public class EleveRestController {
 	@PostMapping("/creer")
 	@ResponseStatus(code = HttpStatus.CREATED)
 	public Eleve create(@Valid @RequestBody Eleve eleve, BindingResult br) {
-		List<Cours> cours = coursS.getAll(); 
-		eleve.setCours(cours);
-		Modules module = new Modules();
-		for (Cours c: cours)
-		{
-			module.setCours(c);
-			module.setEleve(eleve);
-			moduleService.create(module);
-		}
+//		List<Cours> cours = coursS.getAll(); 
+//		eleve.setCours(cours);
+//		Modules module = new Modules();
+//		for (Cours c: cours)
+//		{
+//			module.setCours(c);
+//			module.setEleve(eleve);
+//			moduleService.create(module);
+//		}
 		eleve.setPassword(passwordEncoder.encode(eleve.getPassword()));
 		return createOrUpdate(eleve, br);
 	}

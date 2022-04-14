@@ -43,8 +43,8 @@ public class EleveService {
 		}
 		eleveRepository.save(e);
 		
-//		List<Cours> listecours = coursRepo.findAll();
-//		e.setCours(listecours);
+		List<Cours> listecours = coursRepo.findAll();
+		e.setCours(listecours);
 	}
 
 	public void update(Eleve e) {
