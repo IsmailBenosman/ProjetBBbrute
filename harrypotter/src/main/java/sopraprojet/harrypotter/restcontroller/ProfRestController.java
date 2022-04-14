@@ -6,6 +6,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -31,6 +32,8 @@ import sopraprojet.harrypotter.service.ProfService;
 @RequestMapping("/api/prof")
 @CrossOrigin(origins="*")
 public class ProfRestController {
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 
 	@Autowired
 	ProfRepository ProfRepo;
@@ -65,7 +68,7 @@ public class ProfRestController {
 	@PostMapping("/add")
 	@ResponseStatus(code = HttpStatus.CREATED)
 	public Prof create(@Valid @RequestBody Prof prof, BindingResult br) {
-		
+		prof.setPassword(passwordEncoder.encode(prof.getPassword()));
 		return createOrUpdate(prof, br);
 	}
 	@JsonView(JsonViews.Maison.class)

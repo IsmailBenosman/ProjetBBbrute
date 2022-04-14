@@ -43,8 +43,10 @@ public class EleveRestController {
 
 	@Autowired
 	EleveRepository eleveRepo;
+	
 	@Autowired
 	EleveService eleveService;
+	
 	@Autowired
 	private ModuleService moduleService;
 	@Autowired
