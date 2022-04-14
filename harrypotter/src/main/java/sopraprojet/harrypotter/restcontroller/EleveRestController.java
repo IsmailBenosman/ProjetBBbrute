@@ -6,6 +6,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -35,6 +36,8 @@ import sopraprojet.harrypotter.service.ModuleService;
 @RequestMapping("/api/eleve")
 @CrossOrigin(origins="*")
 public class EleveRestController {
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 
 	@Autowired
 	EleveRepository eleveRepo;
@@ -104,6 +107,7 @@ public class EleveRestController {
 	@PostMapping("/creer")
 	@ResponseStatus(code = HttpStatus.CREATED)
 	public Eleve create(@Valid @RequestBody Eleve eleve, BindingResult br) {
+		eleve.setPassword(passwordEncoder.encode(eleve.getPassword()));
 		return createOrUpdate(eleve, br);
 	}
 	@JsonView(JsonViews.Common.class)
