@@ -34,8 +34,6 @@ import sopraprojet.harrypotter.service.ProfService;
 @CrossOrigin(origins="*")
 public class AdminHomeRestController {
 
-	
-	
 
 		@Autowired
 		EleveRepository eleveRepo;
