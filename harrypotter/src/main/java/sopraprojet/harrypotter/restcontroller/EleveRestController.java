@@ -47,12 +47,12 @@ public class EleveRestController {
 	@Autowired
 	private MaisonService maisonS;
 	
-	@JsonView(JsonViews.Common.class)
+	@JsonView(JsonViews.Maison.class)
 	@GetMapping("")
 	public List<Eleve> lesEleves() {
 		return eleveService.getAll();
 	}
-	@JsonView(JsonViews.Common.class)
+	@JsonView(JsonViews.Maison.class)
 	@GetMapping("/{id}")
 	public Eleve getById(@PathVariable Integer id) {
 		return eleveService.getById(id);
@@ -109,6 +109,9 @@ public class EleveRestController {
 	@JsonView(JsonViews.Common.class)
 	@PutMapping("/put/{id}")
 	public Eleve update(@PathVariable Integer id, @Valid @RequestBody Eleve eleve, BindingResult br) {
+		System.out.println("____________________________________");
+		System.out.println(eleve);
+		System.out.println("____________________________________");
 		eleve.setId(id);
 		return createOrUpdate(eleve, br);
 	}
