@@ -38,6 +38,7 @@ public class ProfService {
 	}
 
 	public void update(Prof pf) {
+
 		if (pf.getId() == null) {
 			throw new ProfException("le numero doit etre defini");
 		}

@@ -59,16 +59,16 @@ public class ModuleService {
 		return moduleRepository.moyenneByEleve(eleve);
 		}
 	
-	public void getEleveWithMoyenne(){
-		List moyenne = new ArrayList();
-		List<Modules> modules = getAll();
-		
-		List<Eleve> eleves = eleveService.getAll();
-		for (Eleve el:eleves) {
-			int moy= moyenne(el);
-			moyenne.add(moy);
-		}
-		System.out.println(moyenne);
-	}
+//	public void getEleveWithMoyenne(){
+//		List moyenne = new ArrayList();
+//		List<Modules> modules = getAll();
+//		
+//		List<Eleve> eleves = eleveService.getAll();
+//		for (Eleve el:eleves) {
+//			int moy= moyenne(el);
+//			moyenne.add(moy);
+//		}
+//		System.out.println(moyenne);
+//	}
 
 }

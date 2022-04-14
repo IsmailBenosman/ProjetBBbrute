@@ -65,6 +65,7 @@ public class ProfRestController {
 	@PostMapping("/add")
 	@ResponseStatus(code = HttpStatus.CREATED)
 	public Prof create(@Valid @RequestBody Prof prof, BindingResult br) {
+		
 		return createOrUpdate(prof, br);
 	}
 	@JsonView(JsonViews.Maison.class)
@@ -81,30 +82,4 @@ public class ProfRestController {
 		return profService.save(prof);
 	}
 
-	/*@PatchMapping("/{id}")
-	public Prof partialUpdate(@RequestBody Map<String, Object> fields, @PathVariable Integer id) {
-		Prof Prof = ProfService.getById(id);
-		fields.forEach((k, v) -> {
-			if (k.equals("heure")) {
-				List<Integer> heureRecuperee = (List<Integer>) v;
-				Prof.setHeure(LocalTime.of(heureRecuperee.get(0), heureRecuperee.get(1)));
-			} else if (k.equals("naissance")) {
-				List<Integer> dateRecuperee = (List<Integer>) v;
-				Prof.setNaissance(LocalDate.of(dateRecuperee.get(0), dateRecuperee.get(1), dateRecuperee.get(2)));
-			} else if (k.equals("vehicule")) {
-				if (Prof instanceof Safari) {
-					String value = v.toString();
-
-					Vehicule vehicule = new Vehicule();
-					vehicule.setId(Integer.parseInt(value.substring(value.indexOf("=") + 1, value.length() - 1)));
-					((Safari) Prof).setVehicule(vehicule);
-				}
-			} else {
-				Field field = ReflectionUtils.findField(Prof.class, k);
-				ReflectionUtils.makeAccessible(field);
-				ReflectionUtils.setField(field, Prof, v);
-			}
-		});
-		return ProfService.save(Prof);
-	}*/
 }
