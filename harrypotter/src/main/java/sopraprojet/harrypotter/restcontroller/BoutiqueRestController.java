@@ -22,6 +22,7 @@ import com.fasterxml.jackson.annotation.JsonView;
 
 import sopraprojet.harrypotter.Json.JsonViews;
 import sopraprojet.harrypotter.boutique.Boutique;
+import sopraprojet.harrypotter.boutique.Livraison;
 import sopraprojet.harrypotter.exception.BoutiqueException;
 import sopraprojet.harrypotter.service.BoutiqueService;
 
@@ -39,7 +40,11 @@ public class BoutiqueRestController {
 	public List<Boutique> getAll() {
 		return boutiqueService.getAll();
 	}
-	
+	@JsonView(JsonViews.Common.class)
+	@GetMapping("/{id}")
+	public Boutique getById(@PathVariable Integer id) {
+		return boutiqueService.getById(id);
+	}
 	private Boutique createOrUpdate(Boutique boutique, BindingResult br) {
 		if (br.hasErrors()) {
 			throw new BoutiqueException();
